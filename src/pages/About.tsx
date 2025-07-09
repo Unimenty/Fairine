@@ -54,17 +54,17 @@ const About = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 text-white py-20">
+      <section className="gradient-warm text-white py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Our Story
             </h1>
-            <p className="text-xl text-slate-200 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed">
               Born from a passion for natural living and handcrafted quality, Fairine Enterprise 
               has been creating exceptional home products that bring goodness to your everyday life.
             </p>
@@ -73,14 +73,14 @@ const About = () => {
       </section>
 
       {/* Mission Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
                 Our Mission
               </h2>
-              <p className="text-lg text-slate-600 leading-relaxed">
+              <p className="text-lg text-muted-foreground leading-relaxed">
                 We believe that the products you use in your home should be as pure and natural as possible. 
                 Our mission is to create handcrafted, eco-friendly products that not only work exceptionally well 
                 but also contribute to a healthier planet and a more sustainable future.
@@ -89,13 +89,13 @@ const About = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {values.map((value, index) => (
-                <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
+                <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300 border-border">
                   <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-4 text-amber-600">
+                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
                       {value.icon}
                     </div>
-                    <h3 className="font-semibold text-slate-900 mb-3">{value.title}</h3>
-                    <p className="text-sm text-slate-600">{value.description}</p>
+                    <h3 className="font-semibold text-foreground mb-3">{value.title}</h3>
+                    <p className="text-sm text-muted-foreground">{value.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -105,15 +105,15 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-slate-900 text-white">
+      <section className="py-16 bg-foreground text-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
             {stats.map((stat, index) => (
               <div key={index}>
-                <div className="text-3xl sm:text-4xl font-bold text-amber-400 mb-2">
+                <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">
                   {stat.number}
                 </div>
-                <div className="text-slate-300">{stat.label}</div>
+                <div className="text-background/80">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -121,15 +121,15 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
+                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
                   How It All Started
                 </h2>
-                <div className="space-y-4 text-slate-600">
+                <div className="space-y-4 text-muted-foreground">
                   <p>
                     Fairine Enterprise began in 2021 when our founder, Sarah, was looking for natural, 
                     effective alternatives to commercial household products. Frustrated by harsh chemicals 
@@ -147,12 +147,12 @@ const About = () => {
                   </p>
                 </div>
               </div>
-              <div className="bg-gradient-to-br from-emerald-100 to-amber-100 rounded-2xl p-8 h-80 flex items-center justify-center">
+              <div className="gradient-sunset rounded-2xl p-8 h-80 flex items-center justify-center">
                 <div className="text-center">
-                  <div className="w-32 h-32 bg-white rounded-full shadow-lg flex items-center justify-center mb-4 mx-auto">
-                    <Heart className="w-16 h-16 text-emerald-600" />
+                  <div className="w-32 h-32 bg-white/90 rounded-full shadow-lg flex items-center justify-center mb-4 mx-auto">
+                    <Heart className="w-16 h-16 text-primary" />
                   </div>
-                  <p className="text-slate-700 font-medium">Made with love since 2021</p>
+                  <p className="text-foreground font-medium">Made with love since 2021</p>
                 </div>
               </div>
             </div>
@@ -161,27 +161,27 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 bg-slate-50">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               Meet Our Team
             </h2>
-            <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               The passionate people behind every handcrafted product
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {team.map((member, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300">
+              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300 border-border">
                 <CardContent className="p-6">
-                  <div className="w-24 h-24 bg-gradient-to-br from-slate-200 to-slate-300 rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <Users className="w-12 h-12 text-slate-600" />
+                  <div className="w-24 h-24 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center">
+                    <Users className="w-12 h-12 text-muted-foreground" />
                   </div>
-                  <h3 className="font-semibold text-slate-900 mb-1">{member.name}</h3>
+                  <h3 className="font-semibold text-foreground mb-1">{member.name}</h3>
                   <Badge variant="outline" className="mb-4">{member.role}</Badge>
-                  <p className="text-sm text-slate-600">{member.bio}</p>
+                  <p className="text-sm text-muted-foreground">{member.bio}</p>
                 </CardContent>
               </Card>
             ))}
@@ -190,13 +190,13 @@ const About = () => {
       </section>
 
       {/* Sustainability Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-6">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
               Our Commitment to Sustainability
             </h2>
-            <p className="text-lg text-slate-600 mb-8">
+            <p className="text-lg text-muted-foreground mb-8">
               We believe in creating products that are good for you and good for the planet. 
               Here's how we're making a difference:
             </p>
@@ -204,33 +204,33 @@ const About = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <Leaf className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                  <Leaf className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-slate-900 mb-1">Eco-Friendly Packaging</h4>
-                    <p className="text-sm text-slate-600">All our packaging is recyclable, biodegradable, or reusable.</p>
+                    <h4 className="font-semibold text-foreground mb-1">Eco-Friendly Packaging</h4>
+                    <p className="text-sm text-muted-foreground">All our packaging is recyclable, biodegradable, or reusable.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <Shield className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                  <Shield className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-slate-900 mb-1">No Harmful Chemicals</h4>
-                    <p className="text-sm text-slate-600">We never use sulfates, parabens, or artificial fragrances.</p>
+                    <h4 className="font-semibold text-foreground mb-1">No Harmful Chemicals</h4>
+                    <p className="text-sm text-muted-foreground">We never use sulfates, parabens, or artificial fragrances.</p>
                   </div>
                 </div>
               </div>
               <div className="space-y-4">
                 <div className="flex items-start space-x-3">
-                  <Heart className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                  <Heart className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-slate-900 mb-1">Ethically Sourced</h4>
-                    <p className="text-sm text-slate-600">All ingredients are sourced from responsible suppliers.</p>
+                    <h4 className="font-semibold text-foreground mb-1">Ethically Sourced</h4>
+                    <p className="text-sm text-muted-foreground">All ingredients are sourced from responsible suppliers.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
-                  <Clock className="w-5 h-5 text-emerald-600 mt-1 flex-shrink-0" />
+                  <Clock className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-slate-900 mb-1">Small Batch Production</h4>
-                    <p className="text-sm text-slate-600">Made fresh in small batches to ensure quality and minimize waste.</p>
+                    <h4 className="font-semibold text-foreground mb-1">Small Batch Production</h4>
+                    <p className="text-sm text-muted-foreground">Made fresh in small batches to ensure quality and minimize waste.</p>
                   </div>
                 </div>
               </div>

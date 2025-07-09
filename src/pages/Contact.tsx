@@ -87,17 +87,17 @@ const Contact = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 text-white py-20">
+      <section className="gradient-warm text-white py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
               Get in Touch
             </h1>
-            <p className="text-xl text-slate-200 leading-relaxed">
+            <p className="text-xl text-white/90 leading-relaxed">
               We'd love to hear from you. Send us a message and we'll respond as soon as possible.
             </p>
           </div>
@@ -110,9 +110,9 @@ const Contact = () => {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
             {/* Contact Form */}
             <div className="lg:col-span-2">
-              <Card className="shadow-lg">
+              <Card className="shadow-lg border-border">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-foreground">
                     <MessageSquare className="w-5 h-5" />
                     Send us a Message
                   </CardTitle>
@@ -188,7 +188,7 @@ const Contact = () => {
 
                     <Button 
                       type="submit" 
-                      className="w-full bg-slate-900 hover:bg-slate-800 text-white"
+                      className="w-full bg-foreground hover:bg-foreground/90 text-background"
                       size="lg"
                     >
                       Send Message
@@ -200,9 +200,9 @@ const Contact = () => {
 
             {/* Contact Information */}
             <div className="space-y-6">
-              <Card className="shadow-lg">
+              <Card className="shadow-lg border-border">
                 <CardHeader>
-                  <CardTitle className="flex items-center gap-2">
+                  <CardTitle className="flex items-center gap-2 text-foreground">
                     <HeadphonesIcon className="w-5 h-5" />
                     Contact Information
                   </CardTitle>
@@ -210,13 +210,13 @@ const Contact = () => {
                 <CardContent className="space-y-6">
                   {contactInfo.map((item, index) => (
                     <div key={index} className="flex items-start space-x-3">
-                      <div className="w-10 h-10 bg-slate-100 rounded-lg flex items-center justify-center text-slate-600 flex-shrink-0">
+                      <div className="w-10 h-10 bg-muted rounded-lg flex items-center justify-center text-muted-foreground flex-shrink-0">
                         {item.icon}
                       </div>
                       <div>
-                        <h4 className="font-semibold text-slate-900 mb-1">{item.title}</h4>
-                        <p className="text-slate-900 font-medium">{item.info}</p>
-                        <p className="text-sm text-slate-600">{item.description}</p>
+                        <h4 className="font-semibold text-foreground mb-1">{item.title}</h4>
+                        <p className="text-foreground font-medium">{item.info}</p>
+                        <p className="text-sm text-muted-foreground">{item.description}</p>
                       </div>
                     </div>
                   ))}
@@ -224,13 +224,13 @@ const Contact = () => {
               </Card>
 
               {/* Quick Contact */}
-              <Card className="shadow-lg bg-gradient-to-br from-emerald-50 to-amber-50">
+              <Card className="shadow-lg gradient-sunset">
                 <CardContent className="p-6 text-center">
-                  <h3 className="font-semibold text-slate-900 mb-2">Need Immediate Help?</h3>
-                  <p className="text-sm text-slate-600 mb-4">
+                  <h3 className="font-semibold text-foreground mb-2">Need Immediate Help?</h3>
+                  <p className="text-sm text-foreground/80 mb-4">
                     Call us directly during business hours for immediate assistance.
                   </p>
-                  <Button className="bg-emerald-600 hover:bg-emerald-700 text-white">
+                  <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
                     <Phone className="w-4 h-4 mr-2" />
                     Call Now
                   </Button>
@@ -242,32 +242,32 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
                 Frequently Asked Questions
               </h2>
-              <p className="text-lg text-slate-600">
+              <p className="text-lg text-muted-foreground">
                 Quick answers to common questions about our products and services.
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {faqs.map((faq, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow duration-300">
+                <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-border">
                   <CardContent className="p-6">
-                    <h4 className="font-semibold text-slate-900 mb-3">{faq.question}</h4>
-                    <p className="text-slate-600 text-sm leading-relaxed">{faq.answer}</p>
+                    <h4 className="font-semibold text-foreground mb-3">{faq.question}</h4>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{faq.answer}</p>
                   </CardContent>
                 </Card>
               ))}
             </div>
 
             <div className="text-center mt-8">
-              <p className="text-slate-600 mb-4">Don't see your question answered?</p>
-              <Button variant="outline" className="border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white">
+              <p className="text-muted-foreground mb-4">Don't see your question answered?</p>
+              <Button variant="outline" className="border-foreground text-foreground hover:bg-foreground hover:text-background">
                 Contact Us Directly
               </Button>
             </div>
@@ -276,15 +276,15 @@ const Contact = () => {
       </section>
 
       {/* Map Placeholder */}
-      <section className="py-16 bg-slate-100">
+      <section className="py-16 bg-muted">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 mb-8 text-center">Visit Our Workshop</h2>
-            <div className="bg-gradient-to-br from-slate-200 to-slate-300 rounded-xl h-64 flex items-center justify-center">
+            <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Visit Our Workshop</h2>
+            <div className="bg-muted-foreground/10 rounded-xl h-64 flex items-center justify-center border border-border">
               <div className="text-center">
-                <MapPin className="w-12 h-12 text-slate-600 mx-auto mb-4" />
-                <p className="text-slate-700 font-medium">Interactive Map Coming Soon</p>
-                <p className="text-slate-600 text-sm mt-2">123 Artisan Way, Craft District, CD 12345</p>
+                <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
+                <p className="text-foreground font-medium">Interactive Map Coming Soon</p>
+                <p className="text-muted-foreground text-sm mt-2">123 Artisan Way, Craft District, CD 12345</p>
               </div>
             </div>
           </div>
