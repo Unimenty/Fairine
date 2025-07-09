@@ -60,19 +60,19 @@ const Index = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       <Header />
       <Hero />
       <FeaturedProducts />
 
       {/* Features Section */}
-      <section className="py-16 bg-white">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               Why Choose Fairine Enterprise?
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We're committed to providing the highest quality natural products for your home and family
             </p>
           </div>
@@ -80,11 +80,11 @@ const Index = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {features.map((feature, index) => (
               <div key={index} className="text-center group">
-                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4 text-emerald-600 group-hover:bg-emerald-200 transition-colors duration-300">
+                <div className="w-16 h-16 gradient-cool rounded-full flex items-center justify-center mx-auto mb-4 text-white group-hover:scale-110 transition-transform duration-300">
                   {feature.icon}
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-2">{feature.title}</h3>
-                <p className="text-gray-600 text-sm">{feature.description}</p>
+                <h3 className="font-semibold text-foreground mb-2">{feature.title}</h3>
+                <p className="text-muted-foreground text-sm">{feature.description}</p>
               </div>
             ))}
           </div>
@@ -92,33 +92,33 @@ const Index = () => {
       </section>
 
       {/* Categories Section */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-muted/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               Shop by Category
             </h2>
-            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               Explore our carefully curated collections of handcrafted products
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {categories.map((category, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 cursor-pointer bg-white border border-gray-200">
+              <Card key={index} className="group hover:shadow-lg transition-all duration-300 cursor-pointer bg-card border border-border">
                 <div className={`h-40 ${category.bgColor} flex items-center justify-center relative`}>
-                  <div className="w-20 h-20 bg-white rounded-full shadow-md flex items-center justify-center">
-                    <Award className="w-10 h-10 text-gray-600" />
+                  <div className="w-20 h-20 bg-card rounded-full shadow-md flex items-center justify-center">
+                    <Award className="w-10 h-10 text-muted-foreground" />
                   </div>
-                  <Badge className="absolute top-3 right-3 bg-white text-gray-900 border border-gray-200">
+                  <Badge className="absolute top-3 right-3 bg-card text-card-foreground border border-border">
                     {category.productCount} products
                   </Badge>
                 </div>
                 <CardContent className="p-4">
-                  <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                  <h3 className="font-semibold text-card-foreground mb-2 group-hover:text-primary transition-colors">
                     {category.name}
                   </h3>
-                  <p className="text-sm text-gray-600">{category.description}</p>
+                  <p className="text-sm text-muted-foreground">{category.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -126,7 +126,7 @@ const Index = () => {
 
           <div className="text-center mt-8">
             <Link to="/shop">
-              <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-lg">
+              <Button size="lg" className="gradient-warm text-white px-8 py-3 rounded-lg border-0">
                 Browse All Products
               </Button>
             </Link>
@@ -135,13 +135,14 @@ const Index = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <section className="py-16 bg-background relative overflow-hidden">
+        <div className="absolute inset-0 gradient-cool opacity-5"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
               Stay Connected
             </h2>
-            <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
               Subscribe to our newsletter for exclusive offers, new product announcements, and natural living tips
             </p>
             
@@ -149,14 +150,14 @@ const Index = () => {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
+                className="flex-1 px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-card text-card-foreground"
               />
-              <Button className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-lg">
+              <Button className="gradient-warm text-white px-8 py-3 rounded-lg border-0">
                 Subscribe
               </Button>
             </div>
             
-            <p className="text-sm text-gray-500 mt-4">
+            <p className="text-sm text-muted-foreground mt-4">
               We respect your privacy. Unsubscribe at any time.
             </p>
           </div>
@@ -164,17 +165,17 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-card border-t border-border text-card-foreground py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-emerald-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 gradient-warm rounded-lg flex items-center justify-center">
                   <div className="w-4 h-4 bg-white rounded-sm"></div>
                 </div>
                 <span className="text-xl font-bold">Fairine Enterprise</span>
               </div>
-              <p className="text-gray-300 text-sm mb-4">
+              <p className="text-muted-foreground text-sm mb-4">
                 Handcrafted goodness for your home, made with love and natural ingredients.
               </p>
             </div>
@@ -182,25 +183,25 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-4">Quick Links</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link to="/shop" className="text-gray-300 hover:text-white transition-colors">Shop</Link></li>
-                <li><Link to="/about" className="text-gray-300 hover:text-white transition-colors">About</Link></li>
-                <li><Link to="/contact" className="text-gray-300 hover:text-white transition-colors">Contact</Link></li>
+                <li><Link to="/shop" className="text-muted-foreground hover:text-foreground transition-colors">Shop</Link></li>
+                <li><Link to="/about" className="text-muted-foreground hover:text-foreground transition-colors">About</Link></li>
+                <li><Link to="/contact" className="text-muted-foreground hover:text-foreground transition-colors">Contact</Link></li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold mb-4">Categories</h4>
               <ul className="space-y-2 text-sm">
-                <li><span className="text-gray-300">Handmade Soaps</span></li>
-                <li><span className="text-gray-300">Home Cleaners</span></li>
-                <li><span className="text-gray-300">Bath & Body</span></li>
-                <li><span className="text-gray-300">Artisan Chocolates</span></li>
+                <li><span className="text-muted-foreground">Handmade Soaps</span></li>
+                <li><span className="text-muted-foreground">Home Cleaners</span></li>
+                <li><span className="text-muted-foreground">Bath & Body</span></li>
+                <li><span className="text-muted-foreground">Artisan Chocolates</span></li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold mb-4">Contact Info</h4>
-              <ul className="space-y-2 text-sm text-gray-300">
+              <ul className="space-y-2 text-sm text-muted-foreground">
                 <li>123 Artisan Way</li>
                 <li>Craft District, CD 12345</li>
                 <li>+1 (555) 123-4567</li>
@@ -209,8 +210,8 @@ const Index = () => {
             </div>
           </div>
           
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center">
-            <p className="text-gray-400 text-sm">
+          <div className="border-t border-border mt-8 pt-8 text-center">
+            <p className="text-muted-foreground text-sm">
               © 2024 Fairine Enterprise. All rights reserved. Made with ❤️ for natural living.
             </p>
           </div>

@@ -1,3 +1,4 @@
+
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Star, Heart, Eye } from 'lucide-react';
@@ -52,13 +53,13 @@ const FeaturedProducts = () => {
   ];
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-16 bg-muted/30">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
             Featured Products
           </h2>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
             Discover our most popular handcrafted products, made with love and natural ingredients
           </p>
         </div>
@@ -67,32 +68,32 @@ const FeaturedProducts = () => {
           {products.map((product) => (
             <Card 
               key={product.id} 
-              className="group hover:shadow-lg transition-all duration-300 bg-white border border-gray-200 overflow-hidden"
+              className="group hover:shadow-lg transition-all duration-300 bg-card border border-border overflow-hidden"
             >
               <div className="relative overflow-hidden">
-                <div className="aspect-square bg-gray-50 flex items-center justify-center relative">
-                  <div className="w-24 h-24 bg-gray-200 rounded-lg shadow-sm"></div>
+                <div className="aspect-square bg-muted flex items-center justify-center relative">
+                  <div className="w-24 h-24 bg-muted-foreground/20 rounded-lg shadow-sm"></div>
                   
                   {/* Color variants */}
                   <div className="absolute bottom-3 left-3 flex space-x-1">
                     {product.colors.map((color, index) => (
-                      <div key={index} className={`w-3 h-3 rounded-full ${color} border border-white shadow-sm`}></div>
+                      <div key={index} className={`w-3 h-3 rounded-full ${color} border border-card shadow-sm`}></div>
                     ))}
                   </div>
 
                   {/* Action buttons */}
                   <div className="absolute top-3 right-3 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-white shadow-sm">
+                    <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-card shadow-sm border-border">
                       <Heart className="w-4 h-4" />
                     </Button>
-                    <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-white shadow-sm">
+                    <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-card shadow-sm border-border">
                       <Eye className="w-4 h-4" />
                     </Button>
                   </div>
 
                   {/* Sale badge */}
                   {product.originalPrice && (
-                    <div className="absolute top-3 left-3 bg-red-500 text-white text-xs px-2 py-1 rounded-md font-semibold">
+                    <div className="absolute top-3 left-3 bg-destructive text-destructive-foreground text-xs px-2 py-1 rounded-md font-semibold">
                       Sale
                     </div>
                   )}
@@ -101,12 +102,12 @@ const FeaturedProducts = () => {
 
               <CardContent className="p-4">
                 <div className="mb-2">
-                  <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+                  <span className="text-xs font-medium text-muted-foreground uppercase tracking-wide">
                     {product.category}
                   </span>
                 </div>
                 
-                <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
+                <h3 className="font-semibold text-card-foreground mb-2 group-hover:text-primary transition-colors">
                   {product.name}
                 </h3>
 
@@ -115,29 +116,29 @@ const FeaturedProducts = () => {
                     {[...Array(5)].map((_, i) => (
                       <Star 
                         key={i} 
-                        className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
+                        className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-muted-foreground'}`} 
                       />
                     ))}
                   </div>
-                  <span className="text-sm text-gray-500 ml-2">
+                  <span className="text-sm text-muted-foreground ml-2">
                     ({product.reviews})
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <span className="text-lg font-bold text-gray-900">
+                    <span className="text-lg font-bold text-card-foreground">
                       {product.price}
                     </span>
                     {product.originalPrice && (
-                      <span className="text-sm text-gray-500 line-through">
+                      <span className="text-sm text-muted-foreground line-through">
                         {product.originalPrice}
                       </span>
                     )}
                   </div>
                   <Button 
                     size="sm" 
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md"
+                    className="gradient-warm text-white px-4 py-2 rounded-md border-0"
                   >
                     Add to Cart
                   </Button>
@@ -152,7 +153,7 @@ const FeaturedProducts = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300"
+              className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-all duration-300"
             >
               View All Products
             </Button>
