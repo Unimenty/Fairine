@@ -12,7 +12,7 @@ const Shop = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const categories = ['All Products', 'Soaps', 'Cleaners', 'Bath & Body', 'Chocolates', 'Fabric Care'];
+  const categories = ['All Products', 'Home Care', 'Laundry Care', 'Personal Care', 'Edibles'];
   const [selectedCategory, setSelectedCategory] = useState('All Products');
 
   const products = [
@@ -24,7 +24,7 @@ const Shop = () => {
       image: '/placeholder.svg',
       rating: 4.8,
       reviews: 124,
-      category: 'Soaps',
+      category: 'Personal Care',
       description: 'Handcrafted with organic lavender oil and shea butter for a luxurious cleansing experience.',
       inStock: true,
       featured: true
@@ -37,7 +37,7 @@ const Shop = () => {
       image: '/placeholder.svg',
       rating: 4.9,
       reviews: 89,
-      category: 'Cleaners',
+      category: 'Home Care',
       description: 'Eco-friendly floor cleaner with natural citrus extracts. Safe for all floor types.',
       inStock: true,
       featured: false
@@ -50,7 +50,7 @@ const Shop = () => {
       image: '/placeholder.svg',
       rating: 4.7,
       reviews: 156,
-      category: 'Bath & Body',
+      category: 'Personal Care',
       description: 'Refreshing eucalyptus shower gel with moisturizing properties and natural ingredients.',
       inStock: true,
       featured: true
@@ -63,7 +63,7 @@ const Shop = () => {
       image: '/placeholder.svg',
       rating: 4.8,
       reviews: 203,
-      category: 'Cleaners',
+      category: 'Home Care',
       description: 'Versatile cleaner suitable for kitchen, bathroom, and general household cleaning.',
       inStock: false,
       featured: false
@@ -76,7 +76,7 @@ const Shop = () => {
       image: '/placeholder.svg',
       rating: 4.9,
       reviews: 67,
-      category: 'Chocolates',
+      category: 'Edibles',
       description: 'Handmade dark chocolate truffles with premium cocoa and natural flavors.',
       inStock: true,
       featured: true
@@ -89,7 +89,7 @@ const Shop = () => {
       image: '/placeholder.svg',
       rating: 4.6,
       reviews: 112,
-      category: 'Fabric Care',
+      category: 'Laundry Care',
       description: 'Plant-based fabric softener that leaves clothes soft and naturally fresh.',
       inStock: true,
       featured: false
@@ -104,26 +104,26 @@ const Shop = () => {
   });
 
   return (
-    <div className="min-h-screen bg-slate-50">
+    <div className="min-h-screen bg-background">
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-900 via-slate-800 to-emerald-900 text-white py-16">
+      <section className="bg-gradient-to-br from-primary via-secondary to-accent text-primary-foreground py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl sm:text-5xl font-bold mb-4">Our Products</h1>
-          <p className="text-xl text-slate-200 max-w-2xl mx-auto">
-            Discover our complete collection of handcrafted, natural products for your home and body.
+          <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
+            Discover our complete collection of handcrafted products - quality assured with affordable delivery.
           </p>
         </div>
       </section>
 
       {/* Filters and Search */}
-      <section className="py-8 bg-white border-b">
+      <section className="py-8 bg-card border-b border-border">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
             {/* Search */}
             <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-4 h-4" />
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
               <Input
                 placeholder="Search products..."
                 value={searchQuery}
@@ -138,8 +138,8 @@ const Shop = () => {
                 <Badge
                   key={category}
                   variant={selectedCategory === category ? "default" : "outline"}
-                  className={`cursor-pointer hover:bg-slate-900 hover:text-white transition-colors ${
-                    selectedCategory === category ? 'bg-slate-900 text-white' : ''
+                  className={`cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors ${
+                    selectedCategory === category ? 'bg-primary text-primary-foreground' : ''
                   }`}
                   onClick={() => setSelectedCategory(category)}
                 >
@@ -173,7 +173,7 @@ const Shop = () => {
       <section className="py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-6 flex items-center justify-between">
-            <p className="text-slate-600">
+            <p className="text-muted-foreground">
               Showing {filteredProducts.length} of {products.length} products
             </p>
             <Select defaultValue="featured">
@@ -198,21 +198,21 @@ const Shop = () => {
             {filteredProducts.map((product) => (
               <Card 
                 key={product.id} 
-                className={`group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-white border-0 shadow-lg overflow-hidden ${
+                className={`group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-card border border-border shadow-lg overflow-hidden ${
                   viewMode === 'list' ? 'flex flex-row' : ''
                 }`}
               >
                 <div className={`relative overflow-hidden ${viewMode === 'list' ? 'w-48 flex-shrink-0' : ''}`}>
-                  <div className="aspect-square bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center relative">
-                    <div className="w-24 h-24 bg-gradient-to-br from-slate-300 to-slate-400 rounded-lg shadow-lg"></div>
+                  <div className="aspect-square bg-gradient-to-br from-muted to-muted/60 flex items-center justify-center relative">
+                    <div className="w-24 h-24 bg-gradient-to-br from-accent to-secondary rounded-lg shadow-lg"></div>
                     
                     {/* Badges */}
                     <div className="absolute top-3 left-3 flex flex-col space-y-1">
                       {product.featured && (
-                        <Badge className="bg-amber-500 text-white text-xs">Featured</Badge>
+                        <Badge className="bg-accent text-accent-foreground text-xs">Featured</Badge>
                       )}
                       {product.originalPrice && (
-                        <Badge className="bg-red-500 text-white text-xs">Sale</Badge>
+                        <Badge className="bg-destructive text-destructive-foreground text-xs">Sale</Badge>
                       )}
                       {!product.inStock && (
                         <Badge variant="secondary" className="text-xs">Out of Stock</Badge>
@@ -221,10 +221,10 @@ const Shop = () => {
 
                     {/* Action buttons */}
                     <div className="absolute top-3 right-3 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-white/80 backdrop-blur-sm">
+                      <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-card/80 backdrop-blur-sm">
                         <Heart className="w-4 h-4" />
                       </Button>
-                      <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-white/80 backdrop-blur-sm">
+                      <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-card/80 backdrop-blur-sm">
                         <Eye className="w-4 h-4" />
                       </Button>
                     </div>
@@ -238,12 +238,12 @@ const Shop = () => {
                     </Badge>
                   </div>
                   
-                  <h3 className="font-semibold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">
+                  <h3 className="font-semibold text-card-foreground mb-2 group-hover:text-primary transition-colors">
                     {product.name}
                   </h3>
 
                   {viewMode === 'list' && (
-                    <p className="text-sm text-slate-600 mb-3">{product.description}</p>
+                    <p className="text-sm text-muted-foreground mb-3">{product.description}</p>
                   )}
 
                   <div className="flex items-center mb-3">
@@ -251,29 +251,29 @@ const Shop = () => {
                       {[...Array(5)].map((_, i) => (
                         <Star 
                           key={i} 
-                          className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-amber-400 fill-current' : 'text-slate-300'}`} 
+                          className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-muted-foreground'}`} 
                         />
                       ))}
                     </div>
-                    <span className="text-sm text-slate-500 ml-2">
+                    <span className="text-sm text-muted-foreground ml-2">
                       ({product.reviews})
                     </span>
                   </div>
 
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
-                      <span className="text-lg font-bold text-slate-900">
+                      <span className="text-lg font-bold text-card-foreground">
                         ${product.price}
                       </span>
                       {product.originalPrice && (
-                        <span className="text-sm text-slate-500 line-through">
+                        <span className="text-sm text-muted-foreground line-through">
                           ${product.originalPrice}
                         </span>
                       )}
                     </div>
                     <Button 
                       size="sm" 
-                      className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-full"
+                      className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg"
                       disabled={!product.inStock}
                     >
                       {product.inStock ? 'Add to Cart' : 'Out of Stock'}
@@ -286,7 +286,7 @@ const Shop = () => {
 
           {filteredProducts.length === 0 && (
             <div className="text-center py-12">
-              <p className="text-slate-500 text-lg">No products found matching your criteria.</p>
+              <p className="text-muted-foreground text-lg">No products found matching your criteria.</p>
               <Button 
                 variant="outline" 
                 className="mt-4"
