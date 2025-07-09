@@ -52,13 +52,13 @@ const FeaturedProducts = () => {
   ];
 
   return (
-    <section className="py-16 bg-slate-50">
+    <section className="py-16 bg-gray-50">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 mb-4">
             Featured Products
           </h2>
-          <p className="text-slate-600 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
             Discover our most popular handcrafted products, made with love and natural ingredients
           </p>
         </div>
@@ -67,11 +67,11 @@ const FeaturedProducts = () => {
           {products.map((product) => (
             <Card 
               key={product.id} 
-              className="group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 bg-white border-0 shadow-lg overflow-hidden"
+              className="group hover:shadow-lg transition-all duration-300 bg-white border border-gray-200 overflow-hidden"
             >
               <div className="relative overflow-hidden">
-                <div className="aspect-square bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center relative">
-                  <div className="w-24 h-24 bg-gradient-to-br from-slate-300 to-slate-400 rounded-lg shadow-lg"></div>
+                <div className="aspect-square bg-gray-50 flex items-center justify-center relative">
+                  <div className="w-24 h-24 bg-gray-200 rounded-lg shadow-sm"></div>
                   
                   {/* Color variants */}
                   <div className="absolute bottom-3 left-3 flex space-x-1">
@@ -82,17 +82,17 @@ const FeaturedProducts = () => {
 
                   {/* Action buttons */}
                   <div className="absolute top-3 right-3 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-white/80 backdrop-blur-sm">
+                    <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-white shadow-sm">
                       <Heart className="w-4 h-4" />
                     </Button>
-                    <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-white/80 backdrop-blur-sm">
+                    <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-white shadow-sm">
                       <Eye className="w-4 h-4" />
                     </Button>
                   </div>
 
                   {/* Sale badge */}
                   {product.originalPrice && (
-                    <div className="absolute top-3 left-3 bg-red-500 text-white text-xs px-2 py-1 rounded-full font-semibold">
+                    <div className="absolute top-3 left-3 bg-red-500 text-white text-xs px-2 py-1 rounded-md font-semibold">
                       Sale
                     </div>
                   )}
@@ -101,12 +101,12 @@ const FeaturedProducts = () => {
 
               <CardContent className="p-4">
                 <div className="mb-2">
-                  <span className="text-xs font-medium text-slate-500 uppercase tracking-wide">
+                  <span className="text-xs font-medium text-gray-500 uppercase tracking-wide">
                     {product.category}
                   </span>
                 </div>
                 
-                <h3 className="font-semibold text-slate-900 mb-2 group-hover:text-amber-600 transition-colors">
+                <h3 className="font-semibold text-gray-900 mb-2 group-hover:text-emerald-600 transition-colors">
                   {product.name}
                 </h3>
 
@@ -115,29 +115,29 @@ const FeaturedProducts = () => {
                     {[...Array(5)].map((_, i) => (
                       <Star 
                         key={i} 
-                        className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-amber-400 fill-current' : 'text-slate-300'}`} 
+                        className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-gray-300'}`} 
                       />
                     ))}
                   </div>
-                  <span className="text-sm text-slate-500 ml-2">
+                  <span className="text-sm text-gray-500 ml-2">
                     ({product.reviews})
                   </span>
                 </div>
 
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <span className="text-lg font-bold text-slate-900">
+                    <span className="text-lg font-bold text-gray-900">
                       {product.price}
                     </span>
                     {product.originalPrice && (
-                      <span className="text-sm text-slate-500 line-through">
+                      <span className="text-sm text-gray-500 line-through">
                         {product.originalPrice}
                       </span>
                     )}
                   </div>
                   <Button 
                     size="sm" 
-                    className="bg-slate-900 hover:bg-slate-800 text-white px-4 py-2 rounded-full"
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2 rounded-md"
                   >
                     Add to Cart
                   </Button>
@@ -148,13 +148,15 @@ const FeaturedProducts = () => {
         </div>
 
         <div className="text-center mt-12">
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="border-2 border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white font-semibold px-8 py-3 rounded-full transition-all duration-300"
-          >
-            View All Products
-          </Button>
+          <Link to="/shop">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300"
+            >
+              View All Products
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
