@@ -35,7 +35,7 @@ const Index = () => {
     {
       name: "Home Care",
       description: "Cleaning and household essentials",
-      productCount: 12,
+      productCount: 4,
       image: "bg-gradient-to-br from-blue-200 to-blue-400",
     },
     {
@@ -47,13 +47,13 @@ const Index = () => {
     {
       name: "Personal Care",
       description: "Bath, body, and personal hygiene",
-      productCount: 2,
+      productCount: 4,
       image: "bg-gradient-to-br from-pink-200 to-pink-400",
     },
     {
       name: "Edibles",
       description: "Chocolates and edible treats",
-      productCount: 6,
+      productCount: 4,
       image: "bg-gradient-to-br from-orange-200 to-orange-400",
     },
   ];
@@ -72,7 +72,7 @@ const Index = () => {
               Why Choose Fairine Enterprise?
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We're committed to providing the highest quality natural products for your home and family
+              We're committed to providing the highest quality products designed for your home and family
             </p>
           </div>
 

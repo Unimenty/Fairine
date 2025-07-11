@@ -44,19 +44,25 @@ const Contact = () => {
     {
       icon: <MapPin className="w-5 h-5" />,
       title: 'Our Location',
-      info: '123 Artisan Way, Craft District, CD 12345',
+      info: 'Accra, Ghana',
       description: 'Visit our workshop and showroom'
     },
     {
       icon: <Phone className="w-5 h-5" />,
       title: 'Phone',
-      info: '+1 (555) 123-4567',
-      description: 'Mon-Fri 9AM-6PM EST'
+      info: '+233 26 123 3032',
+      description: 'Mon-Fri 9AM-6PM GMT'
+    },
+    {
+      icon: <Phone className="w-5 h-5" />,
+      title: 'Alternative Phone',
+      info: '+233 54 686 5035',
+      description: 'Available for urgent inquiries'
     },
     {
       icon: <Mail className="w-5 h-5" />,
       title: 'Email',
-      info: 'hello@fairineenterprise.com',
+      info: 'fairineenterprise@gmail.com',
       description: 'We reply within 24 hours'
     },
     {
@@ -217,22 +223,6 @@ const Contact = () => {
                   </Button>
                 </CardContent>
               </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Map Placeholder */}
-      <section className="py-16 bg-muted">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl font-bold text-foreground mb-8 text-center">Visit Our Workshop</h2>
-            <div className="bg-muted-foreground/10 rounded-xl h-64 flex items-center justify-center border border-border">
-              <div className="text-center">
-                <MapPin className="w-12 h-12 text-muted-foreground mx-auto mb-4" />
-                <p className="text-foreground font-medium">Interactive Map Coming Soon</p>
-                <p className="text-muted-foreground text-sm mt-2">123 Artisan Way, Craft District, CD 12345</p>
-              </div>
             </div>
           </div>
         </div>

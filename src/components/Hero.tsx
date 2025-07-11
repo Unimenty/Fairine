@@ -9,7 +9,7 @@ const Hero = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Handcrafted{' '}
+            Handmade{' '}
             <span className="bg-gradient-to-r from-primary via-orange-400 to-rose-400 bg-clip-text text-transparent">
               Goodness
             </span>{' '}

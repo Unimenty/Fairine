@@ -8,7 +8,7 @@ const FeaturedProducts = () => {
   const products = [
     {
       id: 1,
-      name: 'Liquid Soap (1L) - 1000ml',
+      name: 'Liquid Soap (1L)',
       price: 'GH₵ 20.00',
       originalPrice: 'GH₵ 25.00',
       image: '/placeholder.svg',
@@ -19,7 +19,7 @@ const FeaturedProducts = () => {
     },
     {
       id: 2,
-      name: 'Floor Cleaner (1L) - 1000ml',
+      name: 'Floor Cleaner (1L)',
       price: 'GH₵ 20.00',
       originalPrice: null,
       image: '/placeholder.svg',
@@ -37,7 +37,7 @@ const FeaturedProducts = () => {
       rating: 4.7,
       reviews: 156,
       category: 'Personal Care',
-      colors: ['bg-orange-100', 'bg-yellow-100']
+      colors: []
     },
     {
       id: 4,
@@ -60,7 +60,7 @@ const FeaturedProducts = () => {
             Featured Products
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Discover our most popular handcrafted products, made with love and natural ingredients
+            Discover our most popular quality products, made with love and quality ingredients
           </p>
         </div>
 

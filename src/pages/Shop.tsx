@@ -107,11 +107,11 @@ const Shop = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-primary via-secondary to-accent text-primary-foreground py-16">
+      <section className="gradient-warm text-white py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4">Our Products</h1>
-          <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
-            Discover our complete collection of handcrafted products - quality assured with affordable delivery.
+          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">Our Products</h1>
+          <p className="text-xl text-white/90 max-w-2xl mx-auto">
+            Discover our complete collection of quality products - quality assured with affordable delivery.
           </p>
         </div>
       </section>

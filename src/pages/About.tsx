@@ -8,13 +8,13 @@ const About = () => {
   const values = [
     {
       icon: <Heart className="w-6 h-6" />,
-      title: 'Handcrafted with Love',
-      description: 'Every product is carefully made by hand with attention to detail and genuine care for quality.'
+      title: 'Quality with Love',
+      description: 'Each product is made with care and quality ingredients.'
     },
     {
       icon: <Leaf className="w-6 h-6" />,
-      title: 'Natural Ingredients',
-      description: 'We use only the finest natural and organic ingredients, sourced responsibly from trusted suppliers.'
+      title: 'Fine Ingredients',
+      description: 'We use only the finest carefully selected and organic ingredients, sourced responsibly from trusted suppliers.'
     },
     {
       icon: <Shield className="w-6 h-6" />,
@@ -32,24 +32,19 @@ const About = () => {
     { number: '5000+', label: 'Happy Customers' },
     { number: '50+', label: 'Unique Products' },
     { number: '3', label: 'Years of Experience' },
-    { number: '100%', label: 'Natural Ingredients' }
+    { number: '100%', label: 'Fine Ingredients' }
   ];
 
   const team = [
     {
-      name: 'Sarah Johnson',
+      name: 'Catherine Komey',
       role: 'Founder & Chief Artisan',
-      bio: 'With over 10 years of experience in natural product formulation, Sarah started Fairine Enterprise to share her passion for handcrafted, eco-friendly home products.'
+      bio: 'With over 10 years of experience in fine product formulation, Catherine started Fairine Enterprise to share her passion for quality, dependable home products.'
     },
     {
-      name: 'Michael Chen',
-      role: 'Master Chocolatier',
-      bio: 'A trained chocolatier with expertise in creating artisanal chocolates using premium ingredients and traditional techniques.'
-    },
-    {
-      name: 'Emma Williams',
+      name: 'Edwin Komey',
       role: 'Quality & Sustainability Manager',
-      bio: 'Emma ensures all our products meet the highest standards while maintaining our commitment to environmental responsibility.'
+      bio: 'Edwin ensures all our products meet the highest standards while maintaining our commitment to environmental responsibility.'
     }
   ];
 
@@ -65,8 +60,8 @@ const About = () => {
               Our Story
             </h1>
             <p className="text-xl text-white/90 leading-relaxed">
-              Born from a passion for natural living and handcrafted quality, Fairine Enterprise 
-              has been creating exceptional home products that bring goodness to your everyday life.
+            Born from a passion for quality living and fine quality, Fairine Enterprise has grown from homemade chocolates to trusted care 
+            and cleaning products that bring quality to your everyday life.
             </p>
           </div>
         </div>
@@ -81,9 +76,9 @@ const About = () => {
                 Our Mission
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                We believe that the products you use in your home should be as pure and natural as possible. 
-                Our mission is to create handcrafted, eco-friendly products that not only work exceptionally well 
-                but also contribute to a healthier planet and a more sustainable future.
+                We believe that the products you use in your home should be as pure and fine as possible. 
+                Our mission is to create quality, dependable products that not only work exceptionally well 
+                but also bring comfort and reliability to your home.
               </p>
             </div>
 
@@ -104,22 +99,6 @@ const About = () => {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-16 bg-foreground text-background">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, index) => (
-              <div key={index}>
-                <div className="text-3xl sm:text-4xl font-bold text-primary mb-2">
-                  {stat.number}
-                </div>
-                <div className="text-background/80">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Story Section */}
       <section className="py-16 bg-card">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -131,17 +110,17 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Fairine Enterprise began in 2021 when our founder, Sarah, was looking for natural, 
+                    Fairine Enterprise began in 2021 when our founder, Catherine, was looking for fine, 
                     effective alternatives to commercial household products. Frustrated by harsh chemicals 
                     and artificial ingredients, she started experimenting in her kitchen.
                   </p>
                   <p>
                     What started as a personal quest for better products quickly grew into a passion project. 
-                    Friends and family were amazed by the quality and effectiveness of Sarah's handcrafted 
+                    Friends and family were amazed by the quality and effectiveness of Catherine's fine 
                     soaps, cleaners, and bath products.
                   </p>
                   <p>
-                    Today, we're proud to serve thousands of customers who share our commitment to natural, 
+                    Today, we're proud to serve thousands of customers who share our commitment to fine, 
                     sustainable living. Every product is still made by hand with the same care and attention 
                     to detail that started it all.
                   </p>
@@ -168,7 +147,7 @@ const About = () => {
               Meet Our Team
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              The passionate people behind every handcrafted product
+              The passionate people behind every quality product
             </p>
           </div>
 
@@ -194,11 +173,11 @@ const About = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-              Our Commitment to Sustainability
+            Our Commitment to Responsible Practices
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              We believe in creating products that are good for you and good for the planet. 
-              Here's how we're making a difference:
+            We believe in doing our part to create quality products that are safe, effective, and made with care . While we're not a fully eco-certified brand yet, 
+            here's how we act responsibly:
             </p>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
@@ -206,15 +185,15 @@ const About = () => {
                 <div className="flex items-start space-x-3">
                   <Leaf className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Eco-Friendly Packaging</h4>
-                    <p className="text-sm text-muted-foreground">All our packaging is recyclable, biodegradable, or reusable.</p>
+                    <h4 className="font-semibold text-foreground mb-1">Practical Packaging Choices</h4>
+                    <p className="text-sm text-muted-foreground">We aim to use recyclable or reusable packaging whenever possible, balancing affordability and functionality.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <Shield className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">No Harmful Chemicals</h4>
-                    <p className="text-sm text-muted-foreground">We never use sulfates, parabens, or artificial fragrances.</p>
+                    <h4 className="font-semibold text-foreground mb-1">🚫 No Harsh Additives</h4>
+                    <p className="text-sm text-muted-foreground">Our formulas avoid unnecessarily harsh ingredients — we focus on safe, effective blends for everyday use.</p>
                   </div>
                 </div>
               </div>
@@ -222,15 +201,15 @@ const About = () => {
                 <div className="flex items-start space-x-3">
                   <Heart className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Ethically Sourced</h4>
-                    <p className="text-sm text-muted-foreground">All ingredients are sourced from responsible suppliers.</p>
+                    <h4 className="font-semibold text-foreground mb-1">🌍 Responsibly Selected Materials</h4>
+                    <p className="text-sm text-muted-foreground">We choose suppliers who share our values of honesty, quality, and reliability.</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-3">
                   <Clock className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Small Batch Production</h4>
-                    <p className="text-sm text-muted-foreground">Made fresh in small batches to ensure quality and minimize waste.</p>
+                    <h4 className="font-semibold text-foreground mb-1">🔁 Small-Scale, Quality-Controlled Production</h4>
+                    <p className="text-sm text-muted-foreground">Our products are made in controlled batches to maintain consistency and reduce unnecessary waste.</p>
                   </div>
                 </div>
               </div>
