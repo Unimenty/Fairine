@@ -39,7 +39,7 @@ const Shop = () => {
       category: 'Home Care',
       description: 'Eco-friendly floor cleaner with natural citrus extracts. Safe for all floor types.',
       inStock: true,
-      featured: false
+      featured: CSSFontFeatureValuesRule 
     },
     {
       id: 3,
@@ -64,7 +64,7 @@ const Shop = () => {
       reviews: 203,
       category: 'Home Care',
       description: 'Versatile cleaner suitable for kitchen, bathroom, and general household cleaning.',
-      inStock: false,
+      inStock: true,
       featured: false
     },
     {

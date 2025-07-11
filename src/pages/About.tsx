@@ -110,19 +110,17 @@ const About = () => {
                 </h2>
                 <div className="space-y-4 text-muted-foreground">
                   <p>
-                    Fairine Enterprise began in 2021 when our founder, Catherine, was looking for fine, 
-                    effective alternatives to commercial household products. Frustrated by harsh chemicals 
-                    and artificial ingredients, she started experimenting in her kitchen.
+                  It all began with a simple curiosity — a desire to learn the art of chocolate making. What started as a passion project quickly grew into something more. 
+                  After mastering her own line of delicious custom chocolates, our founder — a determined mother with an eye for quality — expanded her creativity into the world of home care.
                   </p>
                   <p>
-                    What started as a personal quest for better products quickly grew into a passion project. 
-                    Friends and family were amazed by the quality and effectiveness of Catherine's fine 
-                    soaps, cleaners, and bath products.
+                  She began experimenting with liquid soaps and fabric softeners, later perfecting her own formulas for floor cleaners and shower gels. 
+                  With every product, she focused on effectiveness, fragrance, and affordability — always thinking about the needs 
+                  of everyday families.
                   </p>
                   <p>
-                    Today, we're proud to serve thousands of customers who share our commitment to fine, 
-                    sustainable living. Every product is still made by hand with the same care and attention 
-                    to detail that started it all.
+                  Today, her products are fully registered for market sale, and she's on a mission to grow — supplying 
+                  homes, shops, and businesses with trusted, quality products made with care.
                   </p>
                 </div>
               </div>
