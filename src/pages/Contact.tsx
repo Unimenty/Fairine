@@ -67,25 +67,6 @@ const Contact = () => {
     }
   ];
 
-  const faqs = [
-    {
-      question: 'How long does shipping take?',
-      answer: 'Orders typically ship within 2-3 business days and arrive within 5-7 business days via standard shipping.'
-    },
-    {
-      question: 'Are your products safe for sensitive skin?',
-      answer: 'Yes! All our products are made with natural ingredients and are gentle on sensitive skin. We always recommend patch testing new products.'
-    },
-    {
-      question: 'Do you offer custom products?',
-      answer: 'Absolutely! We love creating custom products for special events, gifts, or specific needs. Contact us to discuss your requirements.'
-    },
-    {
-      question: 'What is your return policy?',
-      answer: 'We offer a 30-day satisfaction guarantee. If you\'re not completely happy with your purchase, we\'ll make it right.'
-    }
-  ];
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -236,40 +217,6 @@ const Contact = () => {
                   </Button>
                 </CardContent>
               </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
-      <section className="py-16 bg-card">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-                Frequently Asked Questions
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                Quick answers to common questions about our products and services.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {faqs.map((faq, index) => (
-                <Card key={index} className="hover:shadow-lg transition-shadow duration-300 border-border">
-                  <CardContent className="p-6">
-                    <h4 className="font-semibold text-foreground mb-3">{faq.question}</h4>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{faq.answer}</p>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-
-            <div className="text-center mt-8">
-              <p className="text-muted-foreground mb-4">Don't see your question answered?</p>
-              <Button variant="outline" className="border-foreground text-foreground hover:bg-foreground hover:text-background">
-                Contact Us Directly
-              </Button>
             </div>
           </div>
         </div>

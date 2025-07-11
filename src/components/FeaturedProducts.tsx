@@ -8,46 +8,46 @@ const FeaturedProducts = () => {
   const products = [
     {
       id: 1,
-      name: 'Artisan Soap Collection',
-      price: '$24.99',
-      originalPrice: '$29.99',
+      name: 'Liquid Soap (1L) - 1000ml',
+      price: 'GH₵ 20.00',
+      originalPrice: 'GH₵ 25.00',
       image: '/placeholder.svg',
       rating: 4.8,
       reviews: 124,
-      category: 'Soaps',
+      category: 'Home Care',
       colors: ['bg-amber-100', 'bg-rose-100', 'bg-emerald-100']
     },
     {
       id: 2,
-      name: 'Natural Floor Cleaner',
-      price: '$18.99',
+      name: 'Floor Cleaner (1L) - 1000ml',
+      price: 'GH₵ 20.00',
       originalPrice: null,
       image: '/placeholder.svg',
       rating: 4.9,
       reviews: 89,
-      category: 'Cleaners',
+      category: 'Home Care',
       colors: ['bg-cyan-100', 'bg-blue-100']
     },
     {
       id: 3,
-      name: 'Premium Shower Gel',
-      price: '$22.99',
-      originalPrice: '$26.99',
+      name: 'Shower Gel (500ml)',
+      price: 'GH₵ 25.00',
+      originalPrice: 'GH₵ 28.00',
       image: '/placeholder.svg',
       rating: 4.7,
       reviews: 156,
-      category: 'Bath & Body',
+      category: 'Personal Care',
       colors: ['bg-orange-100', 'bg-yellow-100']
     },
     {
       id: 4,
-      name: 'Multi-Surface Cleaner',
-      price: '$16.99',
+      name: 'Fabric Softener (500ml)',
+      price: 'GH₵ 15.00',
       originalPrice: null,
       image: '/placeholder.svg',
       rating: 4.8,
       reviews: 203,
-      category: 'Cleaners',
+      category: 'Laundry Care',
       colors: ['bg-slate-100', 'bg-gray-100']
     }
   ];

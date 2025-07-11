@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import Header from '@/components/Header';
 import { Card, CardContent } from '@/components/ui/card';
@@ -19,8 +18,8 @@ const Shop = () => {
     {
       id: 1,
       name: 'Lavender Artisan Soap',
-      price: 12.99,
-      originalPrice: 15.99,
+      price: 'GH₵ 12.99',
+      originalPrice: 'GH₵ 15.99',
       image: '/placeholder.svg',
       rating: 4.8,
       reviews: 124,
@@ -32,7 +31,7 @@ const Shop = () => {
     {
       id: 2,
       name: 'Natural Floor Cleaner - Citrus',
-      price: 18.99,
+      price: 'GH₵ 18.99',
       originalPrice: null,
       image: '/placeholder.svg',
       rating: 4.9,
@@ -45,8 +44,8 @@ const Shop = () => {
     {
       id: 3,
       name: 'Eucalyptus Shower Gel',
-      price: 22.99,
-      originalPrice: 26.99,
+      price: 'GH₵ 22.99',
+      originalPrice: 'GH₵ 26.99',
       image: '/placeholder.svg',
       rating: 4.7,
       reviews: 156,
@@ -58,7 +57,7 @@ const Shop = () => {
     {
       id: 4,
       name: 'Multi-Surface Cleaner',
-      price: 16.99,
+      price: 'GH₵ 16.99',
       originalPrice: null,
       image: '/placeholder.svg',
       rating: 4.8,
@@ -71,7 +70,7 @@ const Shop = () => {
     {
       id: 5,
       name: 'Dark Chocolate Truffles',
-      price: 24.99,
+      price: 'GH₵ 24.99',
       originalPrice: null,
       image: '/placeholder.svg',
       rating: 4.9,
@@ -84,8 +83,8 @@ const Shop = () => {
     {
       id: 6,
       name: 'Organic Fabric Softener',
-      price: 14.99,
-      originalPrice: 18.99,
+      price: 'GH₵ 14.99',
+      originalPrice: 'GH₵ 18.99',
       image: '/placeholder.svg',
       rating: 4.6,
       reviews: 112,
@@ -263,11 +262,11 @@ const Shop = () => {
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2">
                       <span className="text-lg font-bold text-card-foreground">
-                        ${product.price}
+                        {product.price}
                       </span>
                       {product.originalPrice && (
                         <span className="text-sm text-muted-foreground line-through">
-                          ${product.originalPrice}
+                          {product.originalPrice}
                         </span>
                       )}
                     </div>

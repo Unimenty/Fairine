@@ -1,4 +1,3 @@
-
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import FeaturedProducts from '@/components/FeaturedProducts';
@@ -12,8 +11,8 @@ const Index = () => {
   const features = [
     {
       icon: <Leaf className="w-6 h-6" />,
-      title: 'Natural Ingredients',
-      description: 'Only the finest natural and organic ingredients in every product'
+      title: 'Quality Assurance',
+      description: 'Only the finest quality products in every product'
     },
     {
       icon: <Shield className="w-6 h-6" />,
@@ -22,41 +21,41 @@ const Index = () => {
     },
     {
       icon: <Truck className="w-6 h-6" />,
-      title: 'Free Shipping',
-      description: 'Free shipping on orders over $50 within the continental US'
+      title: 'Affordable Delivery',
+      description: 'Affordable delivery on orders over GH₵ 50 within the continental US'
     },
     {
       icon: <Recycle className="w-6 h-6" />,
-      title: 'Eco-Friendly',
+      title: 'Sustainable',
       description: 'Sustainable packaging and environmentally responsible practices'
     }
   ];
 
   const categories = [
     {
-      name: 'Handmade Soaps',
-      description: 'Luxurious soaps crafted with natural oils and botanicals',
+      name: "Home Care",
+      description: "Cleaning and household essentials",
       productCount: 12,
-      bgColor: 'bg-amber-50'
+      image: "bg-gradient-to-br from-blue-200 to-blue-400",
     },
     {
-      name: 'Home Cleaners',
-      description: 'Effective, eco-friendly cleaners for every surface',
-      productCount: 8,
-      bgColor: 'bg-cyan-50'
+      name: "Laundry Care",
+      description: "Laundry detergents and softeners",
+      productCount: 1,
+      image: "bg-gradient-to-br from-teal-200 to-teal-400",
     },
     {
-      name: 'Bath & Body',
-      description: 'Nourishing shower gels and body care essentials',
-      productCount: 15,
-      bgColor: 'bg-emerald-50'
+      name: "Personal Care",
+      description: "Bath, body, and personal hygiene",
+      productCount: 2,
+      image: "bg-gradient-to-br from-pink-200 to-pink-400",
     },
     {
-      name: 'Artisan Chocolates',
-      description: 'Premium handcrafted chocolates and confections',
+      name: "Edibles",
+      description: "Chocolates and edible treats",
       productCount: 6,
-      bgColor: 'bg-rose-50'
-    }
+      image: "bg-gradient-to-br from-orange-200 to-orange-400",
+    },
   ];
 
   return (
@@ -99,14 +98,14 @@ const Index = () => {
               Shop by Category
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Explore our carefully curated collections of handcrafted products
+              Explore our carefully curated collections of products
             </p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {categories.map((category, index) => (
               <Card key={index} className="group hover:shadow-lg transition-all duration-300 cursor-pointer bg-card border border-border">
-                <div className={`h-40 ${category.bgColor} flex items-center justify-center relative`}>
+                <div className={`h-40 ${category.image} flex items-center justify-center relative`}>
                   <div className="w-20 h-20 bg-card rounded-full shadow-md flex items-center justify-center">
                     <Award className="w-10 h-10 text-muted-foreground" />
                   </div>
@@ -134,36 +133,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Newsletter Section */}
-      <section className="py-16 bg-background relative overflow-hidden">
-        <div className="absolute inset-0 gradient-cool opacity-5"></div>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
-              Stay Connected
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Subscribe to our newsletter for exclusive offers, new product announcements, and natural living tips
-            </p>
-            
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent bg-card text-card-foreground"
-              />
-              <Button className="gradient-warm text-white px-8 py-3 rounded-lg border-0">
-                Subscribe
-              </Button>
-            </div>
-            
-            <p className="text-sm text-muted-foreground mt-4">
-              We respect your privacy. Unsubscribe at any time.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* Footer */}
       <footer className="bg-card border-t border-border text-card-foreground py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -176,7 +145,7 @@ const Index = () => {
                 <span className="text-xl font-bold">Fairine Enterprise</span>
               </div>
               <p className="text-muted-foreground text-sm mb-4">
-                Handcrafted goodness for your home, made with love and natural ingredients.
+              Reliable home care and treats, crafted with care to bring comfort and joy
               </p>
             </div>
             
@@ -192,27 +161,27 @@ const Index = () => {
             <div>
               <h4 className="font-semibold mb-4">Categories</h4>
               <ul className="space-y-2 text-sm">
-                <li><span className="text-muted-foreground">Handmade Soaps</span></li>
-                <li><span className="text-muted-foreground">Home Cleaners</span></li>
-                <li><span className="text-muted-foreground">Bath & Body</span></li>
-                <li><span className="text-muted-foreground">Artisan Chocolates</span></li>
+                <li><span className="text-muted-foreground">Home Care</span></li>
+                <li><span className="text-muted-foreground">Laundry Care</span></li>
+                <li><span className="text-muted-foreground">Personal Care</span></li>
+                <li><span className="text-muted-foreground">Edibles</span></li>
               </ul>
             </div>
             
             <div>
               <h4 className="font-semibold mb-4">Contact Info</h4>
               <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>123 Artisan Way</li>
-                <li>Craft District, CD 12345</li>
-                <li>+1 (555) 123-4567</li>
-                <li>hello@fairineenterprise.com</li>
+                <li>Accra, Ghana</li>
+                <li>+233 26 123 3032</li>
+                <li>+233 54 686 5035</li>
+                <li>fairineenterprise@gmail.com</li>
               </ul>
             </div>
           </div>
           
           <div className="border-t border-border mt-8 pt-8 text-center">
             <p className="text-muted-foreground text-sm">
-              © 2024 Fairine Enterprise. All rights reserved. Made with ❤️ for natural living.
+              © 2025 Fairine Enterprise. All rights reserved. Made with ❤️ for comfort living.
             </p>
           </div>
         </div>
