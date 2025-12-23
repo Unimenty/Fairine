@@ -4,42 +4,53 @@ import { Link } from 'react-router-dom';
 
 const Hero = () => {
   return (
-    <section className="bg-background py-20 lg:py-32 relative overflow-hidden">
-      <div className="absolute inset-0 gradient-sunset opacity-10"></div>
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-4xl mx-auto text-center">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Handmade{' '}
-            <span className="bg-gradient-to-r from-primary via-orange-400 to-rose-400 bg-clip-text text-transparent">
-              Goodness
-            </span>{' '}
-            for Your Home
+    <section className="relative h-[85vh] sm:h-[90vh] flex items-end justify-center overflow-hidden pb-12 sm:pb-24">
+      {/* Background Image Container */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/images/hero-bg.jpg" 
+          alt="Handmade Goodness" 
+          className="w-full h-full object-cover object-center"
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=2000';
+          }}
+        />
+        {/* Deep Bottom Gradient for Contrast */}
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+      </div>
+
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-xl mx-auto text-center flex flex-col items-center">
+          <h1 className="text-4xl sm:text-7xl font-black text-white mb-2 leading-tight tracking-tight drop-shadow-2xl">
+            Sparkle & Serenity
           </h1>
           
-          <p className="text-lg sm:text-xl text-muted-foreground mb-10 max-w-3xl mx-auto leading-relaxed">
-            Discover our range of handmade soaps, fabric softeners, shower gels, floor cleaners, and custom chocolates. Each product is crafted with care and quality ingredients.
+          <p className="text-sm sm:text-xl text-white/90 mb-8 max-w-md font-medium tracking-wide drop-shadow-lg">
+            Crafted for a Beautiful Home
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Link to="/shop">
+          <div className="flex flex-row items-center justify-center gap-3 w-full mb-8">
+            <Link to="/shop" className="flex-1 sm:flex-none">
               <Button 
                 size="lg" 
-                className="gradient-warm text-white font-semibold px-8 py-3 rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border-0"
+                className="w-full sm:w-36 h-10 gradient-warm text-white font-bold rounded-xl shadow-lg border-0 text-[13px] uppercase tracking-wide"
               >
                 Shop Now
               </Button>
             </Link>
             
-            <Link to="/about">
+            <Link to="/about" className="flex-1 sm:flex-none">
               <Button 
                 variant="outline" 
                 size="lg"
-                className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold px-8 py-3 rounded-lg transition-all duration-300"
+                className="w-full sm:w-36 h-10 bg-white/5 border border-white/40 text-white hover:bg-white hover:text-black font-bold rounded-xl transition-all duration-300 text-[13px] uppercase tracking-wide"
               >
                 Learn More
               </Button>
             </Link>
           </div>
+
         </div>
       </div>
     </section>

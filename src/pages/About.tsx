@@ -1,4 +1,4 @@
-
+import React from 'react';
 import Header from '@/components/Header';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -53,44 +53,41 @@ const About = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="gradient-warm text-white py-20">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Our Story
-            </h1>
-            <p className="text-xl text-white/90 leading-relaxed">
-            Born from a passion for quality living and fine quality, Fairine Enterprise has grown from homemade chocolates to trusted care 
-            and cleaning products that bring quality to your everyday life.
-            </p>
-          </div>
+      <section className="bg-background py-8 sm:py-12 relative overflow-hidden">
+        <div className="absolute inset-0 gradient-sunset opacity-5"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative text-center border-b border-border/50 pb-8 sm:pb-12">
+          <h1 className="text-2xl sm:text-4xl font-black text-foreground mb-4 leading-tight tracking-tight">
+            Our <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">Story</span>
+          </h1>
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Born from a passion for quality living and fine product formulation, Fairine Enterprise has grown into a trusted provider of care and cleaning products.
+          </p>
         </div>
       </section>
 
       {/* Mission Section */}
-      <section className="py-16 bg-card">
+      <section className="py-12 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+          <div className="max-w-5xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-4">
                 Our Mission
               </h2>
-              <p className="text-lg text-muted-foreground leading-relaxed">
-                We believe that the products you use in your home should be as pure and fine as possible. 
-                Our mission is to create quality, dependable products that not only work exceptionally well 
-                but also bring comfort and reliability to your home.
+              <p className="text-base text-muted-foreground leading-relaxed max-w-3xl mx-auto">
+                We believe that the products you use in your home should be as pure and dependable as possible. 
+                Our mission is to create quality products that bring comfort and reliability to your daily life.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => (
-                <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300 border-border">
-                  <CardContent className="p-6">
-                    <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4 text-primary">
-                      {value.icon}
+                <Card key={index} className="text-center hover:shadow-xl transition-all duration-300 border border-border/40 bg-card rounded-2xl shadow-lg">
+                  <CardContent className="p-5">
+                    <div className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4 text-primary">
+                      {React.cloneElement(value.icon as React.ReactElement, { className: 'w-5 h-5' })}
                     </div>
-                    <h3 className="font-semibold text-foreground mb-3">{value.title}</h3>
-                    <p className="text-sm text-muted-foreground">{value.description}</p>
+                    <h3 className="font-bold text-foreground mb-2 text-sm">{value.title}</h3>
+                    <p className="text-[11px] text-muted-foreground leading-relaxed">{value.description}</p>
                   </CardContent>
                 </Card>
               ))}
@@ -100,36 +97,33 @@ const About = () => {
       </section>
 
       {/* Story Section */}
-      <section className="py-16 bg-card">
+      <section className="py-12 bg-muted/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div className="max-w-5xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center bg-card rounded-3xl p-6 sm:p-10 border border-border/40 shadow-xl">
               <div>
-                <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
+                <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-6">
                   How It All Started
                 </h2>
-                <div className="space-y-4 text-muted-foreground">
+                <div className="space-y-4 text-sm sm:text-base text-muted-foreground leading-relaxed">
                   <p>
-                  It all began with a simple curiosity — a desire to learn the art of chocolate making. What started as a passion project quickly grew into something more. 
-                  After mastering her own line of delicious custom chocolates, our founder — a determined mother with an eye for quality — expanded her creativity into the world of home care.
+                  It all began with a simple curiosity — a desire to learn the art of chocolate making. After mastering delicious custom chocolates, our founder expanded her creativity into home care.
                   </p>
                   <p>
-                  She began experimenting with liquid soaps and fabric softeners, later perfecting her own formulas for floor cleaners and shower gels. 
-                  With every product, she focused on effectiveness, fragrance, and affordability — always thinking about the needs 
-                  of everyday families.
+                  Perfecting her own formulas for soaps, detergents, and shower gels, she focused on effectiveness, fragrance, and affordability — always thinking about the needs of everyday families.
                   </p>
                   <p>
-                  Today, her products are fully registered for market sale, and she's on a mission to grow — supplying 
-                  homes, shops, and businesses with trusted, quality products made with care.
+                  Today, Fairine is on a mission to supply homes and businesses with trusted, quality products made with genuine care.
                   </p>
                 </div>
               </div>
-              <div className="gradient-sunset rounded-2xl p-8 h-80 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-32 h-32 bg-white/90 rounded-full shadow-lg flex items-center justify-center mb-4 mx-auto">
-                    <Heart className="w-16 h-16 text-primary" />
+              <div className="gradient-sunset rounded-2xl p-6 h-64 sm:h-72 flex items-center justify-center shadow-inner relative overflow-hidden group">
+                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                <div className="text-center relative z-10">
+                  <div className="w-20 h-20 bg-white/90 rounded-2xl shadow-lg flex items-center justify-center mb-4 mx-auto rotate-3 group-hover:rotate-0 transition-transform">
+                    <Heart className="w-10 h-10 text-primary" />
                   </div>
-                  <p className="text-foreground font-medium">Made with love since 2021</p>
+                  <p className="text-foreground font-black text-sm uppercase tracking-widest">Since 2021</p>
                 </div>
               </div>
             </div>
@@ -138,27 +132,27 @@ const About = () => {
       </section>
 
       {/* Team Section */}
-      <section className="py-16 bg-background">
+      <section className="py-12 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <div className="text-center mb-10">
+            <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-3">
               Meet Our Team
             </h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-base text-muted-foreground max-w-2xl mx-auto">
               The passionate people behind every quality product
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 max-w-3xl mx-auto gap-6 sm:gap-8">
             {team.map((member, index) => (
-              <Card key={index} className="text-center hover:shadow-lg transition-shadow duration-300 border-border">
-                <CardContent className="p-6">
-                  <div className="w-24 h-24 bg-muted rounded-full mx-auto mb-4 flex items-center justify-center">
-                    <Users className="w-12 h-12 text-muted-foreground" />
+              <Card key={index} className="text-center hover:shadow-2xl transition-all duration-500 border border-border/40 bg-card rounded-2xl shadow-lg group">
+                <CardContent className="p-6 sm:p-8">
+                  <div className="w-16 h-16 bg-muted rounded-2xl mx-auto mb-4 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                    <Users className="w-8 h-8 text-muted-foreground group-hover:text-primary transition-colors" />
                   </div>
-                  <h3 className="font-semibold text-foreground mb-1">{member.name}</h3>
-                  <Badge variant="outline" className="mb-4">{member.role}</Badge>
-                  <p className="text-sm text-muted-foreground">{member.bio}</p>
+                  <h3 className="font-bold text-foreground mb-1 text-lg">{member.name}</h3>
+                  <Badge variant="outline" className="mb-4 border-primary text-primary font-bold text-[10px]">{member.role}</Badge>
+                  <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{member.bio}</p>
                 </CardContent>
               </Card>
             ))}
@@ -167,47 +161,54 @@ const About = () => {
       </section>
 
       {/* Sustainability Section */}
-      <section className="py-16 bg-card">
+      <section className="py-12 bg-muted/5">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6">
-            Our Commitment to Responsible Practices
+            <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-6">
+              Responsible Practices
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
-            We believe in doing our part to create quality products that are safe, effective, and made with care . While we're not a fully eco-certified brand yet, 
-            here's how we act responsibly:
+            <p className="text-base text-muted-foreground mb-10 leading-relaxed">
+              We focus on safe, effective, and small-batch production to maintain consistency and quality in every bottle.
             </p>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <Leaf className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-10 text-left">
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4 group">
+                  <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0 group-hover:bg-primary transition-colors">
+                    <Leaf className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
+                  </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">Practical Packaging Choices</h4>
-                    <p className="text-sm text-muted-foreground">We aim to use recyclable or reusable packaging whenever possible, balancing affordability and functionality.</p>
+                    <h4 className="font-bold text-foreground mb-1 text-sm">Packaging Choices</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Recyclable and functional packaging choices for everyday use.</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <Shield className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                <div className="flex items-start space-x-4 group">
+                  <div className="w-10 h-10 rounded-xl bg-orange-400/10 flex items-center justify-center flex-shrink-0 group-hover:bg-orange-400 transition-colors">
+                    <Shield className="w-5 h-5 text-orange-500 group-hover:text-white transition-colors" />
+                  </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">🚫 No Harsh Additives</h4>
-                    <p className="text-sm text-muted-foreground">Our formulas avoid unnecessarily harsh ingredients — we focus on safe, effective blends for everyday use.</p>
+                    <h4 className="font-bold text-foreground mb-1 text-sm">No Harsh Additives</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Safe, effective blends designed for family and home use.</p>
                   </div>
                 </div>
               </div>
-              <div className="space-y-4">
-                <div className="flex items-start space-x-3">
-                  <Heart className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4 group">
+                  <div className="w-10 h-10 rounded-xl bg-rose-400/10 flex items-center justify-center flex-shrink-0 group-hover:bg-rose-400 transition-colors">
+                    <Heart className="w-5 h-5 text-rose-500 group-hover:text-white transition-colors" />
+                  </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">🌍 Responsibly Selected Materials</h4>
-                    <p className="text-sm text-muted-foreground">We choose suppliers who share our values of honesty, quality, and reliability.</p>
+                    <h4 className="font-bold text-foreground mb-1 text-sm">Quality Selection</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Materials selected for reliability and performance.</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3">
-                  <Clock className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                <div className="flex items-start space-x-4 group">
+                  <div className="w-10 h-10 rounded-xl bg-slate-400/10 flex items-center justify-center flex-shrink-0 group-hover:bg-slate-400 transition-colors">
+                    <Clock className="w-5 h-5 text-slate-500 group-hover:text-white transition-colors" />
+                  </div>
                   <div>
-                    <h4 className="font-semibold text-foreground mb-1">🔁 Small-Scale, Quality-Controlled Production</h4>
-                    <p className="text-sm text-muted-foreground">Our products are made in controlled batches to maintain consistency and reduce unnecessary waste.</p>
+                    <h4 className="font-bold text-foreground mb-1 text-sm">Controlled Production</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground">Made in batches to ensure every product meets our standards.</p>
                   </div>
                 </div>
               </div>

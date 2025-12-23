@@ -1,99 +1,274 @@
 import { useState } from 'react';
+import { useCart } from '@/context/CartContext';
+import { toast } from 'sonner';
 import Header from '@/components/Header';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Search, Filter, Star, Heart, Eye, Grid3X3, List } from 'lucide-react';
+import { Search, Filter, Star, Heart, Eye, Grid3X3, List, ChevronRight, Minus, Plus, Box, Package, Info } from 'lucide-react';
+import ProductDetailsDialog from '@/components/ProductDetailsDialog';
 
 const Shop = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [searchQuery, setSearchQuery] = useState('');
 
-  const categories = ['All Products', 'Home Care', 'Laundry Care', 'Personal Care', 'Edibles'];
+  const categories = ['All Products', 'Home Care', 'Personal Care'];
   const [selectedCategory, setSelectedCategory] = useState('All Products');
 
   const products = [
     {
       id: 1,
-      name: 'Lavender Artisan Soap',
-      price: 'GH₵ 12.99',
-      originalPrice: 'GH₵ 15.99',
-      image: '/placeholder.svg',
+      name: 'Fairine Liquid Soap',
+      category: 'Home Care',
+      description: 'High-quality multi-purpose liquid soap with a refreshing fragrance. Effective for washing dishes, hands, and various surfaces.',
+      variants: [
+        { volume: '1L', price: 14, bulkPackSize: 8, image: '/assets/liquid-soap-1l.png' },
+        { volume: '4L', price: 50, bulkPackSize: 4, image: '/assets/liquid-soap-4l.png' }
+      ],
+      inStock: true,
+      featured: true,
       rating: 4.8,
       reviews: 124,
-      category: 'Personal Care',
-      description: 'Handcrafted with organic lavender oil and shea butter for a luxurious cleansing experience.',
-      inStock: true,
-      featured: true
+      image: '/assets/liquid-soap-1l.png'
     },
     {
       id: 2,
-      name: 'Natural Floor Cleaner - Citrus',
-      price: 'GH₵ 18.99',
-      originalPrice: null,
-      image: '/placeholder.svg',
+      name: 'Fairine Floor Cleaner',
+      category: 'Home Care',
+      description: 'Powerful disinfectant floor cleaner that removes tough stains and leaves a long-lasting fresh scent. Safe for all floor types.',
+      variants: [
+        { volume: '1L', price: 16, bulkPackSize: 8, image: '/assets/floor-cleaner-1l.png' },
+        { volume: '5L', price: 65, bulkPackSize: 4, image: '/assets/floor-cleaner-5l.png' }
+      ],
+      inStock: true,
+      featured: true,
       rating: 4.9,
       reviews: 89,
-      category: 'Home Care',
-      description: 'Eco-friendly floor cleaner with natural citrus extracts. Safe for all floor types.',
-      inStock: true,
-      featured: CSSFontFeatureValuesRule 
+      image: '/assets/floor-cleaner-1l.png'
     },
     {
       id: 3,
-      name: 'Eucalyptus Shower Gel',
-      price: 'GH₵ 22.99',
-      originalPrice: 'GH₵ 26.99',
-      image: '/placeholder.svg',
-      rating: 4.7,
-      reviews: 156,
-      category: 'Personal Care',
-      description: 'Refreshing eucalyptus shower gel with moisturizing properties and natural ingredients.',
+      name: 'Fairine Afterwash',
+      category: 'Home Care',
+      description: 'Fabric companion that keeps your clothes smelling fresh and feeling soft after every wash. Protects fibers and reduces static.',
+      variants: [
+        { volume: '500ml', price: 13, bulkPackSize: 12, image: '/assets/afterwash-500ml.png' },
+        { volume: '1L', price: 30, bulkPackSize: 10, image: '/assets/afterwash-1l.png' }
+      ],
       inStock: true,
-      featured: true
+      featured: true,
+      rating: 4.8,
+      reviews: 203,
+      image: '/assets/afterwash-500ml.png'
     },
     {
       id: 4,
-      name: 'Multi-Surface Cleaner',
-      price: 'GH₵ 16.99',
-      originalPrice: null,
-      image: '/placeholder.svg',
-      rating: 4.8,
-      reviews: 203,
-      category: 'Home Care',
-      description: 'Versatile cleaner suitable for kitchen, bathroom, and general household cleaning.',
+      name: 'Fairine Shower Gel',
+      category: 'Personal Care',
+      description: 'Gentle and moisturizing shower gel formulated for daily use. Leaves skin feeling clean, smooth, and beautifully scented.',
+      variants: [
+        { volume: '500ml', price: 20, bulkPackSize: 12, image: '/assets/shower-gel-500ml.png' },
+        { volume: '750ml', price: 27, bulkPackSize: 10, image: '/assets/shower-gel-750ml.png' }
+      ],
       inStock: true,
-      featured: false
-    },
-    {
-      id: 5,
-      name: 'Dark Chocolate Truffles',
-      price: 'GH₵ 24.99',
-      originalPrice: null,
-      image: '/placeholder.svg',
-      rating: 4.9,
-      reviews: 67,
-      category: 'Edibles',
-      description: 'Handmade dark chocolate truffles with premium cocoa and natural flavors.',
-      inStock: true,
-      featured: true
-    },
-    {
-      id: 6,
-      name: 'Organic Fabric Softener',
-      price: 'GH₵ 14.99',
-      originalPrice: 'GH₵ 18.99',
-      image: '/placeholder.svg',
-      rating: 4.6,
-      reviews: 112,
-      category: 'Laundry Care',
-      description: 'Plant-based fabric softener that leaves clothes soft and naturally fresh.',
-      inStock: true,
-      featured: false
+      featured: true,
+      rating: 4.7,
+      reviews: 156,
+      image: '/assets/shower-gel-500ml.png'
     }
   ];
+
+  // Component for handle product selection state
+  const ProductCard = ({ product, viewMode }: { product: any, viewMode: string }) => {
+    const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+    const [selectedVolume, setSelectedVolume] = useState(product.variants[0].volume);
+    const [quantity, setQuantity] = useState(1);
+    
+    const currentVariant = product.variants.find((v: any) => v.volume === selectedVolume);
+    const packSizes = [1, currentVariant.bulkPackSize];
+    const [selectedPack, setSelectedPack] = useState(packSizes[0]);
+    const { addToCart, setDrawerOpen } = useCart();
+
+    const handleAddToCart = () => {
+      addToCart({
+        id: product.id.toString(),
+        name: product.name,
+        image: currentVariant.image || product.image,
+        price: currentVariant.price * selectedPack,
+        quantity: quantity,
+        variant: {
+          volume: selectedVolume,
+          packSize: selectedPack
+        }
+      });
+      
+      toast.success("Added to cart! 🛍️", {
+        description: `${quantity}x ${product.name} (${selectedVolume}, Pack of ${selectedPack})`,
+      });
+      
+      setDrawerOpen(true);
+    };
+
+    // Handle volume change: update current variant and reset pack if invalid
+    const handleVolumeChange = (vol: string) => {
+      setSelectedVolume(vol);
+      const newVariant = product.variants.find((v: any) => v.volume === vol);
+      if (selectedPack !== 1) {
+        setSelectedPack(newVariant.bulkPackSize);
+      }
+    };
+
+    return (
+      <>
+      <Card 
+        key={product.id} 
+        className={`group hover:shadow-2xl transition-all duration-500 bg-card border border-border/40 shadow-lg rounded-2xl overflow-hidden flex flex-col h-full ${
+          viewMode === 'list' ? 'md:flex-row md:items-stretch' : ''
+        }`}
+      >
+        <div 
+          className={`relative overflow-hidden cursor-pointer ${viewMode === 'list' ? 'md:w-64 flex-shrink-0' : 'aspect-[5/4]'}`}
+          onClick={() => setIsDetailsOpen(true)}
+        >
+          <div className="absolute inset-0 bg-muted flex items-center justify-center">
+            <img 
+              src={currentVariant.image || product.image} 
+              alt={product.name}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            />
+            
+            {/* View Details Hover Overlay */}
+            <div className="absolute inset-x-0 bottom-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <Button size="sm" className="w-full bg-white/90 backdrop-blur-sm text-black border-0 font-bold hover:bg-white text-xs py-1 h-8 rounded-xl">
+                Quick View
+              </Button>
+            </div>
+
+            {/* Badges */}
+            <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
+              {product.featured && (
+                <Badge className="bg-primary/90 backdrop-blur-sm text-white border-0 font-bold px-2 py-0.5 text-[10px] shadow-sm">FEAT</Badge>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <CardContent className={`p-4 flex flex-col flex-grow ${viewMode === 'list' ? 'md:justify-center' : ''}`}>
+          <div className="mb-2 flex justify-between items-start">
+            <span className="text-[9px] font-bold text-primary uppercase tracking-widest bg-primary/10 px-2 py-0.5 rounded">
+              {product.category}
+            </span>
+            <div className="flex items-center text-yellow-500">
+              <Star className="w-3 h-3 fill-current" />
+              <span className="text-[10px] font-bold ml-1 text-foreground">
+                {product.rating}
+              </span>
+            </div>
+          </div>
+          
+          <h3 
+            className="text-lg font-bold text-card-foreground mb-3 group-hover:text-primary transition-colors leading-tight cursor-pointer"
+            onClick={() => setIsDetailsOpen(true)}
+          >
+            {product.name}
+          </h3>
+
+          {/* Volume Selection - Compact */}
+          <div className="mb-4 space-y-1.5">
+            <span className="text-[10px] font-medium text-muted-foreground uppercase flex items-center gap-1">
+              <Box className="w-2.5 h-2.5" /> Volume
+            </span>
+            <div className="flex flex-wrap gap-1.5">
+              {product.variants.map((v: any) => (
+                <button
+                  key={v.volume}
+                  onClick={() => handleVolumeChange(v.volume)}
+                  className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all border ${
+                    selectedVolume === v.volume 
+                      ? 'bg-primary border-primary text-white shadow-sm' 
+                      : 'bg-muted/30 border-border/50 text-muted-foreground'
+                  }`}
+                >
+                  {v.volume}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          {/* Pack Selection - Compact */}
+          <div className="mb-5 space-y-1.5">
+            <span className="text-[10px] font-medium text-muted-foreground uppercase flex items-center gap-1">
+              <Package className="w-2.5 h-2.5" /> Pack Size
+            </span>
+            <div className="flex flex-wrap gap-1.5">
+              {packSizes.map((size: number) => (
+                <button
+                  key={size}
+                  onClick={() => setSelectedPack(size)}
+                  className={`px-2.5 py-1 rounded-lg text-[10px] font-bold transition-all border ${
+                    selectedPack === size 
+                      ? 'bg-slate-900 border-slate-900 text-white shadow-sm' 
+                      : 'bg-muted/30 border-border/50 text-muted-foreground'
+                  }`}
+                >
+                  {size === 1 ? 'Single' : `Pack of ${size}`}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="mt-auto pt-4 border-t border-border/30">
+            <div className="flex items-center justify-between mb-4">
+              <div className="flex items-baseline gap-1">
+                <span className="text-xl font-black text-foreground">
+                  {(currentVariant.price * selectedPack).toFixed(2)}
+                  <span className="text-[10px] font-bold ml-1 text-muted-foreground uppercase">GHS</span>
+                </span>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <div className="flex items-center bg-muted/30 rounded-xl p-0.5 border border-border/20">
+                <Button 
+                  size="icon" 
+                  variant="ghost" 
+                  className="h-7 w-7 rounded-lg"
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                >
+                  <Minus className="w-3 h-3" />
+                </Button>
+                <div className="w-6 text-center font-bold text-xs">{quantity}</div>
+                <Button 
+                  size="icon" 
+                  variant="ghost" 
+                  className="h-7 w-7 rounded-lg"
+                  onClick={() => setQuantity(quantity + 1)}
+                >
+                  <Plus className="w-3 h-3" />
+                </Button>
+              </div>
+
+              <Button 
+                className="flex-1 gradient-warm text-white font-bold py-5 rounded-xl border-0 shadow-md hover:scale-[1.02] transition-all text-sm"
+                onClick={handleAddToCart}
+              >
+                Add to Cart
+              </Button>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+      
+      <ProductDetailsDialog 
+        product={product} 
+        open={isDetailsOpen} 
+        onOpenChange={setIsDetailsOpen} 
+      />
+      </>
+    );
+  };
 
   const filteredProducts = products.filter(product => {
     const matchesCategory = selectedCategory === 'All Products' || product.category === selectedCategory;
@@ -107,194 +282,74 @@ const Shop = () => {
       <Header />
       
       {/* Hero Section */}
-      <section className="gradient-warm text-white py-16">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl sm:text-5xl font-bold mb-4 text-white">Our Products</h1>
-          <p className="text-xl text-white/90 max-w-2xl mx-auto">
-            Discover our complete collection of quality products - quality assured with affordable delivery.
-          </p>
+      <section className="bg-background py-8 sm:py-12 relative overflow-hidden">
+        <div className="absolute inset-0 gradient-sunset opacity-5"></div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
+          <h1 className="text-2xl sm:text-4xl font-black text-foreground mb-4 leading-tight tracking-tight">
+            Our <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">Shop</span>
+          </h1>
         </div>
       </section>
 
-      {/* Filters and Search */}
-      <section className="py-8 bg-card border-b border-border">
+      {/* Filters Section */}
+      <section className="pb-8 bg-background sticky top-[64px] z-40 backdrop-blur-md bg-background/80 border-b border-border/50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
-            {/* Search */}
-            <div className="relative flex-1 max-w-md">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-muted-foreground w-4 h-4" />
-              <Input
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="pl-10"
-              />
-            </div>
-
-            {/* Category Filter */}
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <Badge
-                  key={category}
-                  variant={selectedCategory === category ? "default" : "outline"}
-                  className={`cursor-pointer hover:bg-primary hover:text-primary-foreground transition-colors ${
-                    selectedCategory === category ? 'bg-primary text-primary-foreground' : ''
-                  }`}
-                  onClick={() => setSelectedCategory(category)}
-                >
-                  {category}
-                </Badge>
-              ))}
-            </div>
-
-            {/* View Toggle */}
-            <div className="flex items-center gap-2">
-              <Button
-                variant={viewMode === 'grid' ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setViewMode('grid')}
+          {/* Category Filter - Scrolling for Mobile */}
+          <div className="flex items-center gap-2 overflow-x-auto py-4 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
+            {categories.map((category) => (
+              <Badge
+                key={category}
+                variant={selectedCategory === category ? "default" : "outline"}
+                className={`cursor-pointer whitespace-nowrap px-6 py-2.5 rounded-2xl border-2 transition-all font-bold text-sm ${
+                  selectedCategory === category 
+                    ? 'bg-primary border-primary text-white shadow-lg shadow-primary/20 scale-105' 
+                    : 'bg-card border-border hover:border-primary hover:text-primary'
+                }`}
+                onClick={() => setSelectedCategory(category)}
               >
-                <Grid3X3 className="w-4 h-4" />
-              </Button>
-              <Button
-                variant={viewMode === 'list' ? 'default' : 'outline'}
-                size="sm"
-                onClick={() => setViewMode('list')}
-              >
-                <List className="w-4 h-4" />
-              </Button>
-            </div>
+                {category}
+              </Badge>
+            ))}
           </div>
         </div>
       </section>
 
       {/* Products Grid */}
-      <section className="py-12">
+      <section className="py-12 bg-muted/10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="mb-6 flex items-center justify-between">
-            <p className="text-muted-foreground">
-              Showing {filteredProducts.length} of {products.length} products
-            </p>
-            <Select defaultValue="featured">
-              <SelectTrigger className="w-48">
-                <SelectValue placeholder="Sort by" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="featured">Featured</SelectItem>
-                <SelectItem value="price-low">Price: Low to High</SelectItem>
-                <SelectItem value="price-high">Price: High to Low</SelectItem>
-                <SelectItem value="rating">Highest Rated</SelectItem>
-                <SelectItem value="newest">Newest</SelectItem>
-              </SelectContent>
-            </Select>
+          <div className="mb-8 flex items-center justify-between">
+            <h2 className="text-xl font-black text-foreground">
+              {selectedCategory} <span className="text-muted-foreground font-medium ml-2 text-sm">({filteredProducts.length} items)</span>
+            </h2>
           </div>
 
-          <div className={`grid gap-6 ${
+          <div className={`grid gap-8 ${
             viewMode === 'grid' 
               ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4' 
               : 'grid-cols-1'
           }`}>
             {filteredProducts.map((product) => (
-              <Card 
-                key={product.id} 
-                className={`group hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 bg-card border border-border shadow-lg overflow-hidden ${
-                  viewMode === 'list' ? 'flex flex-row' : ''
-                }`}
-              >
-                <div className={`relative overflow-hidden ${viewMode === 'list' ? 'w-48 flex-shrink-0' : ''}`}>
-                  <div className="aspect-square bg-gradient-to-br from-muted to-muted/60 flex items-center justify-center relative">
-                    <div className="w-24 h-24 bg-gradient-to-br from-accent to-secondary rounded-lg shadow-lg"></div>
-                    
-                    {/* Badges */}
-                    <div className="absolute top-3 left-3 flex flex-col space-y-1">
-                      {product.featured && (
-                        <Badge className="bg-accent text-accent-foreground text-xs">Featured</Badge>
-                      )}
-                      {product.originalPrice && (
-                        <Badge className="bg-destructive text-destructive-foreground text-xs">Sale</Badge>
-                      )}
-                      {!product.inStock && (
-                        <Badge variant="secondary" className="text-xs">Out of Stock</Badge>
-                      )}
-                    </div>
-
-                    {/* Action buttons */}
-                    <div className="absolute top-3 right-3 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                      <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-card/80 backdrop-blur-sm">
-                        <Heart className="w-4 h-4" />
-                      </Button>
-                      <Button size="sm" variant="outline" className="w-8 h-8 p-0 bg-card/80 backdrop-blur-sm">
-                        <Eye className="w-4 h-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-
-                <CardContent className={`p-4 ${viewMode === 'list' ? 'flex-1' : ''}`}>
-                  <div className="mb-2">
-                    <Badge variant="outline" className="text-xs">
-                      {product.category}
-                    </Badge>
-                  </div>
-                  
-                  <h3 className="font-semibold text-card-foreground mb-2 group-hover:text-primary transition-colors">
-                    {product.name}
-                  </h3>
-
-                  {viewMode === 'list' && (
-                    <p className="text-sm text-muted-foreground mb-3">{product.description}</p>
-                  )}
-
-                  <div className="flex items-center mb-3">
-                    <div className="flex items-center">
-                      {[...Array(5)].map((_, i) => (
-                        <Star 
-                          key={i} 
-                          className={`w-4 h-4 ${i < Math.floor(product.rating) ? 'text-yellow-400 fill-current' : 'text-muted-foreground'}`} 
-                        />
-                      ))}
-                    </div>
-                    <span className="text-sm text-muted-foreground ml-2">
-                      ({product.reviews})
-                    </span>
-                  </div>
-
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <span className="text-lg font-bold text-card-foreground">
-                        {product.price}
-                      </span>
-                      {product.originalPrice && (
-                        <span className="text-sm text-muted-foreground line-through">
-                          {product.originalPrice}
-                        </span>
-                      )}
-                    </div>
-                    <Button 
-                      size="sm" 
-                      className="bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg"
-                      disabled={!product.inStock}
-                    >
-                      {product.inStock ? 'Add to Cart' : 'Out of Stock'}
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
+              <ProductCard key={product.id} product={product} viewMode={viewMode} />
             ))}
           </div>
 
           {filteredProducts.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground text-lg">No products found matching your criteria.</p>
+            <div className="text-center py-24 bg-card rounded-[3rem] shadow-2xl border border-border/50 max-w-2xl mx-auto">
+              <div className="w-24 h-24 bg-muted rounded-3xl mx-auto mb-6 flex items-center justify-center">
+                <Search className="w-10 h-10 text-muted-foreground" />
+              </div>
+              <h3 className="text-2xl font-black mb-3">No matches found</h3>
+              <p className="text-muted-foreground text-lg mb-8 px-8">We couldn't find any products matching your current search or filters.</p>
               <Button 
                 variant="outline" 
-                className="mt-4"
+                size="lg"
+                className="border-2 border-primary text-primary font-black px-10 rounded-2xl"
                 onClick={() => {
                   setSelectedCategory('All Products');
                   setSearchQuery('');
                 }}
               >
-                Clear Filters
+                Reset All Filters
               </Button>
             </div>
           )}
