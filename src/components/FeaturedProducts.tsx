@@ -70,7 +70,7 @@ const FeaturedProducts = () => {
             <div className="mt-auto pt-3 sm:pt-4 border-t border-border/30 flex flex-col space-y-2 sm:space-y-3">
               <div className="flex items-baseline space-x-1 sm:space-x-2">
                 <span className="text-base sm:text-xl font-black text-foreground">
-                  {product.variants[0].price}
+                  {product.variants[0].price.toFixed(2)}
                   <span className="text-[8px] sm:text-[10px] font-bold ml-1 text-muted-foreground uppercase">GHS</span>
                 </span>
               </div>
