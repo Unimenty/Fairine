@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Truck, Shield, Leaf, Recycle, Award } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import Testimonials from '@/components/Testimonials';
 
 const Index = () => {
   const features = [
@@ -65,6 +66,9 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Testimonials Section */}
+      <Testimonials />
 
 
     </div>
