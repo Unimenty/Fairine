@@ -14,6 +14,8 @@ import NotFound from "./pages/NotFound";
 import Layout from "@/components/Layout";
 import { CartProvider } from "@/context/CartContext";
 
+import Analytics from "@/components/Analytics";
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -24,6 +26,7 @@ const App = () => (
           <Toaster />
           <Sonner />
           <BrowserRouter>
+            <Analytics />
             <Layout>
               <Routes>
                 <Route path="/" element={<Index />} />
