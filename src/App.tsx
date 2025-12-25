@@ -14,6 +14,8 @@ import NotFound from "./pages/NotFound";
 import Layout from "@/components/Layout";
 import { CartProvider } from "@/context/CartContext";
 
+const queryClient = new QueryClient();
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <CartProvider>
