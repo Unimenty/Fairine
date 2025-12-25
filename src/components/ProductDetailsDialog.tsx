@@ -1,5 +1,5 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -41,6 +41,16 @@ const ProductDetailsDialog = ({ product, trigger, open, onOpenChange }: ProductD
   const packSizes = [1, currentVariant.bulkPackSize];
   const [selectedPack, setSelectedPack] = useState(packSizes[0]);
   const { addToCart, setDrawerOpen } = useCart();
+
+  // Preload all variant images for instant transitions
+  useEffect(() => {
+    product.variants.forEach((variant) => {
+      if (variant.image) {
+        const img = new Image();
+        img.src = variant.image;
+      }
+    });
+  }, [product]);
 
   const handleVolumeChange = (vol: string) => {
     setSelectedVolume(vol);
