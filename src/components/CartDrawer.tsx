@@ -73,10 +73,10 @@ const CartDrawer: React.FC = () => {
 
     try {
       await emailjs.send(
-        'service_mr5a9pa',
-        'template_kwvefpp',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         templateParams,
-        'yMSUxRTn9_pp9zhnS'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
 
       setStep('success');

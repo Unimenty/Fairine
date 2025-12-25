@@ -1,73 +1,72 @@
-# Welcome to your Lovable project
+# Fairine Enterprise
 
-## Project info
+Fairine Enterprise is a modern e-commerce platform dedicated to providing high-quality, family-safe, and sustainable cleaning solutions. From premium liquid soaps and shower gels to powerful floor cleaners, Fairine brings excellence and care into every home.
 
-**URL**: https://lovable.dev/projects/12e9cd62-2bb3-42ef-82d9-094a216e1a85
+## ✨ Key Features
 
-## How can I edit this code?
+- **Interactive Product Catalog**: Browse a wide range of premium cleaning products with detailed specifications and crystal-clear imagery.
+- **Silent Checkout Integration**: A seamless ordering experience powered by **EmailJS**. Customers can submit their orders directly from the cart drawer without being redirected, ensuring a smooth and professional user journey.
+- **Modern UI/UX**: Built with a "Cream UI" aesthetic, featuring glassmorphism, smooth animations (Framer Motion), and a fully responsive design for mobile and desktop.
+- **Dynamic Cart System**: Real-time cart management with instant subtotals and easy product adjustments.
+- **Sustainable Focus**: Highlighting our commitment to eco-friendly packaging and family-safe formulations.
 
-There are several ways of editing your application.
+## 🛠️ Tech Stack
 
-**Use Lovable**
+- **Frontend**: [React](https://reactjs.org/) + [Vite](https://vitejs.dev/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) + [shadcn/ui](https://ui.shadcn.com/)
+- **State Management**: React Context API
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **Order Handling**: [EmailJS](https://www.emailjs.com/)
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/12e9cd62-2bb3-42ef-82d9-094a216e1a85) and start prompting.
+## 🚀 Getting Started
 
-Changes made via Lovable will be committed automatically to this repo.
+### Prerequisites
 
-**Use your preferred IDE**
+- [Node.js](https://nodejs.org/) (v18 or higher recommended)
+- [npm](https://www.npmjs.com/) or [bun](https://bun.sh/)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+### Installation
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Unimenty/Fairine.git
+   cd Fairine
+   ```
 
-Follow these steps:
+2. **Install dependencies**
+   ```bash
+   npm install
+   # or
+   bun install
+   ```
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+3. **Configure Environment Variables**
+   Create a `.env` file in the root directory and add your EmailJS credentials:
+   ```env
+   VITE_EMAILJS_SERVICE_ID=your_service_id
+   VITE_EMAILJS_TEMPLATE_ID=your_template_id
+   VITE_EMAILJS_PUBLIC_KEY=your_public_key
+   ```
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+4. **Run the development server**
+   ```bash
+   npm run dev
+   ```
 
-# Step 3: Install the necessary dependencies.
-npm i
+## 📦 Deployment
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+Fairine is optimized for fast performance and can be easily deployed to platforms like Vercel, Netlify, or GitHub Pages.
+
+```bash
+npm run build
 ```
 
-**Edit a file directly in GitHub**
+## 📞 Contact
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+For inquiries or more information about our products:
+- **Location**: Greater Accra, Ghana
+- **Website**: [Fairine Enterprise](https://fairine.com) (Coming soon)
 
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/12e9cd62-2bb3-42ef-82d9-094a216e1a85) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+*Built with passion for a cleaner, safer home.*

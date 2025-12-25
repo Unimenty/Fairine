@@ -9,6 +9,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { MapPin, Phone, Mail, Clock, MessageSquare, HeadphonesIcon, Heart } from 'lucide-react';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
@@ -20,20 +21,49 @@ const Contact = () => {
     inquiryType: ''
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
-    setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-      inquiryType: ''
-    });
+    setIsSubmitting(true);
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      message: formData.message,
+      to_email: 'fairineenterprise@gmail.com',
+    };
+
+    try {
+      await emailjs.send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID, // You might want a specific template for contact, but using the same for now
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      );
+
+      toast({
+        title: "Message Sent!",
+        description: "Thank you for contacting us. We'll get back to you soon.",
+      });
+
+      setFormData({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+        inquiryType: ''
+      });
+    } catch (error) {
+      console.error('EmailJS Error:', error);
+      toast({
+        variant: "destructive",
+        title: "Error",
+        description: "There was an issue sending your message. Please try again or use WhatsApp.",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (field: string, value: string) => {
@@ -165,9 +195,10 @@ const Contact = () => {
 
                   <Button 
                     type="submit" 
+                    disabled={isSubmitting}
                     className="w-full gradient-warm text-white font-black py-8 rounded-2xl shadow-xl hover:scale-[1.01] transition-all text-base mt-4"
                   >
-                    Send to the Team
+                    {isSubmitting ? 'Sending...' : 'Send to the Team'}
                   </Button>
                 </form>
               </div>
