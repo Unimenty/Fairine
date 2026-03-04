@@ -1,7 +1,9 @@
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
+import { products } from '@/data/products';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
+import SEO from '@/components/SEO';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -201,6 +203,32 @@ const Shop = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Shop Our Collection"
+        description="Browse our premium range of handcrafted home care products, including liquid soaps, floor cleaners, and more. Quality you can trust, delivered to your door."
+        keywords="buy liquid soap Ghana, floor cleaner price Accra, Fairine products, artisan home care catalog, shop cleaning supplies"
+        canonical="/shop"
+        structuredData={{
+          "@context": "https://schema.org",
+          "@type": "ItemList",
+          "itemListElement": products.map((product, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+              "@type": "Product",
+              "name": product.name,
+              "description": product.description,
+              "image": `https://fairine.com${product.image}`,
+              "offers": {
+                "@type": "Offer",
+                "priceCurrency": "GHS",
+                "price": product.variants[0].price,
+                "availability": "https://schema.org/InStock"
+              }
+            }
+          }))
+        }}
+      />
       <Header />
 
       {/* Hero Section */}
@@ -208,7 +236,7 @@ const Shop = () => {
         <div className="absolute inset-0 gradient-sunset opacity-5"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
           <h1 className="text-2xl sm:text-4xl font-black text-foreground mb-4 leading-tight tracking-tight">
-            Our <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">Shop</span>
+            Shop Our Home & Personal Care Products
           </h1>
         </div>
       </section>
@@ -240,7 +268,7 @@ const Shop = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8 flex items-center justify-between">
             <h2 className="text-xl font-black text-foreground">
-              {selectedCategory} <span className="text-muted-foreground font-medium ml-2 text-sm">({filteredProducts.length} items)</span>
+              {selectedCategory === 'All Products' ? 'All Home & Personal Care Products' : selectedCategory} <span className="text-muted-foreground font-medium ml-2 text-sm">({filteredProducts.length} items)</span>
             </h2>
           </div>
 

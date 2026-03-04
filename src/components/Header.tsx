@@ -28,7 +28,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-            <img src="/assets/logo-transparent.png" alt="Fairine Enterprise Logo" className="h-8 w-auto" />
+            <img src="/assets/logo-clean.png" alt="Fairine Enterprise Logo" className="h-10 w-auto" />
             <span className="text-xl font-bold text-foreground">Fairine Enterprise</span>
           </Link>
 

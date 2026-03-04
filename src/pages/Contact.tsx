@@ -1,5 +1,6 @@
 
 import Header from '@/components/Header';
+import SEO from '@/components/SEO';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -98,17 +99,23 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Contact Us"
+        description="Have questions or feedback? Reach out to the Fairine team via WhatsApp, phone, or email. We're here to help you care for your home."
+        keywords="contact Fairine, Fairine customer support, purchase liquid soap Accra, Fairine WhatsApp, home care inquiry"
+        canonical="/contact"
+      />
       <Header />
-      
+
       {/* Hero Section */}
       <section className="bg-background py-10 sm:py-16 relative overflow-hidden">
         <div className="absolute inset-0 gradient-sunset opacity-5"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
           <h1 className="text-3xl sm:text-5xl font-black text-foreground mb-4 leading-tight tracking-tight">
-            Say <span className="bg-gradient-to-r from-primary to-orange-500 bg-clip-text text-transparent">Hello!</span>
+            Contact Fairine Enterprise
           </h1>
           <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            We're a small team of less than 10 people, personally crafting and packing every order. We'd love to hear from you!
+            We're a small team of less than 10 people, personally crafting and packing every order of our home care products in Accra, Ghana. We'd love to hear from you!
           </p>
         </div>
       </section>
@@ -128,15 +135,15 @@ const Contact = () => {
                   <h3 className="text-sm font-bold uppercase tracking-widest text-muted-foreground mb-2">{item.title}</h3>
                   <p className="text-2xl sm:text-3xl font-black text-foreground mb-3">{item.info}</p>
                   <p className="text-sm text-muted-foreground">{item.description}</p>
-                  
-                  <a 
-                    href={item.link} 
-                    target="_blank" 
+
+                  <a
+                    href={item.link}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="mt-8 w-full"
                   >
                     <Button className="w-full rounded-full px-8 py-6 h-auto font-black text-sm bg-primary hover:bg-primary/90 shadow-lg shadow-primary/20">
-                      {item.title.includes('WhatsApp') ? 'Message on WhatsApp' : 'Call us now'}
+                      {item.title.includes('WhatsApp') ? 'Order via WhatsApp' : 'Call for Enquiries'}
                     </Button>
                   </a>
                 </div>
@@ -146,64 +153,63 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             {/* Feedback Form */}
-            <div className="lg:col-span-2">
-              <div className="bg-card rounded-[2.5rem] p-8 sm:p-12 shadow-2xl border border-border/40 relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-orange-500"></div>
-                <div className="mb-10">
-                  <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-3">Drop us a note</h2>
-                  <p className="text-muted-foreground text-sm">Have feedback or just want to say hi? We're all ears.</p>
-                </div>
-
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Your Name</Label>
-                      <Input
-                        id="name"
-                        value={formData.name}
-                        onChange={(e) => handleChange('name', e.target.value)}
-                        placeholder="What should we call you?"
-                        className="rounded-2xl border-border/60 bg-muted/20 focus-visible:ring-primary/20 h-14 px-6 text-base"
-                        required
-                      />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">How can we reach you?</Label>
-                      <Input
-                        id="email"
-                        value={formData.email}
-                        onChange={(e) => handleChange('email', e.target.value)}
-                        placeholder="Phone or Email"
-                        className="rounded-2xl border-border/60 bg-muted/20 focus-visible:ring-primary/20 h-14 px-6 text-base"
-                        required
-                      />
-                    </div>
-                  </div>
-
-                  <div className="space-y-2">
-                    <Label htmlFor="message" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">What's on your mind?</Label>
-                    <Textarea
-                      id="message"
-                      value={formData.message}
-                      onChange={(e) => handleChange('message', e.target.value)}
-                      placeholder="Share your feedback or just say hello..."
-                      rows={5}
-                      className="rounded-3xl border-border/60 bg-muted/20 focus-visible:ring-primary/20 min-h-[150px] p-6 text-base"
-                      required
-                    />
-                  </div>
-
-                  <Button 
-                    type="submit" 
-                    disabled={isSubmitting}
-                    className="w-full gradient-warm text-white font-black py-8 rounded-2xl shadow-xl hover:scale-[1.01] transition-all text-base mt-4"
-                  >
-                    {isSubmitting ? 'Sending...' : 'Send to the Team'}
-                  </Button>
-                </form>
-              </div>
-            </div>
-
+                        <div className="lg:col-span-2">
+                          <div className="bg-card rounded-[2.5rem] p-8 sm:p-12 shadow-2xl border border-border/40 relative overflow-hidden">
+                            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-orange-500"></div>
+                            <div className="mb-10">
+                              <h2 className="text-2xl sm:text-3xl font-black text-foreground mb-3">Send Us a Message</h2>
+                              <p className="text-muted-foreground text-sm">Have feedback on our liquid soaps or floor cleaners? Or just want to say hi? We're all ears.</p>
+                            </div>
+            
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div className="space-y-2">
+                                  <Label htmlFor="name" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Your Name</Label>
+                                  <Input
+                                    id="name"
+                                    value={formData.name}
+                                    onChange={(e) => handleChange('name', e.target.value)}
+                                    placeholder="What should we call you?"
+                                    className="rounded-2xl border-border/60 bg-muted/20 focus-visible:ring-primary/20 h-14 px-6 text-base"
+                                    required
+                                  />
+                                </div>
+                                <div className="space-y-2">
+                                  <Label htmlFor="email" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">How can we reach you?</Label>
+                                  <Input
+                                    id="email"
+                                    value={formData.email}
+                                    onChange={(e) => handleChange('email', e.target.value)}
+                                    placeholder="Phone or Email"
+                                    className="rounded-2xl border-border/60 bg-muted/20 focus-visible:ring-primary/20 h-14 px-6 text-base"
+                                    required
+                                  />
+                                </div>
+                              </div>
+            
+                              <div className="space-y-2">
+                                <Label htmlFor="message" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">What's on your mind?</Label>
+                                <Textarea
+                                  id="message"
+                                  value={formData.message}
+                                  onChange={(e) => handleChange('message', e.target.value)}
+                                  placeholder="Share your feedback on our home care products or just say hello..."
+                                  rows={5}
+                                  className="rounded-3xl border-border/60 bg-muted/20 focus-visible:ring-primary/20 min-h-[150px] p-6 text-base"
+                                  required
+                                />
+                              </div>
+            
+                              <Button 
+                                type="submit" 
+                                disabled={isSubmitting}
+                                className="w-full gradient-warm text-white font-black py-8 rounded-2xl shadow-xl hover:scale-[1.01] transition-all text-base mt-4"
+                              >
+                                {isSubmitting ? 'Sending...' : 'Send to the Fairine Team'}
+                              </Button>
+                            </form>
+                          </div>
+                        </div>
             {/* Email Support */}
             <div className="space-y-6">
               <Card className="rounded-[2rem] border border-border/40 shadow-xl bg-card overflow-hidden">
@@ -226,7 +232,7 @@ const Contact = () => {
                       </div>
                     </div>
                   </a>
-                  
+
                   <div className="pt-6 border-t border-border/40">
                     <p className="text-xs text-muted-foreground leading-relaxed">
                       We're often busy in the workshop, so if we don't pick up right away, just leave a message and we'll get back to you!
