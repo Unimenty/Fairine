@@ -61,74 +61,103 @@ const StoreLocator = () => {
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
-                    {/* List Section */}
-                    <div className="lg:col-span-5 space-y-4 max-h-[600px] overflow-y-auto pr-2 scrollbar-hide">
-                        {locations.map((store, index) => (
-                            <Card
-                                key={index}
-                                onClick={() => setActiveStore(store)}
-                                className={`group cursor-pointer border-border/40 hover:border-primary/50 hover:shadow-xl transition-all duration-300 rounded-[1.5rem] bg-card/80 backdrop-blur-sm overflow-hidden ${activeStore.name === store.name ? 'ring-2 ring-primary border-primary' : ''
-                                    }`}
-                            >
-                                <CardContent className="p-6">
-                                    <div className="flex justify-between items-start mb-4">
-                                        <div>
-                                            <h3 className={`text-lg font-black transition-colors ${activeStore.name === store.name ? 'text-primary' : 'text-foreground'}`}>{store.name}</h3>
-                                            <Badge variant="secondary" className="mt-1 bg-primary/10 text-primary border-0 rounded-md text-[9px] font-black uppercase">
-                                                {store.area}
-                                            </Badge>
-                                        </div>
-                                        <div className={`w-10 h-10 rounded-full flex items-center justify-center transition-all ${activeStore.name === store.name ? 'bg-primary text-primary-foreground' : 'bg-primary/10 text-primary group-hover:scale-110'
-                                            }`}>
-                                            <MapPin className="w-5 h-5" />
-                                        </div>
-                                    </div>
-
-                                    <div className="space-y-2.5 text-sm text-muted-foreground font-medium">
-                                        <div className="flex items-start gap-3">
-                                            <Navigation className="w-4 h-4 mt-0.5 text-primary/60" />
-                                            <span>{store.address}</span>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <Phone className="w-4 h-4 text-primary/60" />
-                                            <span>{store.phone}</span>
-                                        </div>
-                                        <div className="flex items-center gap-3">
-                                            <Clock className="w-4 h-4 text-primary/60" />
-                                            <span>{store.hours}</span>
-                                        </div>
-                                    </div>
-                                </CardContent>
-                            </Card>
-                        ))}
-                    </div>
-
-                    {/* Map Section */}
-                    <div className="lg:col-span-7 relative">
-                        <div className="h-full min-h-[400px] lg:min-h-0 bg-card rounded-[2.5rem] border border-border/50 shadow-2xl overflow-hidden group">
+                <div className="flex flex-col gap-8">
+                    {/* Top Section: Immersive Map */}
+                    <div className="relative w-full">
+                        <div className="h-[350px] sm:h-[450px] lg:h-[500px] bg-card rounded-[2rem] sm:rounded-[3rem] border border-border/50 shadow-2xl overflow-hidden group">
                             <iframe
                                 key={activeStore.name}
                                 src={activeStore.mapLink}
-                                className="w-full h-full border-0 grayscale-[20%] group-hover:grayscale-0 transition-all duration-700"
+                                className="w-full h-full border-0 grayscale-[15%] group-hover:grayscale-0 transition-all duration-700"
                                 allowFullScreen={true}
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
                                 title={`Google Maps location for ${activeStore.name}`}
                             ></iframe>
 
-                            {/* Floating Info Overlay */}
-                            <div className="absolute bottom-6 right-6 left-6 md:left-auto md:w-64 bg-card/90 backdrop-blur-md p-4 rounded-2xl border border-border/50 shadow-xl pointer-events-none">
-                                <div className="flex items-center gap-3 mb-2">
-                                    <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                                    <span className="text-[10px] font-black uppercase tracking-widest">Selected Location</span>
+                            {/* Floating Active Info Overlay - Desktop */}
+                            <div className="absolute top-6 left-6 hidden md:block bg-card/90 backdrop-blur-md p-5 rounded-2xl border border-border/50 shadow-xl max-w-xs animate-in fade-in slide-in-from-left-4 duration-500">
+                                <div className="flex items-center gap-3 mb-3">
+                                    <div className="w-2.5 h-2.5 rounded-full bg-primary animate-pulse shadow-[0_0_8px_rgba(var(--primary),0.5)]"></div>
+                                    <span className="text-[10px] font-black uppercase tracking-widest text-primary">Live Selection</span>
                                 </div>
-                                <p className="text-xs font-black text-foreground mb-1">{activeStore.name}</p>
-                                <p className="text-[10px] font-medium text-muted-foreground">Fairine products are in-stock and fresh at this location.</p>
+                                <h3 className="text-xl font-black text-foreground mb-1">{activeStore.name}</h3>
+                                <p className="text-xs font-medium text-muted-foreground leading-relaxed">
+                                    Our products are fully stocked at this {activeStore.area} location.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Bottom Section: Horizontal Interactive Carousel */}
+                    <div className="relative">
+                        <div className="flex overflow-x-auto pb-6 gap-4 sm:gap-6 scrollbar-hide snap-x snap-mandatory px-4 -mx-4">
+                            {locations.map((store, index) => (
+                                <Card
+                                    key={index}
+                                    onClick={() => setActiveStore(store)}
+                                    className={`flex-shrink-0 w-[280px] sm:w-[320px] snap-center cursor-pointer border-border/40 hover:border-primary/40 hover:shadow-2xl transition-all duration-500 rounded-[1.5rem] bg-card/80 backdrop-blur-md relative overflow-hidden group ${activeStore.name === store.name
+                                        ? 'ring-2 ring-primary border-primary shadow-xl bg-primary/[0.02]'
+                                        : 'hover:translate-y-[-4px]'
+                                        }`}
+                                >
+                                    <CardContent className="p-6">
+                                        <div className="flex justify-between items-start mb-4">
+                                            <div className="z-10">
+                                                <Badge variant="outline" className={`mb-2 font-black uppercase text-[8px] tracking-widest border-0 px-0 ${activeStore.name === store.name ? 'text-primary' : 'text-muted-foreground'}`}>
+                                                    {store.area}
+                                                </Badge>
+                                                <h3 className={`text-lg font-black leading-tight ${activeStore.name === store.name ? 'text-foreground' : 'text-foreground/80'}`}>
+                                                    {store.name}
+                                                </h3>
+                                            </div>
+                                            <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all shadow-sm ${activeStore.name === store.name
+                                                ? 'bg-primary text-primary-foreground rotate-12 scale-110'
+                                                : 'bg-primary/5 text-primary group-hover:bg-primary/10'
+                                                }`}>
+                                                <MapPin className="w-5 h-5" />
+                                            </div>
+                                        </div>
+
+                                        <div className="space-y-3 text-sm text-muted-foreground font-medium">
+                                            <div className="flex items-start gap-3">
+                                                <Navigation className="w-4 h-4 mt-0.5 text-primary/40" />
+                                                <span className="text-[13px] line-clamp-1 group-hover:line-clamp-none transition-all">{store.address}</span>
+                                            </div>
+                                            <div className="flex items-center justify-between mt-4 pt-4 border-t border-border/50">
+                                                <div className="flex items-center gap-2">
+                                                    <Clock className="w-3.5 h-3.5 text-primary/40" />
+                                                    <span className="text-[11px] font-bold">{store.hours}</span>
+                                                </div>
+                                                <div className={`text-[10px] font-black uppercase tracking-tighter ${activeStore.name === store.name ? 'text-primary' : 'text-muted-foreground/60'}`}>
+                                                    {activeStore.name === store.name ? 'Currently Viewing' : 'View on Map'}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </CardContent>
+
+                                    {/* Subtle active indicator background */}
+                                    {activeStore.name === store.name && (
+                                        <div className="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2"></div>
+                                    )}
+                                </Card>
+                            ))}
+                        </div>
+
+                        {/* Scroll Indicators - Desktop Only */}
+                        <div className="absolute -left-4 top-1/2 -translate-y-1/2 hidden lg:flex items-center pointer-events-none">
+                            <div className="w-8 h-8 rounded-full bg-card/80 backdrop-blur shadow-lg border border-border/50 flex items-center justify-center text-muted-foreground opacity-50">
+                                <span className="text-xs">←</span>
+                            </div>
+                        </div>
+                        <div className="absolute -right-4 top-1/2 -translate-y-1/2 hidden lg:flex items-center pointer-events-none">
+                            <div className="w-8 h-8 rounded-full bg-card/80 backdrop-blur shadow-lg border border-border/50 flex items-center justify-center text-muted-foreground opacity-50">
+                                <span className="text-xs">→</span>
                             </div>
                         </div>
                     </div>
                 </div>
+
             </div>
         </section>
     );

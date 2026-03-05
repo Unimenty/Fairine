@@ -6,8 +6,8 @@ const Footer = () => {
     <footer className="bg-card border-t border-border/50 py-10 sm:py-16 relative overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-muted/20 opacity-50 pointer-events-none"></div>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-y-10 gap-x-4 sm:gap-8">
-          <div className="col-span-2 md:col-span-1 space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-10 gap-x-8">
+          <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <div className="w-8 h-8 sm:w-10 sm:h-10 gradient-warm rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg transform -rotate-3 hover:rotate-0 transition-transform duration-300">
                 <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-sm sm:rounded-md"></div>
@@ -29,24 +29,7 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="col-span-1">
-            <h4 className="font-black text-[11px] sm:text-sm uppercase tracking-widest text-foreground mb-4 sm:mb-6">Quick Links</h4>
-            <ul className="space-y-2.5 sm:space-y-3 text-[13px] sm:text-sm">
-              <li><Link to="/shop" className="text-muted-foreground hover:text-primary transition-colors flex items-center group">Shop</Link></li>
-              <li><Link to="/about" className="text-muted-foreground hover:text-primary transition-colors flex items-center group">Story</Link></li>
-              <li><Link to="/contact" className="text-muted-foreground hover:text-primary transition-colors flex items-center group">Contact</Link></li>
-            </ul>
-          </div>
-
-          <div className="col-span-1">
-            <h4 className="font-black text-[11px] sm:text-sm uppercase tracking-widest text-foreground mb-4 sm:mb-6">Categories</h4>
-            <ul className="space-y-2.5 sm:space-y-3 text-[13px] sm:text-sm">
-              <li><Link to="/shop" className="text-muted-foreground hover:text-primary transition-colors">Home Care</Link></li>
-              <li><Link to="/shop" className="text-muted-foreground hover:text-primary transition-colors">Personal Wellness</Link></li>
-            </ul>
-          </div>
-
-          <div className="col-span-2 md:col-span-1">
+          <div className="space-y-6">
             <h4 className="font-black text-[11px] sm:text-sm uppercase tracking-widest text-foreground mb-4 sm:mb-6">Connect</h4>
             <ul className="grid grid-cols-1 gap-y-4 text-[13px] sm:text-sm text-muted-foreground">
               <li className="flex items-start">

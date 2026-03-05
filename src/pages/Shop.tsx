@@ -11,7 +11,6 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Badge } from '@/components/ui/badge';
 import { Search, Filter, Star, Heart, Eye, Grid3X3, List, ChevronRight, Minus, Plus, Box, Package, Info } from 'lucide-react';
 import ProductDetailsDialog from '@/components/ProductDetailsDialog';
-import { products } from '@/data/products';
 
 const Shop = () => {
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
