@@ -29,7 +29,7 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
             <img src="/assets/logo-clean.png" alt="Fairine Enterprise Logo" className="h-10 w-auto" />
-            <span className="text-xl font-bold text-foreground">Fairine Enterprise</span>
+            <span className="text-xl font-bold text-foreground hidden md:block">Fairine Enterprise</span>
           </Link>
 
           {/* Desktop Navigation */}

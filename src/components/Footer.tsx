@@ -9,9 +9,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-10 gap-x-8">
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 gradient-warm rounded-lg sm:rounded-xl flex items-center justify-center shadow-lg transform -rotate-3 hover:rotate-0 transition-transform duration-300">
-                <div className="w-4 h-4 sm:w-5 sm:h-5 bg-white rounded-sm sm:rounded-md"></div>
-              </div>
+              <img
+                src="/favicon.svg"
+                alt="Fairine Logo"
+                className="w-8 h-8 sm:w-10 sm:h-10 transform -rotate-3 hover:rotate-0 transition-transform duration-300 object-contain"
+              />
               <span className="text-xl sm:text-2xl font-black bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">
                 Fairine
               </span>
@@ -19,11 +21,11 @@ const Footer = () => {
             <p className="text-muted-foreground text-[13px] sm:text-sm leading-relaxed max-w-xs">
               Handcrafted home care and fine product formulations, made with care to bring comfort and quality to your every day.
             </p>
-            <div className="flex items-center space-x-2 pt-1 sm:pt-2">
-              <span className="flex items-center justify-center w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-emerald-500/10 text-emerald-500 text-[8px] sm:text-[10px] font-bold border border-emerald-500/20">
+            <div className="flex items-center space-x-2 pt-2 sm:pt-3">
+              <span className="flex items-center justify-center w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-emerald-500 text-white text-[10px] sm:text-[12px] font-black shadow-lg shadow-emerald-500/20">
                 ✓
               </span>
-              <span className="text-[10px] sm:text-[11px] font-bold text-foreground/80 tracking-wide uppercase">
+              <span className="text-[11px] sm:text-[12px] font-black text-foreground tracking-wider uppercase">
                 FDA Approved Products
               </span>
             </div>
