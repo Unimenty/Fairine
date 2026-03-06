@@ -5,36 +5,36 @@ import { Card, CardContent } from '@/components/ui/card';
 
 const locations = [
     {
-        name: 'Accra Mall',
-        area: 'Tetteh Quarshie',
-        address: 'Plot 76, Tetteh Quarshie Interchange',
-        phone: '+233 30 282 3066',
-        hours: '9:00 AM - 9:00 PM',
-        mapLink: 'https://maps.google.com/maps?q=Accra+Mall,+Ghana&output=embed'
+        name: 'Palace Mall - Tema',
+        area: 'Tema',
+        address: 'Comm. 25 Mall, Tema',
+        phone: '+233 30 290 8599',
+        hours: '9:00 AM - 10:00 PM',
+        mapLink: 'https://maps.google.com/maps?q=Palace+Mall+Tema+Greenwich+Mag+Ghana&output=embed'
     },
     {
-        name: 'Marina Mall',
-        area: 'Airport City',
-        address: 'Airport Residential Area, Accra',
+        name: 'Palace Mall - Spintex',
+        area: 'Spintex',
+        address: 'Coastal Junction, Spintex Rd, Accra',
+        phone: '+233 30 281 3943',
+        hours: '9:00 AM - 10:00 PM',
+        mapLink: 'https://maps.google.com/maps?q=Palace+Mall+Spintex+Accra+Ghana&output=embed'
+    },
+    {
+        name: 'Palace Mall - Labone',
+        area: 'Labone',
+        address: 'Palace Mall, Labone, Accra',
         phone: '+233 30 279 8138',
-        hours: '10:00 AM - 10:00 PM',
-        mapLink: 'https://maps.google.com/maps?q=Marina+Mall,+Accra+Ghana&output=embed'
+        hours: '9:00 AM - 10:00 PM',
+        mapLink: 'https://maps.google.com/maps?q=Palace+Mall+Labone+Accra+Ghana&output=embed'
     },
     {
-        name: 'Achimota Retail Centre',
-        area: 'Achimota',
-        address: 'Achimota-Ofankor Highway, Accra',
-        phone: '+233 30 242 8130',
-        hours: '9:00 AM - 9:00 PM',
-        mapLink: 'https://maps.google.com/maps?q=Achimota+Retail+Centre,+Accra+Ghana&output=embed'
-    },
-    {
-        name: 'Westhills Mall',
-        area: 'Weija',
-        address: 'Winneba Rd, Weija',
-        phone: '+233 30 286 1000',
-        hours: '9:00 AM - 9:00 PM',
-        mapLink: 'https://maps.google.com/maps?q=West+Hills+Mall,+Accra+Ghana&output=embed'
+        name: 'Palace Mall - Adenta',
+        area: 'Adenta',
+        address: 'Palace Mall, Adenta, Accra',
+        phone: '+233 30 251 8130',
+        hours: '9:00 AM - 10:00 PM',
+        mapLink: 'https://maps.google.com/maps?q=Palace+Mall+Atomic+Junction+Accra+Ghana&output=embed'
     }
 ];
 
