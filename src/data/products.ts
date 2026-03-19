@@ -80,5 +80,19 @@ export const products: Product[] = [
         rating: 4.7,
         reviews: 156,
         image: '/assets/shower-gel-500ml.webp'
+    },
+    {
+        id: 5,
+        name: 'Ikeda Premium Fragrances',
+        category: 'Fragrances',
+        description: 'Exclusively available at Fairine. Elevate your space with Ikeda’s collection of premium, long-lasting fragrances. Each bottle is designed to create a refreshing and luxurious atmosphere in your home or car.',
+        variants: [
+            { volume: 'Standard', price: 100, bulkPackSize: 1, image: '/assets/ikeda-products.webp' }
+        ],
+        inStock: true,
+        featured: true,
+        rating: 5.0,
+        reviews: 42,
+        image: '/assets/ikeda-products.webp'
     }
 ];

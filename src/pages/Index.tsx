@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import SEO from '@/components/SEO';
 import Hero from '@/components/Hero';
 import FeaturedProducts from '@/components/FeaturedProducts';
+import IkedaShowcase from '@/components/IkedaShowcase';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Truck, Shield, Leaf, Recycle, Award } from 'lucide-react';
@@ -37,6 +38,7 @@ const Index = () => {
       <Header />
       <Hero />
       <FeaturedProducts />
+      <IkedaShowcase />
 
       {/* Why Choose Us - Bento Grid */}
       <section className="py-24 bg-background relative overflow-hidden">
