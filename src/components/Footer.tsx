@@ -39,16 +39,16 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <span className="font-bold text-foreground mr-2">📧</span>
-                <a href="mailto:fairineenterprise@gmail.com" className="hover:text-primary transition-colors break-all">fairineenterprise@gmail.com</a>
+                <a href="mailto:fairineenterprise@gmail.com" rel="noopener noreferrer" className="hover:text-primary transition-colors break-all">fairineenterprise@gmail.com</a>
               </li>
               <li className="flex flex-col space-y-2 pt-1 sm:pt-2">
                 <span className="text-foreground font-black text-[9px] sm:text-[10px] uppercase tracking-tighter opacity-50">Direct Lines</span>
                 <div className="flex flex-row md:flex-col gap-4 md:gap-1 text-[13px] sm:text-sm">
-                  <a href="tel:+233261233032" className="hover:text-primary transition-colors flex items-center whitespace-nowrap">
+                  <a href="tel:+233261233032" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center whitespace-nowrap">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/40 mr-2 md:inline hidden"></span>
                     +233 26 123 3032
                   </a>
-                  <a href="tel:+233546865035" className="hover:text-primary transition-colors flex items-center whitespace-nowrap">
+                  <a href="tel:+233546865035" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center whitespace-nowrap">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/40 mr-2 md:inline hidden"></span>
                     +233 54 686 5035
                   </a>
@@ -60,7 +60,7 @@ const Footer = () => {
 
         <div className="border-t border-border/40 mt-16 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-muted-foreground text-[10px] sm:text-xs">
-            © 2025 Fairine Enterprise. All rights reserved.
+            © 2026 Fairine Enterprise. All rights reserved.
           </p>
           <p className="text-muted-foreground text-[10px] sm:text-xs italic bg-primary/5 px-3 py-1 rounded-full">
             Made with <span className="text-rose-500">❤️</span> for better living.

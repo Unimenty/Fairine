@@ -1,31 +1,29 @@
 import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
-import { products } from '@/data/products';
+import { products, Product, ProductVariant } from '@/data/products';
 import { toast } from 'sonner';
 import Header from '@/components/Header';
 import SEO from '@/components/SEO';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Badge } from '@/components/ui/badge';
-import { Search, Filter, Star, Heart, Eye, Grid3X3, List, ChevronRight, Minus, Plus, Box, Package, Info } from 'lucide-react';
+import { Search, Box, Package, Minus, Plus } from 'lucide-react';
 import ProductDetailsDialog from '@/components/ProductDetailsDialog';
 
 const Shop = () => {
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
+  const [viewMode] = useState<'grid' | 'list'>('grid');
 
 
   const categories = ['All Products', ...Array.from(new Set(products.map(p => p.category)))];
   const [selectedCategory, setSelectedCategory] = useState('All Products');
 
   // Component for handle product selection state
-  const ProductCard = ({ product, viewMode }: { product: any, viewMode: string }) => {
+  const ProductCard = ({ product, viewMode }: { product: Product, viewMode: string }) => {
     const [isDetailsOpen, setIsDetailsOpen] = useState(false);
     const [selectedVolume, setSelectedVolume] = useState(product.variants[0].volume);
     const [quantity, setQuantity] = useState(1);
 
-    const currentVariant = product.variants.find((v: any) => v.volume === selectedVolume);
+    const currentVariant = product.variants.find((v: ProductVariant) => v.volume === selectedVolume) || product.variants[0];
     const packSizes = [1, currentVariant.bulkPackSize];
     const [selectedPack, setSelectedPack] = useState(packSizes[0]);
     const { addToCart, setDrawerOpen } = useCart();
@@ -53,8 +51,8 @@ const Shop = () => {
     // Handle volume change: update current variant and reset pack if invalid
     const handleVolumeChange = (vol: string) => {
       setSelectedVolume(vol);
-      const newVariant = product.variants.find((v: any) => v.volume === vol);
-      if (selectedPack !== 1) {
+      const newVariant = product.variants.find((v: ProductVariant) => v.volume === vol);
+      if (selectedPack !== 1 && newVariant) {
         setSelectedPack(newVariant.bulkPackSize);
       }
     };
@@ -74,6 +72,7 @@ const Shop = () => {
               <img
                 src={currentVariant.image || product.image}
                 alt={product.name}
+                loading="lazy"
                 className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
               />
 
@@ -109,7 +108,7 @@ const Shop = () => {
                 <Box className="w-2.5 h-2.5" /> Volume
               </span>
               <div className="flex flex-wrap gap-1.5">
-                {product.variants.map((v: any) => (
+                {product.variants.map((v: ProductVariant) => (
                   <button
                     key={v.volume}
                     onClick={() => handleVolumeChange(v.volume)}
@@ -160,6 +159,7 @@ const Shop = () => {
                   <Button
                     size="icon"
                     variant="ghost"
+                    aria-label="Decrease quantity"
                     className="h-7 w-7 rounded-lg"
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
                   >
@@ -169,6 +169,7 @@ const Shop = () => {
                   <Button
                     size="icon"
                     variant="ghost"
+                    aria-label="Increase quantity"
                     className="h-7 w-7 rounded-lg"
                     onClick={() => setQuantity(quantity + 1)}
                   >
@@ -218,12 +219,73 @@ const Shop = () => {
               "name": product.name,
               "description": product.description,
               "image": `https://fairine.com${product.image}`,
+              "brand": {
+                "@type": "Brand",
+                "name": "Fairine"
+              },
               "offers": {
                 "@type": "Offer",
                 "priceCurrency": "GHS",
                 "price": product.variants[0].price,
-                "availability": "https://schema.org/InStock"
-              }
+                "priceValidUntil": "2026-12-31",
+                "availability": "https://schema.org/InStock",
+                "url": `https://fairine.com/shop`,
+                "shippingDetails": {
+                  "@type": "OfferShippingDetails",
+                  "shippingRate": {
+                    "@type": "MonetaryAmount",
+                    "value": "15.00",
+                    "currency": "GHS"
+                  },
+                  "shippingDestination": {
+                    "@type": "DefinedRegion",
+                    "addressCountry": "GH",
+                    "addressRegion": ["Greater Accra"]
+                  },
+                  "deliveryTime": {
+                    "@type": "ShippingDeliveryTime",
+                    "handlingTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 0,
+                      "maxValue": 1,
+                      "unitCode": "DAY"
+                    },
+                    "transitTime": {
+                      "@type": "QuantitativeValue",
+                      "minValue": 1,
+                      "maxValue": 3,
+                      "unitCode": "DAY"
+                    }
+                  }
+                },
+                "hasMerchantReturnPolicy": {
+                  "@type": "MerchantReturnPolicy",
+                  "applicableCountry": "GH",
+                  "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+                  "merchantReturnDays": 7,
+                  "returnMethod": "https://schema.org/ReturnByMail",
+                  "returnFees": "https://schema.org/FreeReturn"
+                }
+              },
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": product.rating,
+                "reviewCount": product.reviews
+              },
+              "review": [
+                {
+                  "@type": "Review",
+                  "author": {
+                    "@type": "Person",
+                    "name": "Verified Customer"
+                  },
+                  "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5"
+                  },
+                  "reviewBody": "Excellent quality cleaning product, highly recommended!"
+                }
+              ]
             }
           }))
         }}

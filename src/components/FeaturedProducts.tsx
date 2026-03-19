@@ -7,10 +7,10 @@ import { useState } from 'react';
 import { useCart } from '@/context/CartContext';
 import { toast } from 'sonner';
 import ProductDetailsDialog from './ProductDetailsDialog';
-import { products } from '@/data/products';
+import { products, Product } from '@/data/products';
 
 const FeaturedProducts = () => {
-  const ProductItem = ({ product }: { product: any }) => {
+  const ProductItem = ({ product }: { product: Product }) => {
     const [isDetailsOpen, setIsDetailsOpen] = useState(false);
     const { addToCart, setDrawerOpen } = useCart();
 
@@ -27,14 +27,25 @@ const FeaturedProducts = () => {
               <img
                 src={product.image}
                 alt={product.name}
+                loading="lazy"
                 className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
               />
 
               <div className="absolute top-2 right-2 flex flex-col space-y-2 hidden sm:flex sm:opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300">
-                <Button size="icon" variant="secondary" className="bg-card/90 backdrop-blur-sm shadow-md rounded-xl border-0 h-8 w-8">
+                <Button 
+                  size="icon" 
+                  variant="secondary" 
+                  aria-label="Add to favorites"
+                  className="bg-card/90 backdrop-blur-sm shadow-md rounded-xl border-0 h-8 w-8"
+                >
                   <Heart className="w-4 h-4 text-rose-500" />
                 </Button>
-                <Button size="icon" variant="secondary" className="bg-card/90 backdrop-blur-sm shadow-md rounded-xl border-0 h-8 w-8">
+                <Button 
+                  size="icon" 
+                  variant="secondary" 
+                  aria-label="View product details"
+                  className="bg-card/90 backdrop-blur-sm shadow-md rounded-xl border-0 h-8 w-8"
+                >
                   <Eye className="w-4 h-4" />
                 </Button>
               </div>
@@ -92,7 +103,7 @@ const FeaturedProducts = () => {
         </Card>
 
         <ProductDetailsDialog
-          product={product as any}
+          product={product}
           open={isDetailsOpen}
           onOpenChange={setIsDetailsOpen}
         />

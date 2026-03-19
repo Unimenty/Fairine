@@ -1,12 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ThemeToggle } from './ThemeToggle';
 import { useCart } from '@/context/CartContext';
+import { cn } from '@/lib/utils';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const { totalItems, setDrawerOpen } = useCart();
 
@@ -18,69 +20,80 @@ const Header = () => {
     { name: 'Contact', path: '/contact' },
   ];
 
-
-
-  // handleCartClick removed in favor of CartDrawer
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
-    <header className="bg-card/80 backdrop-blur-sm shadow-sm border-b border-border sticky top-0 z-50">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 sm:p-6 pointer-events-none">
+      <header 
+        className={cn(
+          "pointer-events-auto transition-all duration-500 ease-in-out flex flex-col items-center",
+          "w-full max-w-6xl rounded-[2rem] sm:rounded-[3rem] border border-border/40 shadow-2xl",
+          "bg-card/80 backdrop-blur-xl",
+          isScrolled ? "py-2 px-4 sm:px-8 translate-y-0" : "py-3 px-4 sm:px-10 translate-y-1 sm:translate-y-2"
+        )}
+      >
+        <div className="flex items-center justify-between w-full h-12 sm:h-14">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-            <img src="/assets/logo-clean.png" alt="Fairine Enterprise Logo" className="h-10 w-auto" />
-            <span className="text-xl font-bold text-foreground hidden md:block">Fairine Enterprise</span>
+            <img src="/assets/logo-clean.png" alt="Fairine Enterprise Logo" className="h-8 sm:h-10 w-auto" />
+            <span className="text-sm sm:text-lg font-black text-foreground tracking-tight hidden xs:block">Fairine Enterprise</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center bg-muted/30 rounded-full px-2 py-1 border border-border/20">
             {navItems.map((item) => (
               <Link
                 key={item.name}
                 to={item.path}
-                className={`text-sm font-medium transition-colors hover:text-primary relative ${isActive(item.path) ? 'text-primary' : 'text-foreground'
-                  }`}
+                className={cn(
+                  "text-xs font-black uppercase tracking-widest px-6 py-2 rounded-full transition-all duration-300",
+                  isActive(item.path) 
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20 scale-105" 
+                    : "text-muted-foreground hover:text-primary"
+                )}
               >
                 {item.name}
-                {isActive(item.path) && (
-                  <div className="absolute -bottom-1 left-0 right-0 h-0.5 gradient-warm rounded-full"></div>
-                )}
               </Link>
             ))}
           </nav>
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center space-x-2">
-
-
             <Button
               variant="ghost"
-              size="sm"
-              className="text-muted-foreground hover:text-primary rounded-full relative"
+              size="icon"
+              className="text-muted-foreground hover:text-primary rounded-full relative bg-muted/20 hover:bg-primary/10 transition-colors h-10 w-10"
               onClick={() => setDrawerOpen(true)}
+              aria-label="Open cart"
             >
               <ShoppingCart className="w-4 h-4" />
               {totalItems > 0 && (
-                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[8px] font-bold px-1 rounded-full">
+                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[8px] font-black px-1.5 py-0.5 rounded-full border-2 border-card">
                   {totalItems}
                 </span>
               )}
             </Button>
-
             <ThemeToggle />
           </div>
 
           {/* Mobile Actions */}
-          <div className="md:hidden flex items-center space-x-1">
+          <div className="md:hidden flex items-center space-x-1 sm:space-x-2">
             <Button
               variant="ghost"
-              size="sm"
-              className="text-foreground relative rounded-full w-9 h-9 flex items-center justify-center"
+              size="icon"
+              className="text-foreground relative rounded-full w-9 h-9 flex items-center justify-center bg-muted/20"
               onClick={() => setDrawerOpen(true)}
+              aria-label="Open cart"
             >
-              <ShoppingCart className="w-5 h-5" />
+              <ShoppingCart className="w-4.5 h-4.5" />
               {totalItems > 0 && (
-                <span className="absolute top-1 right-1 bg-primary text-primary-foreground text-[8px] font-bold px-1 rounded-full border border-card">
+                <span className="absolute -top-1 -right-1 bg-primary text-primary-foreground text-[8px] font-black px-1.5 py-0.5 rounded-full border-2 border-card">
                   {totalItems}
                 </span>
               )}
@@ -88,9 +101,10 @@ const Header = () => {
             <ThemeToggle />
             <Button
               variant="ghost"
-              size="sm"
-              className="text-foreground rounded-full w-9 h-9"
+              size="icon"
+              className="text-foreground rounded-full w-9 h-9 bg-primary/10 text-primary"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
             >
               {isMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </Button>
@@ -98,53 +112,45 @@ const Header = () => {
         </div>
 
         {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="md:hidden py-6 border-t border-border animate-in fade-in slide-in-from-top-4 duration-300">
-            <div className="flex flex-col space-y-4">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.path}
-                  className={`text-lg font-semibold transition-colors hover:text-primary px-2 py-1 ${isActive(item.path) ? 'text-primary' : 'text-foreground'
-                    }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item.name}
-                </Link>
-              ))}
-              <div className="flex flex-col space-y-4 pt-6 border-t border-border">
-
-
-                <Button
-                  className="justify-start w-full bg-primary/10 hover:bg-primary/20 text-primary border-0 rounded-xl px-4 py-6 h-auto"
-                  onClick={() => {
-                    setIsMenuOpen(false);
-                    setDrawerOpen(true);
-                  }}
-                >
-                  <div className="relative mr-3">
-                    <ShoppingCart className="w-5 h-5" />
-                    {totalItems > 0 && (
-                      <span className="absolute -top-1.5 -right-1.5 bg-primary text-primary-foreground text-[8px] font-bold px-1.5 py-0.5 rounded-full border border-card">
-                        {totalItems}
-                      </span>
-                    )}
-                  </div>
-                  <div className="text-left">
-                    <p className="font-bold text-sm">View Your Cart</p>
-                    <p className="text-[10px] opacity-70">
-                      {totalItems === 0
-                        ? "Your cart is currently empty"
-                        : `${totalItems} item${totalItems !== 1 ? 's' : ''} in your cart`}
-                    </p>
-                  </div>
-                </Button>
-              </div>
+        <div 
+          className={cn(
+            "md:hidden w-full overflow-hidden transition-all duration-500 ease-in-out",
+            isMenuOpen ? "max-h-[400px] opacity-100 mt-6 pb-4" : "max-h-0 opacity-0"
+          )}
+        >
+          <div className="flex flex-col space-y-3">
+            {navItems.map((item) => (
+              <Link
+                key={item.name}
+                to={item.path}
+                className={cn(
+                  "text-base font-black uppercase tracking-widest px-6 py-4 rounded-2xl transition-all",
+                  isActive(item.path) 
+                    ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20" 
+                    : "bg-muted/30 text-muted-foreground hover:bg-muted/50"
+                )}
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+            
+            <div className="pt-4 border-t border-border/40">
+              <Button
+                className="w-full bg-slate-900 dark:bg-primary text-white font-black uppercase tracking-widest py-6 rounded-2xl shadow-xl hover:scale-[1.02] transition-all"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setDrawerOpen(true);
+                }}
+              >
+                <ShoppingCart className="w-5 h-5 mr-3" />
+                Checkout ({totalItems})
+              </Button>
             </div>
           </div>
-        )}
-      </div>
-    </header>
+        </div>
+      </header>
+    </div>
   );
 };
 

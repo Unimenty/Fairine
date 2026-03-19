@@ -41,8 +41,35 @@ const locations = [
 const StoreLocator = () => {
     const [activeStore, setActiveStore] = useState(locations[0]);
 
+    const structuredData = {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": locations.map((store, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "item": {
+                "@type": "LocalBusiness",
+                "name": `Fairine at ${store.name}`,
+                "address": {
+                    "@type": "PostalAddress",
+                    "streetAddress": store.address,
+                    "addressLocality": store.area,
+                    "addressRegion": "Greater Accra",
+                    "addressCountry": "GH"
+                },
+                "telephone": store.phone,
+                "openingHours": "Mo-Su 09:00-22:00",
+                "image": "https://fairine.com/assets/logo-clean.png",
+                "priceRange": "GH₵"
+            }
+        }))
+    };
+
     return (
         <section className="py-24 bg-muted/30 relative overflow-hidden">
+            <script type="application/ld+json">
+                {JSON.stringify(structuredData)}
+            </script>
             {/* Decorative patterns */}
             <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
             <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-primary/5 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2"></div>

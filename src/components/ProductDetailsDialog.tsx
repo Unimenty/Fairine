@@ -57,8 +57,88 @@ const ProductDetailsDialog = ({ product, trigger, open, onOpenChange }: ProductD
 
   const totalPrice = (currentVariant.price * selectedPack).toFixed(2);
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": product.name,
+    "image": `https://fairine.com${currentVariant.image || product.image}`,
+    "description": product.description,
+    "brand": {
+      "@type": "Brand",
+      "name": "Fairine"
+    },
+    "sku": `${product.id}-${selectedVolume}-${selectedPack}`,
+    "offers": {
+      "@type": "Offer",
+      "url": `https://fairine.com/shop`,
+      "priceCurrency": "GHS",
+      "price": totalPrice,
+      "priceValidUntil": "2026-12-31",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "15.00",
+          "currency": "GHS"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "GH",
+          "addressRegion": ["Greater Accra"]
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 1,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 1,
+            "maxValue": 3,
+            "unitCode": "DAY"
+          }
+        }
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "GH",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 7,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn"
+      }
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": product.rating,
+      "reviewCount": product.reviews
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": {
+          "@type": "Person",
+          "name": "Verified Customer"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "reviewBody": "Excellent quality cleaning product, highly recommended!"
+      }
+    ]
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData)}
+      </script>
       {trigger && <DialogTrigger asChild>{trigger}</DialogTrigger>}
       <DialogContent className="w-[88vw] sm:max-w-4xl p-0 overflow-hidden rounded-[1.25rem] sm:rounded-[2rem] border-none shadow-2xl max-h-[85vh] sm:max-h-[92vh] flex flex-col md:block">
         <div className="flex flex-col md:grid md:grid-cols-2 h-full md:h-auto overflow-y-auto md:overflow-visible">

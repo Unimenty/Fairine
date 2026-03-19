@@ -14,9 +14,9 @@ const Index = () => {
     <div className="min-h-screen bg-background transition-colors duration-500">
       <SEO
         title="Buy Quality Soap & Cleaning Detergents in Ghana | Fairine Enterprise"
-        description="Shop effective liquid soaps, powerful floor cleaners, and premium detergents. Fairine Enterprise is your trusted manufacturer and supplier of cleaning products in Accra and across Ghana. Bulk orders available."
+        description="Shop effective liquid soaps, powerful floor cleaners, and premium detergents at Fairine Enterprise. Trusted manufacturer in Accra, Spintex, Tema, East Legon, and across Ghana. Bulk wholesale cleaning supplies available."
         canonical="/"
-        keywords="buy soap Ghana, cleaning detergents Accra, liquid soap manufacturer Ghana, floor cleaner price Accra, best dishwasher soap Ghana, bulk cleaning supplies, laundry detergent suppliers"
+        keywords="buy soap Ghana, cleaning detergents Accra, liquid soap manufacturer Ghana, floor cleaner price Accra, best dishwasher soap Ghana, bulk cleaning supplies, laundry detergent suppliers, liquid soap in Spintex, cleaning products Tema, wholesale soap East Legon, detergents in Adenta, Dansoman cleaning supplies"
         structuredData={{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
@@ -24,12 +24,13 @@ const Index = () => {
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Accra",
+            "addressRegion": "Greater Accra",
             "addressCountry": "GH"
           },
           "telephone": "+233 26 123 3032",
           "email": "fairineenterprise@gmail.com",
           "image": "https://fairine.com/assets/logo-clean.png",
-          "description": "Manufacturer and supplier of high-quality liquid soaps, detergents, and floor cleaners in Ghana. We provide effective cleaning solutions for homes and businesses.",
+          "description": "Manufacturer and supplier of high-quality liquid soaps, detergents, and floor cleaners in Ghana. Serving Accra, Tema, Kumasi and beyond.",
           "priceRange": "GH₵"
         }}
       />
