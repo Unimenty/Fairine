@@ -17,15 +17,15 @@ const IkedaShowcase = () => {
             <div className="p-8 sm:p-16 lg:p-20 flex flex-col justify-center order-2 lg:order-1">
               <div className="inline-flex items-center space-x-2 bg-primary/20 text-primary px-4 py-2 rounded-full w-fit mb-8 border border-primary/20">
                 <Sparkles className="w-4 h-4" />
-                <span className="text-[10px] font-black uppercase tracking-widest">Exclusive Partnership</span>
+                <span className="text-[10px] font-black uppercase tracking-widest">Special Addition</span>
               </div>
               
               <h2 className="text-4xl sm:text-6xl font-black text-white mb-6 leading-[1.1] tracking-tight">
-                Luxury <span className="text-primary italic">Scents</span> by Ikeda
+                Luxury <span className="text-primary italic">Scents</span> now at Fairine
               </h2>
               
               <p className="text-slate-400 text-lg sm:text-xl font-medium leading-relaxed mb-10 max-w-lg">
-                We've partnered with Ikeda to bring their premium, world-class fragrances to Ghana. From refreshing car scents to elegant home diffusers, experience the collection that everyone is talking about.
+                We've added a handpicked selection of Ikeda's premium fragrances to our shop. Perfect for your car or home, these long-lasting scents are the ideal companion to your favorite Fairine cleaning essentials.
               </p>
               
               <div className="flex flex-col sm:flex-row items-start sm:items-center gap-6">

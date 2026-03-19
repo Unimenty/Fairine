@@ -85,7 +85,7 @@ export const products: Product[] = [
         id: 5,
         name: 'Ikeda Premium Fragrances',
         category: 'Fragrances',
-        description: 'Exclusively available at Fairine. Elevate your space with Ikeda’s collection of premium, long-lasting fragrances. Each bottle is designed to create a refreshing and luxurious atmosphere in your home or car.',
+        description: 'Elevate your space with a selection of premium, long-lasting Ikeda fragrances now available at Fairine. Each bottle is designed to create a refreshing and luxurious atmosphere in your home or car.',
         variants: [
             { volume: 'Standard', price: 100, bulkPackSize: 1, image: '/assets/ikeda-products.webp' }
         ],
