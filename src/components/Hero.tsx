@@ -46,9 +46,9 @@ const Hero = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-36 h-10 bg-white/5 border border-white/40 text-white hover:bg-white hover:text-black font-bold rounded-xl transition-all duration-300 text-[13px] uppercase tracking-wide"
+                className="w-full sm:w-48 h-10 bg-white/5 border border-white/40 text-white hover:bg-white hover:text-black font-bold rounded-xl transition-all duration-300 text-[13px] uppercase tracking-wide"
               >
-                Learn More
+                About Our Story
               </Button>
             </Link>
           </div>

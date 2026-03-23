@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
-import prerender from "vite-plugin-prerender";
+import { vitePrerenderPlugin } from "vite-prerender-plugin";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -11,9 +11,8 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    prerender({
-      staticDir: path.join(__dirname, "dist"),
-      routes: [
+    vitePrerenderPlugin({
+      additionalPrerenderRoutes: [
         "/",
         "/shop",
         "/shop/home-care",
@@ -28,12 +27,6 @@ export default defineConfig(({ mode }) => ({
         "/product/shower-gel",
         "/product/ikeda-perfumes",
       ],
-      postProcess(renderedRoute) {
-        renderedRoute.html = renderedRoute.html
-          .replace(/src=\"\//g, 'src=\"https://fairine.com/')
-          .replace(/href=\"\//g, 'href=\"https://fairine.com/');
-        return renderedRoute;
-      },
     }),
   ],
   resolve: {
