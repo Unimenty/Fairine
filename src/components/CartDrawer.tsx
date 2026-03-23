@@ -22,7 +22,7 @@ const CartDrawer: React.FC = () => {
   const { cartItems, removeFromCart, updateQuantity, totalPrice, totalItems, isDrawerOpen, setDrawerOpen, clearCart } = useCart();
   const [step, setStep] = useState<CheckoutStep>('cart');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const [customerInfo, setCustomerInfo] = useState({
     name: '',
     phone: '',
@@ -31,7 +31,7 @@ const CartDrawer: React.FC = () => {
     notes: ''
   });
 
-  const WHATSAPP_NUMBER = "233261233032";
+  const WHATSAPP_NUMBER = "0504048528";
 
   const handleWhatsAppCheckout = () => {
     if (cartItems.length === 0) return;
@@ -39,15 +39,14 @@ const CartDrawer: React.FC = () => {
     const message = `Hi Fairine Enterprise! 🛍️\n\nI'd like to place an order for the following items:\n\n${cartItems
       .map(
         (item) =>
-          `• *${item.name}*\n  ${item.variant.volume}${
-            item.variant.packSize > 1 ? ` (Pack of ${item.variant.packSize})` : " (Single)"
+          `• *${item.name}*\n  ${item.variant.volume}${item.variant.packSize > 1 ? ` (Pack of ${item.variant.packSize})` : " (Single)"
           }\n  Qty: ${item.quantity} | Total: GHC ${(item.price * item.quantity).toFixed(2)}`
       )
       .join("\n\n")}\n\n*Order Total: GHC ${totalPrice.toFixed(2)}*\n\n*Customer Details:*\n• Name: ${customerInfo.name || 'Not provided'}\n• Phone: ${customerInfo.phone || 'Not provided'}\n• Address: ${customerInfo.address || 'Not provided'}\n\nPlease let me know the next steps for delivery and payment. Thank you!`;
 
     const encodedMessage = encodeURIComponent(message);
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-    
+
     window.open(whatsappUrl, "_blank");
   };
 
@@ -56,7 +55,7 @@ const CartDrawer: React.FC = () => {
     if (!customerInfo.name || !customerInfo.phone || !customerInfo.address) return;
 
     setIsSubmitting(true);
-    
+
     // Formatting the order details for the email
     const orderItems = cartItems
       .map(item => `${item.name} (${item.variant.volume}, ${item.variant.packSize > 1 ? `Pack of ${item.variant.packSize}` : 'Single'}) x${item.quantity}: GHC ${(item.price * item.quantity).toFixed(2)}`)
@@ -102,7 +101,7 @@ const CartDrawer: React.FC = () => {
       }
     }}>
       <SheetContent className="w-full sm:max-w-md flex flex-col p-0 border-l-0 sm:border-l bg-background">
-        
+
         {/* Header - Dynamic Title */}
         <SheetHeader className="p-6 border-b flex-row items-center justify-between space-y-0">
           <SheetTitle className="text-2xl font-black tracking-tight flex items-center gap-2">
@@ -163,7 +162,7 @@ const CartDrawer: React.FC = () => {
                           <div>
                             <div className="flex justify-between gap-2">
                               <h4 className="font-bold text-sm line-clamp-1">{item.name}</h4>
-                              <button 
+                              <button
                                 onClick={() => removeFromCart(item.id, item.variant)}
                                 className="text-muted-foreground hover:text-destructive transition-colors shrink-0"
                               >
@@ -174,7 +173,7 @@ const CartDrawer: React.FC = () => {
                               {item.variant.volume} · {item.variant.packSize === 1 ? 'Single' : `Pack of ${item.variant.packSize}`}
                             </p>
                           </div>
-                          
+
                           <div className="flex items-center justify-between mt-2">
                             <div className="flex items-center bg-muted/50 rounded-lg p-0.5 border border-border/50">
                               <Button
@@ -212,36 +211,36 @@ const CartDrawer: React.FC = () => {
                 <div className="space-y-4">
                   <div className="space-y-2">
                     <Label htmlFor="checkout-name" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Full Name</Label>
-                    <Input 
-                      id="checkout-name" 
-                      placeholder="Your first and last name" 
+                    <Input
+                      id="checkout-name"
+                      placeholder="Your first and last name"
                       className="rounded-xl h-12"
                       required
                       value={customerInfo.name}
-                      onChange={(e) => setCustomerInfo({...customerInfo, name: e.target.value})}
+                      onChange={(e) => setCustomerInfo({ ...customerInfo, name: e.target.value })}
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="checkout-phone" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Phone Number</Label>
-                    <Input 
-                      id="checkout-phone" 
-                      placeholder="e.g., 026 123 4567" 
+                    <Input
+                      id="checkout-phone"
+                      placeholder="e.g., 026 123 4567"
                       className="rounded-xl h-12"
                       required
                       type="tel"
                       value={customerInfo.phone}
-                      onChange={(e) => setCustomerInfo({...customerInfo, phone: e.target.value})}
+                      onChange={(e) => setCustomerInfo({ ...customerInfo, phone: e.target.value })}
                     />
                   </div>
                   <div className="space-y-2">
                     <Label htmlFor="checkout-address" className="text-xs font-black uppercase tracking-widest text-muted-foreground ml-1">Delivery Address</Label>
-                    <Textarea 
-                      id="checkout-address" 
-                      placeholder="Please provide your full delivery address or landmark" 
+                    <Textarea
+                      id="checkout-address"
+                      placeholder="Please provide your full delivery address or landmark"
                       className="rounded-xl min-h-[100px] resize-none p-4"
                       required
                       value={customerInfo.address}
-                      onChange={(e) => setCustomerInfo({...customerInfo, address: e.target.value})}
+                      onChange={(e) => setCustomerInfo({ ...customerInfo, address: e.target.value })}
                     />
                   </div>
                 </div>
@@ -286,7 +285,7 @@ const CartDrawer: React.FC = () => {
 
             <div className="w-full flex flex-col gap-3 pt-2">
               {step === 'cart' ? (
-                <Button 
+                <Button
                   className="w-full h-14 text-base font-black uppercase tracking-widest shadow-xl shadow-primary/20 gradient-warm border-none"
                   onClick={() => setStep('details')}
                 >
@@ -294,7 +293,7 @@ const CartDrawer: React.FC = () => {
                 </Button>
               ) : (
                 <>
-                  <Button 
+                  <Button
                     type="submit"
                     form="checkout-form"
                     disabled={isSubmitting}
@@ -302,7 +301,7 @@ const CartDrawer: React.FC = () => {
                   >
                     {isSubmitting ? 'Sending Order...' : 'Confirm Order'}
                   </Button>
-                  <Button 
+                  <Button
                     type="button"
                     variant="ghost"
                     className="w-full h-10 text-xs font-bold text-muted-foreground hover:text-primary transition-colors flex items-center justify-center gap-2"

@@ -44,9 +44,9 @@ const Footer = () => {
               <li className="flex flex-col space-y-2 pt-1 sm:pt-2">
                 <span className="text-foreground font-black text-[9px] sm:text-[10px] uppercase tracking-tighter opacity-50">Direct Lines</span>
                 <div className="flex flex-row md:flex-col gap-4 md:gap-1 text-[13px] sm:text-sm">
-                  <a href="tel:+233261233032" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center whitespace-nowrap">
+                  <a href="tel:+233504048528" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center whitespace-nowrap">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/40 mr-2 md:inline hidden"></span>
-                    +233 26 123 3032
+                    +233 50 404 8528
                   </a>
                   <a href="tel:+233546865035" rel="noopener noreferrer" className="hover:text-primary transition-colors flex items-center whitespace-nowrap">
                     <span className="w-1.5 h-1.5 rounded-full bg-primary/40 mr-2 md:inline hidden"></span>

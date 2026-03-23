@@ -9,6 +9,7 @@ interface SEOProps {
     structuredData?: object;
     noindex?: boolean;
     keywords?: string;
+    breadcrumb?: { name: string; url: string }[];
 }
 
 const SEO = ({
@@ -20,11 +21,42 @@ const SEO = ({
     structuredData,
     noindex = false,
     keywords,
+    breadcrumb,
 }: SEOProps) => {
     const siteName = 'Fairine Enterprise';
-    const fullTitle = title ? `${title} | ${siteName}` : `${siteName} | Buy Quality Soap & Cleaning Detergents in Ghana`;
     const siteUrl = 'https://fairine.com'; // Replace with actual production URL if different
+    const fullTitle = title ? `${title} | ${siteName}` : `${siteName} | Buy Quality Soap & Cleaning Detergents in Ghana`;
     const currentUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
+
+    const organizationSchema = {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": siteName,
+        "url": siteUrl,
+        "logo": `${siteUrl}/assets/logo-clean.png`,
+        "description": "Manufacturer and supplier of high-quality liquid soaps and cleaning detergents in Ghana.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Accra",
+            "addressRegion": "Greater Accra",
+            "addressCountry": "GH"
+        },
+        "sameAs": [
+            "https://www.facebook.com/fairineenterprise",
+            "https://www.instagram.com/fairineenterprise"
+        ]
+    };
+
+    const breadcrumbSchema = breadcrumb ? {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": breadcrumb.map((item, index) => ({
+            "@type": "ListItem",
+            "position": index + 1,
+            "name": item.name,
+            "item": `${siteUrl}${item.url}`
+        }))
+    } : null;
 
     return (
         <Helmet>
@@ -44,28 +76,20 @@ const SEO = ({
             <meta property="og:image" content={`${siteUrl}${ogImage}`} />
 
             {/* Structured Data (JSON-LD) */}
-            {structuredData && (
+            {breadcrumbSchema && (
                 <script type="application/ld+json">
-                    {JSON.stringify(structuredData)}
+                    {JSON.stringify(breadcrumbSchema)}
                 </script>
             )}
 
-            {/* Default Organization Schema for all pages */}
-            {!structuredData && (
+            {structuredData ? (
                 <script type="application/ld+json">
-                    {JSON.stringify({
-                        "@context": "https://schema.org",
-                        "@type": "Organization",
-                        "name": "Fairine Enterprise",
-                        "url": "https://fairine.com",
-                        "logo": "https://fairine.com/assets/logo-clean.png",
-                        "description": "Manufacturer and supplier of high-quality liquid soaps and cleaning detergents in Ghana.",
-                        "address": {
-                            "@type": "PostalAddress",
-                            "addressLocality": "Accra",
-                            "addressCountry": "GH"
-                        }
-                    })}
+                    {JSON.stringify(structuredData)}
+                </script>
+            ) : (
+                /* Default Organization Schema for all pages */
+                <script type="application/ld+json">
+                    {JSON.stringify(organizationSchema)}
                 </script>
             )}
         </Helmet>

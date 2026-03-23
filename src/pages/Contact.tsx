@@ -75,10 +75,10 @@ const Contact = () => {
     {
       icon: <MessageSquare className="w-6 h-6" />,
       title: 'WhatsApp us',
-      info: '+233 26 123 3032',
+      info: '+233 50 404 8528',
       description: 'The quickest way to reach our small team',
       primary: true,
-      link: 'https://wa.me/233261233032?text=Hello%20Fairine%20Team!%20I%20found%20your%20website%20and%20would%20like%20to%20make%20an%20enquiry.'
+      link: 'https://wa.me/233504048528?text=Hello%20Fairine%20Team!%20I%20found%20your%20website%20and%20would%20like%20to%20make%20an%20enquiry.'
     },
     {
       icon: <Phone className="w-6 h-6" />,
@@ -104,16 +104,24 @@ const Contact = () => {
         description="Have questions or feedback? Reach out to the Fairine team via WhatsApp, phone, or email. We're here to help you care for your home."
         keywords="contact Fairine, Fairine customer support, purchase liquid soap Accra, Fairine WhatsApp, home care inquiry"
         canonical="/contact"
+        breadcrumb={[
+          { name: "Home", url: "/" },
+          { name: "Contact", url: "/contact" }
+        ]}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "Organization",
           "name": "Fairine Enterprise",
           "url": "https://fairine.com",
           "logo": "https://fairine.com/assets/logo-clean.png",
+          "sameAs": [
+            "https://www.facebook.com/fairineenterprise",
+            "https://www.instagram.com/fairineenterprise"
+          ],
           "contactPoint": [
             {
               "@type": "ContactPoint",
-              "telephone": "+233 26 123 3032",
+              "telephone": "+233 50 404 8528",
               "contactType": "customer service",
               "areaServed": "GH",
               "availableLanguage": "English"

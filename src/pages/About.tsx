@@ -37,6 +37,10 @@ const About = () => {
         description="Learn about the artisan heart behind Fairine Enterprise. Meet our founder Catherine Komey and discover how we craft care for your home."
         keywords="about Fairine, Catherine Komey, artisan home care Ghana, sustainable cleaning products, handmade soap story"
         canonical="/about"
+        breadcrumb={[
+          { name: "Home", url: "/" },
+          { name: "About", url: "/about" }
+        ]}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "FAQPage",

@@ -18,21 +18,29 @@ const Index = () => {
         description="Shop effective liquid soaps, powerful floor cleaners, and premium detergents at Fairine Enterprise. Trusted manufacturer in Accra, Spintex, Tema, East Legon, and across Ghana. Bulk wholesale cleaning supplies available."
         canonical="/"
         keywords="buy soap Ghana, cleaning detergents Accra, liquid soap manufacturer Ghana, floor cleaner price Accra, best dishwasher soap Ghana, bulk cleaning supplies, laundry detergent suppliers, liquid soap in Spintex, cleaning products Tema, wholesale soap East Legon, detergents in Adenta, Dansoman cleaning supplies"
+        breadcrumb={[{ name: "Home", url: "/" }]}
         structuredData={{
           "@context": "https://schema.org",
           "@type": "LocalBusiness",
           "name": "Fairine Enterprise",
+          "url": "https://fairine.com",
+          "logo": "https://fairine.com/assets/logo-clean.png",
           "address": {
             "@type": "PostalAddress",
+            "streetAddress": "Spintex Road",
             "addressLocality": "Accra",
             "addressRegion": "Greater Accra",
             "addressCountry": "GH"
           },
-          "telephone": "+233 26 123 3032",
+          "telephone": "+233 50 404 8528",
           "email": "fairineenterprise@gmail.com",
           "image": "https://fairine.com/assets/logo-clean.png",
           "description": "Manufacturer and supplier of high-quality liquid soaps, detergents, and floor cleaners in Ghana. Serving Accra, Tema, Kumasi and beyond.",
-          "priceRange": "GH₵"
+          "priceRange": "GH₵",
+          "sameAs": [
+            "https://www.facebook.com/fairineenterprise",
+            "https://www.instagram.com/fairineenterprise"
+          ]
         }}
       />
       <Header />
