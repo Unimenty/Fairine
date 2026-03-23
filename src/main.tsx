@@ -1,5 +1,14 @@
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import App from './App.tsx'
 import './index.css'
 
-createRoot(document.getElementById("root")!).render(<App />);
+const rootElement = document.getElementById("root")!;
+
+if (rootElement.hasChildNodes()) {
+    hydrateRoot(rootElement, <App />);
+} else {
+    createRoot(rootElement).render(<App />);
+}
+
+// Dispatch event for pre-renderer
+document.dispatchEvent(new Event("render-event"));

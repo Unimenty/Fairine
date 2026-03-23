@@ -9,6 +9,7 @@ export interface ProductVariant {
 export interface Product {
     id: number;
     name: string;
+    slug: string;
     category: string;
     description: string;
     variants: ProductVariant[];
@@ -23,6 +24,7 @@ export const products: Product[] = [
     {
         id: 1,
         name: 'Fairine Liquid Soap',
+        slug: 'liquid-soap',
         category: 'Home Care',
         description: 'High-quality multi-purpose liquid soap with a refreshing fragrance. Effective for washing dishes, hands, and various surfaces.',
         variants: [
@@ -39,6 +41,7 @@ export const products: Product[] = [
     {
         id: 2,
         name: 'Fairine Floor Cleaner',
+        slug: 'floor-cleaner',
         category: 'Home Care',
         description: 'Powerful disinfectant floor cleaner that removes tough stains and leaves a long-lasting fresh scent. Safe for all floor types.',
         variants: [
@@ -54,6 +57,7 @@ export const products: Product[] = [
     {
         id: 3,
         name: 'Fairine Fabric Softener',
+        slug: 'fabric-softener',
         category: 'Fabric Care',
         description: 'Premium fabric companion that keeps your clothes smelling fresh and feeling soft after every wash. Protects fibers and reduces static.',
         variants: [
@@ -69,6 +73,7 @@ export const products: Product[] = [
     {
         id: 4,
         name: 'Fairine Shower Gel',
+        slug: 'shower-gel',
         category: 'Personal Care',
         description: 'Gentle and moisturizing shower gel formulated for daily use. Leaves skin feeling clean, smooth, and beautifully scented.',
         variants: [
@@ -84,6 +89,7 @@ export const products: Product[] = [
     {
         id: 5,
         name: 'Ikeda Premium Fragrances',
+        slug: 'ikeda-perfumes',
         category: 'Fragrances',
         description: 'Elevate your space with a selection of premium, long-lasting Ikeda fragrances now available at Fairine. Each bottle is designed to create a refreshing and luxurious atmosphere in your home or car.',
         variants: [

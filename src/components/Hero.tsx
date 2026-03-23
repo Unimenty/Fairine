@@ -11,6 +11,8 @@ const Hero = () => {
           src="/images/hero-bg.jpg"
           alt="Fairine Enterprise Premium Home Care Products Ghana"
           className="w-full h-full object-cover object-center"
+          fetchPriority="high"
+          loading="eager"
           onError={(e) => {
             (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=2000';
           }}
