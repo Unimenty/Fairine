@@ -8,14 +8,16 @@ const Hero = () => {
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <img
-          srcSet="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=640 640w,
-                  https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=1200 1200w,
-                  https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=1920 1920w"
+          srcSet="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=60&w=480 480w,
+                  https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=60&w=800 800w,
+                  https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=60&w=1200 1200w,
+                  https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=60&w=1920 1920w"
           sizes="100vw"
-          src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=1200"
+          src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=60&w=1200"
           alt="Fairine Enterprise Premium Home Care Products Ghana"
           className="w-full h-full object-cover object-center"
           fetchPriority="high"
+          decoding="async"
           loading="eager"
         />
         {/* Deep Bottom Gradient for Contrast */}

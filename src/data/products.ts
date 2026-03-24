@@ -91,7 +91,7 @@ export const products: Product[] = [
         name: 'Ikeda Premium Fragrances',
         slug: 'ikeda-perfumes',
         category: 'Fragrances',
-        description: 'Elevate your space with a selection of premium, long-lasting Ikeda fragrances now available at Fairine. Each bottle is designed to create a refreshing and luxurious atmosphere in your home or car.',
+        description: 'Elevate your space with premium, long-lasting Ikeda fragrances, now available at Fairine in Accra. Each bottle is designed to create a refreshing and luxurious atmosphere in your home or car. Available at 100 GHS per bottle. High-quality air fresheners for the discerning Ghanaian household.',
         variants: [
             { volume: 'Standard', price: 100, bulkPackSize: 1, image: '/assets/ikeda-products.webp' }
         ],
@@ -100,5 +100,20 @@ export const products: Product[] = [
         rating: 5.0,
         reviews: 42,
         image: '/assets/ikeda-products.webp'
+    },
+    {
+        id: 6,
+        name: 'Flo 360 Sanitary Pad',
+        slug: 'flo-360-sanitary-pad',
+        category: 'Sanitary Care',
+        description: 'Experience 360° leak-proof confidence with Flo 360 Sanitary Pads, the best choice for reliable period protection in Ghana. These ultra-thin, breathable pads are hypoallergenic and skin-friendly, keeping you fresh all day. Affordable quality at just 25 GHS per pack. Perfect for an active lifestyle and sensitive skin.',
+        variants: [
+            { volume: 'Standard', price: 25, bulkPackSize: 1, image: '/assets/flo-360.avif' }
+        ],
+        inStock: true,
+        featured: true,
+        rating: 5.0,
+        reviews: 24,
+        image: '/assets/flo-360.avif'
     }
 ];

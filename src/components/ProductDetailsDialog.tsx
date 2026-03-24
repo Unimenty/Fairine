@@ -35,7 +35,7 @@ interface ProductDetailsDialogProps {
 const ProductDetailsDialog = ({ product, trigger, open, onOpenChange }: ProductDetailsDialogProps) => {
   const [selectedVolume, setSelectedVolume] = useState(product.variants[0].volume);
   const currentVariant = product.variants.find((v) => v.volume === selectedVolume)!;
-  const packSizes = [1, currentVariant.bulkPackSize];
+  const packSizes = Array.from(new Set([1, currentVariant.bulkPackSize]));
   const [selectedPack, setSelectedPack] = useState(packSizes[0]);
 
   // Preload all variant images for instant transitions
@@ -149,6 +149,8 @@ const ProductDetailsDialog = ({ product, trigger, open, onOpenChange }: ProductD
               <img
                 src={currentVariant.image || product.image}
                 alt={product.name}
+                loading="lazy"
+                decoding="async"
                 className="w-40 h-40 sm:w-64 sm:h-64 lg:w-80 lg:h-80 object-contain rounded-[1.5rem] md:rounded-[3rem] shadow-none group-hover/img:scale-105 transition-transform duration-700"
               />
               {/* Floating Badges */}

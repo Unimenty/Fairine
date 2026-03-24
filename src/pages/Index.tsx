@@ -17,7 +17,7 @@ const Index = () => {
         title="Buy Quality Soap & Cleaning Detergents in Ghana | Fairine Enterprise"
         description="Shop effective liquid soaps, powerful floor cleaners, and premium detergents at Fairine Enterprise. Trusted manufacturer in Accra, Spintex, Tema, East Legon, and across Ghana. Bulk wholesale cleaning supplies available."
         canonical="/"
-        keywords="buy soap Ghana, cleaning detergents Accra, liquid soap manufacturer Ghana, floor cleaner price Accra, best dishwasher soap Ghana, bulk cleaning supplies, laundry detergent suppliers, liquid soap in Spintex, cleaning products Tema, wholesale soap East Legon, detergents in Adenta, Dansoman cleaning supplies"
+        keywords="buy soap Ghana, sanitary pads Ghana, premium fragrances Accra, cleaning detergents Accra, liquid soap manufacturer Ghana, floor cleaner price Accra, best dishwasher soap Ghana, bulk cleaning supplies, laundry detergent suppliers, liquid soap in Spintex, cleaning products Tema, wholesale soap East Legon, detergents in Adenta, Dansoman cleaning supplies, period protection Ghana, menstrual hygiene products Accra"
         breadcrumb={[{ name: "Home", url: "/" }]}
         structuredData={{
           "@context": "https://schema.org",
@@ -77,7 +77,7 @@ const Index = () => {
                 <p className="text-muted-foreground font-medium leading-relaxed">
                   Our formulas are engineered for maximum cleaning power, ensuring every drop of our detergent removes tough grease and stains effortlessly.
                 </p>
-                <div aria-hidden="true" className="absolute bottom-4 right-8 text-[4rem] font-black text-foreground/5 pointer-events-none select-none italic group-hover:text-primary/10 transition-colors deco-num-01"></div>
+                <div aria-hidden="true" className="absolute bottom-4 right-8 text-[4rem] font-black text-foreground/15 pointer-events-none select-none italic group-hover:text-primary/20 transition-colors deco-num-01"></div>
               </CardContent>
             </Card>
 
@@ -94,7 +94,7 @@ const Index = () => {
                     We exclusively use skin-friendly ingredients that are tough on dirt but safe for your entire household, including your pets.
                   </p>
                 </div>
-                <div aria-hidden="true" className="mt-8 text-[4rem] font-black text-white/5 dark:text-foreground/5 pointer-events-none select-none italic text-right deco-num-02"></div>
+                <div aria-hidden="true" className="mt-8 text-[4rem] font-black text-white/10 dark:text-foreground/15 pointer-events-none select-none italic text-right deco-num-02"></div>
               </CardContent>
             </Card>
 
@@ -134,7 +134,7 @@ const Index = () => {
                   <h3 className="text-xl font-black text-foreground mb-2 leading-tight">Ghanaian Heritage, <br />Global Standards</h3>
                   <p className="text-sm text-muted-foreground font-medium">We take pride in formulating world-class home care products right here in Accra.</p>
                 </div>
-                <div aria-hidden="true" className="text-[4rem] font-black text-foreground/5 pointer-events-none select-none italic deco-num-03"></div>
+                <div aria-hidden="true" className="text-[4rem] font-black text-foreground/15 pointer-events-none select-none italic deco-num-03"></div>
               </CardContent>
             </Card>
           </div>

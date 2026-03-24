@@ -79,7 +79,7 @@ const Shop = () => {
         const [quantity, setQuantity] = useState(1);
 
         const currentVariant = product.variants.find((v: ProductVariant) => v.volume === selectedVolume) || product.variants[0];
-        const packSizes = [1, currentVariant.bulkPackSize];
+        const packSizes = Array.from(new Set([1, currentVariant.bulkPackSize]));
         const [selectedPack, setSelectedPack] = useState(packSizes[0]);
         const { addToCart, setDrawerOpen } = useCart();
 
@@ -128,6 +128,7 @@ const Shop = () => {
                                 src={currentVariant.image || product.image}
                                 alt={product.name}
                                 loading="lazy"
+                                decoding="async"
                                 className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
                             />
 
@@ -314,6 +315,7 @@ const Shop = () => {
                                         }
                                     }
                                 },
+                                "priceValidUntil": "2026-12-31",
                                 "hasMerchantReturnPolicy": {
                                     "@type": "MerchantReturnPolicy",
                                     "applicableCountry": "GH",
