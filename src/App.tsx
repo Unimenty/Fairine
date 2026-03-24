@@ -30,6 +30,7 @@ const Analytics = () => {
   const location = useLocation();
 
   useEffect(() => {
+    console.log("GA Tracking: Sending pageview for", location.pathname + location.search);
     ReactGA.send({ 
       hitType: "pageview", 
       page: location.pathname + location.search,
