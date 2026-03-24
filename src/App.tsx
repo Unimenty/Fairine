@@ -8,12 +8,12 @@ import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { lazy, Suspense } from "react";
 
-// Route-based code splitting — each page is its own JS chunk
-const Index   = lazy(() => import("./pages/Index"));
-const Shop    = lazy(() => import("./pages/Shop"));
-const About   = lazy(() => import("./pages/About"));
-const Contact = lazy(() => import("./pages/Contact"));
-const NotFound= lazy(() => import("./pages/NotFound"));
+// Direct imports for more reliable production deployment
+import Index   from "./pages/Index";
+import Shop    from "./pages/Shop";
+import About   from "./pages/About";
+import Contact from "./pages/Contact";
+import NotFound from "./pages/NotFound";
 
 import Layout from "@/components/Layout";
 import { CartProvider } from "@/context/CartContext";
