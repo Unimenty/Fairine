@@ -3,10 +3,11 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import ScrollToTop from "@/components/ScrollToTop";
 import { ThemeProvider } from "@/components/ThemeProvider";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
+import ReactGA from "react-ga4";
 
 // Direct imports for more reliable production deployment
 import Index   from "./pages/Index";
@@ -19,7 +20,25 @@ import Layout from "@/components/Layout";
 import { CartProvider } from "@/context/CartContext";
 import { HelmetProvider } from "react-helmet-async";
 
+// Initialize GA4 with your measurement ID
+ReactGA.initialize("G-L0ELRT21BX");
+
 const queryClient = new QueryClient();
+
+// Component to handle page view tracking on route change
+const Analytics = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    ReactGA.send({ 
+      hitType: "pageview", 
+      page: location.pathname + location.search,
+      title: document.title 
+    });
+  }, [location]);
+
+  return null;
+};
 
 // Minimal page skeleton shown while lazy chunk is fetching
 const PageSkeleton = () => (
@@ -35,6 +54,7 @@ const App = () => (
             <Toaster />
             <Sonner />
             <BrowserRouter>
+              <Analytics />
               <ScrollToTop />
               <Layout>
                 <Suspense fallback={<PageSkeleton />}>
