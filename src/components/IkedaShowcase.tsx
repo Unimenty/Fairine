@@ -52,6 +52,8 @@ const IkedaShowcase = () => {
                 src="/assets/ikeda-products.webp" 
                 alt="Ikeda Premium Fragrance Collection" 
                 className="w-full h-full object-cover lg:object-contain transform hover:scale-110 transition-transform duration-1000 p-8"
+                loading="lazy"
+                decoding="async"
               />
               
               {/* Floating feature tags */}

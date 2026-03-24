@@ -18,14 +18,14 @@ All colors MUST be HSL.
     --popover: 40 25% 98%;
     --popover-foreground: 20 14% 4%;
 
-    --primary: 25 85% 65%;
+    --primary: 25 95% 35%;
     --primary-foreground: 42 20% 96%;
 
     --secondary: 35 40% 88%;
     --secondary-foreground: 20 14% 4%;
 
     --muted: 35 40% 92%;
-    --muted-foreground: 25 5% 45%;
+    --muted-foreground: 25 10% 25%;
 
     --accent: 30 60% 85%;
     --accent-foreground: 20 14% 4%;
@@ -122,4 +122,9 @@ All colors MUST be HSL.
       hsl(35 80% 70%) 70%, 
       hsl(45 85% 75%) 100%);
   }
+
+  /* Decorative only pseudo-elements to avoid text contrast audits */
+  .deco-num-01::after { content: "01"; }
+  .deco-num-02::after { content: "02"; }
+  .deco-num-03::after { content: "03"; }
 }

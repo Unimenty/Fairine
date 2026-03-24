@@ -8,14 +8,15 @@ const Hero = () => {
       {/* Background Image Container */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/images/hero-bg.jpg"
+          srcSet="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=640 640w,
+                  https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=1200 1200w,
+                  https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=1920 1920w"
+          sizes="100vw"
+          src="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=1200"
           alt="Fairine Enterprise Premium Home Care Products Ghana"
           className="w-full h-full object-cover object-center"
           fetchPriority="high"
           loading="eager"
-          onError={(e) => {
-            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=2000';
-          }}
         />
         {/* Deep Bottom Gradient for Contrast */}
         <div className="absolute inset-0 bg-black/20"></div>

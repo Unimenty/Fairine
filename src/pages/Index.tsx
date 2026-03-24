@@ -61,7 +61,7 @@ const Index = () => {
             </h2>
             <p className="text-base sm:text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-medium">
               We manufacture the most effective liquid soaps and cleaning detergents in Ghana. Designed for power and efficiency, our products ensure your home stays spotless and fresh. Quality you can trust, prices you'll love.
-              <Link to="/shop" className="text-primary hover:underline"> Explore our full catalog.</Link>
+              <Link to="/shop" className="text-primary font-bold underline decoration-primary/30 underline-offset-4 hover:decoration-primary transition-all">Explore our full catalog.</Link>
             </p>
           </div>
 
@@ -77,7 +77,7 @@ const Index = () => {
                 <p className="text-muted-foreground font-medium leading-relaxed">
                   Our formulas are engineered for maximum cleaning power, ensuring every drop of our detergent removes tough grease and stains effortlessly.
                 </p>
-                <div className="absolute bottom-4 right-8 text-[4rem] font-black text-foreground/5 pointer-events-none select-none italic group-hover:text-primary/10 transition-colors">01</div>
+                <div aria-hidden="true" className="absolute bottom-4 right-8 text-[4rem] font-black text-foreground/5 pointer-events-none select-none italic group-hover:text-primary/10 transition-colors deco-num-01"></div>
               </CardContent>
             </Card>
 
@@ -94,7 +94,7 @@ const Index = () => {
                     We exclusively use skin-friendly ingredients that are tough on dirt but safe for your entire household, including your pets.
                   </p>
                 </div>
-                <div className="mt-8 text-[4rem] font-black text-white/5 dark:text-foreground/5 pointer-events-none select-none italic text-right">02</div>
+                <div aria-hidden="true" className="mt-8 text-[4rem] font-black text-white/5 dark:text-foreground/5 pointer-events-none select-none italic text-right deco-num-02"></div>
               </CardContent>
             </Card>
 
@@ -134,7 +134,7 @@ const Index = () => {
                   <h3 className="text-xl font-black text-foreground mb-2 leading-tight">Ghanaian Heritage, <br />Global Standards</h3>
                   <p className="text-sm text-muted-foreground font-medium">We take pride in formulating world-class home care products right here in Accra.</p>
                 </div>
-                <div className="text-[4rem] font-black text-foreground/5 pointer-events-none select-none italic">03</div>
+                <div aria-hidden="true" className="text-[4rem] font-black text-foreground/5 pointer-events-none select-none italic deco-num-03"></div>
               </CardContent>
             </Card>
           </div>

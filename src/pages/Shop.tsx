@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useCart } from '@/context/CartContext';
 import { products, Product, ProductVariant } from '@/data/products';
 import { toast } from 'sonner';
@@ -11,15 +12,69 @@ import { Search, Box, Package, Minus, Plus } from 'lucide-react';
 import ProductDetailsDialog from '@/components/ProductDetailsDialog';
 
 const Shop = () => {
+    const { categorySlug, productSlug } = useParams();
+    const navigate = useNavigate();
     const [viewMode] = useState<'grid' | 'list'>('grid');
-
 
     const categories = ['All Products', ...Array.from(new Set(products.map(p => p.category)))];
     const [selectedCategory, setSelectedCategory] = useState('All Products');
+    
+    // State for the product details dialog when opened via URL or click
+    const [activeProduct, setActiveProduct] = useState<Product | null>(null);
+    const [isDetailsOpen, setIsDetailsOpen] = useState(false);
+
+    // Sync category from URL
+    useEffect(() => {
+        if (categorySlug) {
+            const category = categories.find(c => c.toLowerCase().replace(/ /g, '-') === categorySlug);
+            if (category) {
+                setSelectedCategory(category);
+            }
+        } else {
+            setSelectedCategory('All Products');
+        }
+    }, [categorySlug, categories]);
+
+    // Sync product from URL
+    useEffect(() => {
+        if (productSlug) {
+            const product = products.find(p => p.slug === productSlug);
+            if (product) {
+                setActiveProduct(product);
+                setIsDetailsOpen(true);
+            }
+        }
+    }, [productSlug]);
+
+    const handleCategoryChange = (category: string) => {
+        setSelectedCategory(category);
+        if (category === 'All Products') {
+            navigate('/shop');
+        } else {
+            navigate(`/shop/${category.toLowerCase().replace(/ /g, '-')}`);
+        }
+    };
+
+    const handleProductClick = (product: Product) => {
+        setActiveProduct(product);
+        setIsDetailsOpen(true);
+        navigate(`/product/${product.slug}`);
+    };
+
+    const handleDetailsClose = (open: boolean) => {
+        setIsDetailsOpen(open);
+        if (!open) {
+            // When closing, go back to the current category or all shop
+            if (selectedCategory !== 'All Products') {
+                navigate(`/shop/${selectedCategory.toLowerCase().replace(/ /g, '-')}`);
+            } else {
+                navigate('/shop');
+            }
+        }
+    };
 
     // Component for handle product selection state
     const ProductCard = ({ product, viewMode }: { product: Product, viewMode: string }) => {
-        const [isDetailsOpen, setIsDetailsOpen] = useState(false);
         const [selectedVolume, setSelectedVolume] = useState(product.variants[0].volume);
         const [quantity, setQuantity] = useState(1);
 
@@ -66,7 +121,7 @@ const Shop = () => {
                 >
                     <div
                         className={`relative overflow-hidden cursor-pointer ${viewMode === 'list' ? 'md:w-64 flex-shrink-0' : 'aspect-[5/4]'}`}
-                        onClick={() => setIsDetailsOpen(true)}
+                        onClick={() => handleProductClick(product)}
                     >
                         <div className="absolute inset-0 bg-white flex items-center justify-center p-4 sm:p-6">
                             <img
@@ -89,7 +144,7 @@ const Shop = () => {
 
                     <CardContent className={`p-4 flex flex-col flex-grow ${viewMode === 'list' ? 'md:justify-center' : ''}`}>
                         <div className="mb-2 flex justify-between items-start">
-                            <span className="text-[9px] font-bold text-primary uppercase tracking-widest bg-primary/10 px-2 py-0.5 rounded">
+                            <span className="text-[10px] font-black text-primary uppercase tracking-widest bg-primary/20 px-2 py-0.5 rounded leading-none shadow-sm">
                                 {product.category}
                             </span>
 
@@ -97,7 +152,7 @@ const Shop = () => {
 
                         <h3
                             className="text-lg font-bold text-card-foreground mb-3 group-hover:text-primary transition-colors leading-tight cursor-pointer"
-                            onClick={() => setIsDetailsOpen(true)}
+                            onClick={() => handleProductClick(product)}
                         >
                             {product.name}
                         </h3>
@@ -188,11 +243,7 @@ const Shop = () => {
                     </CardContent>
                 </Card>
 
-                <ProductDetailsDialog
-                    product={product}
-                    open={isDetailsOpen}
-                    onOpenChange={setIsDetailsOpen}
-                />
+                {/* ProductDialog managed globally per page */}
             </>
         );
     };
@@ -204,13 +255,15 @@ const Shop = () => {
     return (
         <div className="min-h-screen bg-background">
             <SEO
-              title="Shop Our Collection"
-              description="Browse our premium range of handcrafted home care products, including liquid soaps, floor cleaners, and more. Quality you can trust, delivered to your door."
-              keywords="buy liquid soap Ghana, floor cleaner price Accra, Fairine products, artisan home care catalog, shop cleaning supplies"
-              canonical="/shop"
+              title={activeProduct && isDetailsOpen ? activeProduct.name : selectedCategory !== 'All Products' ? selectedCategory : "Shop Our Collection"}
+              description={activeProduct && isDetailsOpen ? activeProduct.description : selectedCategory !== 'All Products' ? `Explore our premium range of ${selectedCategory} products. High-quality home care handcrafted in Ghana.` : "Browse our premium range of handcrafted home care products, including liquid soaps, floor cleaners, and more."}
+              keywords={activeProduct && isDetailsOpen ? `${activeProduct.name}, ${activeProduct.category}, Fairine products, cleaning supplies Ghana` : selectedCategory !== 'All Products' ? `${selectedCategory}, Fairine collection, buy cleaning products Ghana` : "buy liquid soap Ghana, floor cleaner price Accra, Fairine products, artisan home care catalog"}
+              canonical={activeProduct && isDetailsOpen ? `/product/${activeProduct.slug}` : selectedCategory !== 'All Products' ? `/shop/${selectedCategory.toLowerCase().replace(/ /g, '-')}` : "/shop"}
               breadcrumb={[
                 { name: "Home", url: "/" },
-                { name: "Shop", url: "/shop" }
+                { name: "Shop", url: "/shop" },
+                ...(selectedCategory !== 'All Products' ? [{ name: selectedCategory, url: `/shop/${selectedCategory.toLowerCase().replace(/ /g, '-')}` }] : []),
+                ...(activeProduct && isDetailsOpen ? [{ name: activeProduct.name, url: `/product/${activeProduct.slug}` }] : [])
               ]}
               structuredData={{                    "@context": "https://schema.org",
                     "@type": "ItemList",
@@ -222,6 +275,7 @@ const Shop = () => {
                             "name": product.name,
                             "description": product.description,
                             "image": `https://fairine.com${product.image}`,
+                            "sku": `FRN-${product.id}`,
                             "brand": {
                                 "@type": "Brand",
                                 "name": "Fairine"
@@ -229,10 +283,9 @@ const Shop = () => {
                             "offers": {
                                 "@type": "Offer",
                                 "priceCurrency": "GHS",
-                                "price": product.variants[0].price,
-                                "priceValidUntil": "2026-12-31",
+                                "price": product.variants[0].price.toFixed(2),
                                 "availability": "https://schema.org/InStock",
-                                "url": `https://fairine.com/shop`,
+                                "url": `https://fairine.com/product/${product.slug}`,
                                 "shippingDetails": {
                                     "@type": "OfferShippingDetails",
                                     "shippingRate": {
@@ -318,7 +371,7 @@ const Shop = () => {
                                     ? 'bg-primary border-primary text-white shadow-lg shadow-primary/20 scale-105'
                                     : 'bg-card border-border hover:border-primary hover:text-primary'
                                     }`}
-                                onClick={() => setSelectedCategory(category)}
+                                onClick={() => handleCategoryChange(category)}
                             >
                                 {category}
                             </Badge>
@@ -326,6 +379,15 @@ const Shop = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Global Product Dialog */}
+            {activeProduct && (
+                <ProductDetailsDialog
+                    product={activeProduct}
+                    open={isDetailsOpen}
+                    onOpenChange={handleDetailsClose}
+                />
+            )}
 
             {/* Products Grid */}
             <section className="py-12 bg-muted/10">

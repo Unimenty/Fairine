@@ -28,6 +28,7 @@ const FeaturedProducts = () => {
                 src={product.image}
                 alt={product.name}
                 loading="lazy"
+                decoding="async"
                 className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"
               />
 
@@ -54,7 +55,7 @@ const FeaturedProducts = () => {
 
           <CardContent className="p-3 sm:p-4 flex flex-col flex-grow">
             <div className="mb-1 sm:mb-2">
-              <span className="text-[7px] sm:text-[9px] font-bold text-primary uppercase tracking-[0.15em] bg-primary/10 px-1.5 sm:px-2 py-0.5 rounded">
+              <span className="text-[10px] sm:text-xs font-bold text-primary-foreground uppercase tracking-[0.15em] bg-primary px-1.5 sm:px-2 py-0.5 rounded shadow-sm">
                 {product.category}
               </span>
             </div>
@@ -134,7 +135,7 @@ const FeaturedProducts = () => {
             <Button
               size="lg"
               variant="outline"
-              className="w-full sm:w-auto border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-black py-6 px-12 rounded-xl transition-all duration-300 text-lg"
+              className="w-full sm:w-auto border-2 border-primary text-slate-900 hover:bg-primary hover:text-primary-foreground font-black py-6 px-12 rounded-xl transition-all duration-300 text-lg"
             >
               Explore Full Catalog
             </Button>

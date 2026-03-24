@@ -148,15 +148,15 @@ const StoreLocator = () => {
 
                                         <div className="space-y-3 text-sm text-muted-foreground font-medium">
                                             <div className="flex items-start gap-3">
-                                                <Navigation className="w-4 h-4 mt-0.5 text-primary/40" />
+                                                <Navigation className="w-4 h-4 mt-0.5 text-primary/70" />
                                                 <span className="text-[13px] line-clamp-1 group-hover:line-clamp-none transition-all">{store.address}</span>
                                             </div>
                                             <div className="flex items-center justify-between mt-4 pt-4 border-t border-border/50">
                                                 <div className="flex items-center gap-2">
-                                                    <Clock className="w-3.5 h-3.5 text-primary/40" />
+                                                    <Clock className="w-3.5 h-3.5 text-primary/70" />
                                                     <span className="text-[11px] font-bold">{store.hours}</span>
                                                 </div>
-                                                <div className={`text-[10px] font-black uppercase tracking-tighter ${activeStore.name === store.name ? 'text-primary' : 'text-muted-foreground/60'}`}>
+                                                <div className={`text-[10px] font-black uppercase tracking-tighter ${activeStore.name === store.name ? 'text-slate-900 dark:text-primary' : 'text-muted-foreground'}`}>
                                                     {activeStore.name === store.name ? 'Currently Viewing' : 'View on Map'}
                                                 </div>
                                             </div>

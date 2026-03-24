@@ -41,7 +41,7 @@ const Header = () => {
         <div className="flex items-center justify-between w-full h-12 sm:h-14">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 hover:opacity-80 transition-opacity">
-            <img src="/assets/logo-clean.png" alt="Fairine Enterprise Logo" className="h-8 sm:h-10 w-auto" />
+            <img src="/assets/logo-clean.png" alt="Fairine Enterprise Logo" className="h-8 sm:h-10 w-auto" width={40} height={32} />
             <span className="text-sm sm:text-lg font-black text-foreground tracking-tight hidden xs:block">Fairine Enterprise</span>
           </Link>
 

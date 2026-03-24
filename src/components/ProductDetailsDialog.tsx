@@ -14,6 +14,7 @@ interface ProductVariant {
 interface Product {
   id: number;
   name: string;
+  slug: string;
   category: string;
   description: string;
   variants: ProductVariant[];
@@ -67,13 +68,12 @@ const ProductDetailsDialog = ({ product, trigger, open, onOpenChange }: ProductD
       "@type": "Brand",
       "name": "Fairine"
     },
-    "sku": `${product.id}-${selectedVolume}-${selectedPack}`,
+    "sku": `FRN-${product.id}`,
     "offers": {
       "@type": "Offer",
-      "url": `https://fairine.com/shop`,
+      "url": `https://fairine.com/product/${product.slug}`,
       "priceCurrency": "GHS",
       "price": totalPrice,
-      "priceValidUntil": "2026-12-31",
       "itemCondition": "https://schema.org/NewCondition",
       "availability": product.inStock ? "https://schema.org/InStock" : "https://schema.org/OutOfStock",
       "shippingDetails": {

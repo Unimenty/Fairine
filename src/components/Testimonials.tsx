@@ -80,8 +80,8 @@ const Testimonials = () => {
                         </p>
 
                         <div className="mt-auto">
-                          <h4 className="font-bold text-foreground text-lg">{testimonial.author}</h4>
-                          <span className="text-xs font-bold text-primary/60 uppercase tracking-wider">
+                          <h3 className="font-bold text-foreground text-lg">{testimonial.author}</h3>
+                          <span className="text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
                             {testimonial.role}
                           </span>
                         </div>
