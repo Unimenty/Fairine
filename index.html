@@ -2,6 +2,15 @@
 <html lang="en">
 
 <head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L0ELRT21BX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-L0ELRT21BX');
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="canonical" href="https://fairine.com" />
@@ -18,8 +27,13 @@
   <meta name="author" content="Fairine Enterprise" />
 
   <!-- Preload Critical Assets -->
-  <link rel="preload" as="image" href="/images/hero-bg.jpg" fetchpriority="high" />
+  <link rel="preload" as="image" 
+    imagesrcset="https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=640 640w,
+                  https://images.unsplash.com/photo-1556228453-efd6c1ff04f6?auto=format&fit=crop&q=80&w=1200 1200w"
+    imagesizes="100vw"
+    fetchpriority="high" />
   <link rel="preconnect" href="https://images.unsplash.com" crossorigin />
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
 
   <meta property="og:title" content="Fairine Enterprise" />
   <meta property="og:description"
@@ -30,16 +44,6 @@
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Fairine Enterprise" />
   <meta name="twitter:image" content="https://fairine.com/assets/logo-clean.png" />
-
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3R7154NGXJ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-3R7154NGXJ');
-  </script>
 </head>
 
 <body>
