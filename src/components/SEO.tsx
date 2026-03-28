@@ -10,6 +10,17 @@ interface SEOProps {
     noindex?: boolean;
     keywords?: string;
     breadcrumb?: { name: string; url: string }[];
+    productData?: {
+        name: string;
+        description: string;
+        image: string;
+        price: number;
+        currency?: string;
+        availability?: string;
+        sku?: string;
+        rating?: number;
+        reviewCount?: number;
+    };
 }
 
 const SEO = ({
@@ -22,11 +33,13 @@ const SEO = ({
     noindex = false,
     keywords,
     breadcrumb,
+    productData,
 }: SEOProps) => {
     const siteName = 'Fairine Enterprise';
-    const siteUrl = 'https://fairine.com'; // Replace with actual production URL if different
-    const fullTitle = title ? `${title} | ${siteName}` : `${siteName} | Buy Quality Soap & Cleaning Detergents in Ghana`;
+    const siteUrl = 'https://fairine.com';
+    const fullTitle = title ? `${title} | Fairine™` : `Fairine™ | Premium Cleaning Soaps & Detergents in Ghana`;
     const currentUrl = canonical ? `${siteUrl}${canonical}` : siteUrl;
+    const fullOgImage = ogImage?.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 
     const organizationSchema = {
         "@context": "https://schema.org",
@@ -34,7 +47,7 @@ const SEO = ({
         "name": siteName,
         "url": siteUrl,
         "logo": `${siteUrl}/assets/logo-clean.png`,
-        "description": "Manufacturer and supplier of high-quality liquid soaps and cleaning detergents in Ghana.",
+        "description": "Manufacturer of high-quality liquid soaps and cleaning detergents in Ghana. Shop family-safe, handcrafted solutions for home and office.",
         "address": {
             "@type": "PostalAddress",
             "addressLocality": "Accra",
@@ -58,6 +71,33 @@ const SEO = ({
         }))
     } : null;
 
+    const productSchema = productData ? {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": productData.name,
+        "description": productData.description,
+        "image": productData.image.startsWith('http') ? productData.image : `${siteUrl}${productData.image}`,
+        "sku": productData.sku || `FRN-${productData.name.replace(/\s+/g, '-').toLowerCase()}`,
+        "brand": {
+            "@type": "Brand",
+            "name": siteName
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": currentUrl,
+            "priceCurrency": productData.currency || "GHS",
+            "price": productData.price,
+            "availability": productData.availability || "https://schema.org/InStock"
+        },
+        ...(productData.rating && {
+            "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": productData.rating,
+                "reviewCount": productData.reviewCount || 1
+            }
+        })
+    } : null;
+
     return (
         <Helmet>
             {/* Standard metadata */}
@@ -73,12 +113,24 @@ const SEO = ({
             {description && <meta property="og:description" content={description} />}
             <meta property="og:type" content={ogType} />
             <meta property="og:url" content={currentUrl} />
-            <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+            <meta property="og:image" content={fullOgImage} />
+
+            {/* Twitter Card */}
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta name="twitter:title" content={fullTitle} />
+            {description && <meta name="twitter:description" content={description} />}
+            <meta name="twitter:image" content={fullOgImage} />
 
             {/* Structured Data (JSON-LD) */}
             {breadcrumbSchema && (
                 <script type="application/ld+json">
                     {JSON.stringify(breadcrumbSchema)}
+                </script>
+            )}
+
+            {productSchema && (
+                <script type="application/ld+json">
+                    {JSON.stringify(productSchema)}
                 </script>
             )}
 

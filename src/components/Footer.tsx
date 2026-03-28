@@ -39,7 +39,7 @@ const Footer = () => {
               </li>
               <li className="flex items-start">
                 <span className="font-bold text-foreground mr-2">📧</span>
-                <a href="mailto:fairineenterprise@gmail.com" rel="noopener noreferrer" className="hover:text-primary transition-colors break-all">fairineenterprise@gmail.com</a>
+                <Link to="/contact" className="hover:text-primary transition-colors">Send a Message</Link>
               </li>
               <li className="flex flex-col space-y-2 pt-1 sm:pt-2">
                 <span className="text-foreground font-black text-[9px] sm:text-[10px] uppercase tracking-tighter opacity-50">Direct Lines</span>

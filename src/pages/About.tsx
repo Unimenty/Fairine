@@ -34,7 +34,7 @@ const About = () => {
     <div className="min-h-screen bg-background transition-colors duration-500 selection:bg-primary/20">
       <SEO
         title="Our Story & Vision"
-        description="Learn about the artisan heart behind Fairine Enterprise. Meet our founder Catherine Komey and discover how we craft care for your home."
+        description="Learn about the artisan heart behind Fairine™. Meet our founder Catherine Komey and discover our family-safe, handcrafted cleaning solutions made in Ghana."
         keywords="about Fairine, Catherine Komey, artisan home care Ghana, sustainable cleaning products, handmade soap story"
         canonical="/about"
         breadcrumb={[

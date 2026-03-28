@@ -87,13 +87,6 @@ const Contact = () => {
       description: 'Available Mon-Sat, 9AM-6PM',
       primary: true,
       link: 'tel:+233546865035'
-    },
-    {
-      icon: <Mail className="w-5 h-5" />,
-      title: 'Email',
-      info: 'fairineenterprise@gmail.com',
-      description: 'We usually respond within a day',
-      link: 'mailto:fairineenterprise@gmail.com'
     }
   ];
 
@@ -101,7 +94,7 @@ const Contact = () => {
     <div className="min-h-screen bg-background">
       <SEO
         title="Contact Us"
-        description="Have questions or feedback? Reach out to the Fairine team via WhatsApp, phone, or email. We're here to help you care for your home."
+        description="Have questions or feedback? Reach out to Fairine™ via WhatsApp, phone, or email. We're here to help you find the best family-safe cleaning solutions."
         keywords="contact Fairine, Fairine customer support, purchase liquid soap Accra, Fairine WhatsApp, home care inquiry"
         canonical="/contact"
         breadcrumb={[
@@ -184,7 +177,7 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
             {/* Feedback Form */}
-                        <div className="lg:col-span-2">
+                        <div className="lg:col-span-2" id="contact-form">
                           <div className="bg-card rounded-[2.5rem] p-8 sm:p-12 shadow-2xl border border-border/40 relative overflow-hidden">
                             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-primary to-orange-500"></div>
                             <div className="mb-10">
@@ -251,14 +244,14 @@ const Contact = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-8 pt-6 space-y-6">
-                  <a href="mailto:fairineenterprise@gmail.com" className="block group/item">
+                  <a href="#contact-form" className="block group/item">
                     <div className="flex items-start space-x-4">
                       <div className="w-10 h-10 bg-primary/5 rounded-xl flex items-center justify-center text-primary flex-shrink-0 group-hover/item:bg-primary group-hover/item:text-white transition-colors">
                         <Mail className="w-5 h-5" />
                       </div>
                       <div>
                         <h4 className="font-bold text-sm mb-0.5 group-hover/item:text-primary transition-colors">Email Support</h4>
-                        <p className="text-xs text-muted-foreground mb-1">fairineenterprise@gmail.com</p>
+                        <p className="text-xs text-muted-foreground mb-1">Use our contact form</p>
                         <p className="text-[10px] text-muted-foreground italic">Best for detailed requests</p>
                       </div>
                     </div>
