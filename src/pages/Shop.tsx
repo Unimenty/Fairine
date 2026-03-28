@@ -126,7 +126,9 @@ const Shop = () => {
                         <div className="absolute inset-0 bg-white flex items-center justify-center p-4 sm:p-6">
                             <img
                                 src={currentVariant.image || product.image}
-                                alt={product.name}
+                                alt={`${product.name} (${selectedVolume}) | Premium Home Care Ghana`}
+                                width={400}
+                                height={320}
                                 loading="lazy"
                                 decoding="async"
                                 className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"

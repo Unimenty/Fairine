@@ -50,7 +50,9 @@ const IkedaShowcase = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 lg:from-transparent to-transparent z-10"></div>
               <img 
                 src="/assets/ikeda-products.webp" 
-                alt="Ikeda Premium Fragrance Collection" 
+                alt="Ikeda Premium Fragrance Collection available at Fairine™ Ghana" 
+                width={600}
+                height={600}
                 className="w-full h-full object-cover lg:object-contain transform hover:scale-110 transition-transform duration-1000 p-8"
                 loading="lazy"
                 decoding="async"

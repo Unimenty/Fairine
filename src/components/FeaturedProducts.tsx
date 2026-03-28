@@ -26,7 +26,9 @@ const FeaturedProducts = () => {
             <div className="absolute inset-0 bg-white flex items-center justify-center p-2 sm:p-4">
               <img
                 src={product.image}
-                alt={product.name}
+                alt={`${product.name} | Premium Cleaning Product Ghana`}
+                width={400}
+                height={320}
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700"

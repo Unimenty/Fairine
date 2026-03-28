@@ -108,12 +108,12 @@ export const products: Product[] = [
         category: 'Sanitary Care',
         description: 'Experience 360° leak-proof confidence with Flo 360 Sanitary Pads, the best choice for reliable period protection in Ghana. These ultra-thin, breathable pads are hypoallergenic and skin-friendly, keeping you fresh all day. Affordable quality at just 25 GHS per pack. Perfect for an active lifestyle and sensitive skin.',
         variants: [
-            { volume: 'Standard', price: 25, bulkPackSize: 1, image: '/assets/flo-360.avif' }
+            { volume: 'Standard', price: 25, bulkPackSize: 1, image: '/assets/flo-360.webp' }
         ],
         inStock: true,
         featured: true,
         rating: 5.0,
         reviews: 24,
-        image: '/assets/flo-360.avif'
+        image: '/assets/flo-360.webp'
     }
 ];
