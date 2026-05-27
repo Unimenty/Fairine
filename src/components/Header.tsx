@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [visible, setVisible] = useState(true);
   const location = useLocation();
   const { totalItems, setDrawerOpen } = useCart();
 
@@ -21,15 +22,41 @@ const Header = () => {
   ];
 
   useEffect(() => {
+    let lastScrollY = window.scrollY;
+
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      const currentScrollY = window.scrollY;
+      setIsScrolled(currentScrollY > 20);
+
+      if (isMenuOpen) {
+        setVisible(true);
+        return;
+      }
+
+      if (currentScrollY <= 50) {
+        setVisible(true);
+      } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        // Scrolling down - hide
+        setVisible(false);
+      } else if (currentScrollY < lastScrollY) {
+        // Scrolling up - show
+        setVisible(true);
+      }
+
+      lastScrollY = currentScrollY;
     };
-    window.addEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [isMenuOpen]);
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 flex justify-center p-4 sm:p-6 pointer-events-none">
+    <div 
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 flex justify-center p-4 sm:p-6 pointer-events-none transition-transform duration-500 ease-in-out",
+        visible ? "translate-y-0" : "-translate-y-full sm:-translate-y-[150%]"
+      )}
+    >
       <header 
         className={cn(
           "pointer-events-auto transition-all duration-500 ease-in-out flex flex-col items-center",

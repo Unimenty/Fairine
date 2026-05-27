@@ -132,14 +132,14 @@ const Contact = () => {
       <Header />
 
       {/* Hero Section */}
-      <section className="bg-background py-10 sm:py-16 relative overflow-hidden">
+      <section className="bg-background pt-28 pb-10 sm:pt-40 sm:pb-16 relative overflow-hidden">
         <div className="absolute inset-0 gradient-sunset opacity-5"></div>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
           <h1 className="text-3xl sm:text-5xl font-black text-foreground mb-4 leading-tight tracking-tight">
             Contact Fairine Enterprise
           </h1>
-          <p className="text-base sm:text-lg text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            We're a small team of less than 10 people, personally crafting and packing every order of our home care products in Accra, Ghana. We'd love to hear from you!
+          <p className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed font-medium">
+            Whether you are ordering bulk supplies for your business or stock for your household, our Accra-based team is ready to assist. Contact us for direct delivery quotes across Greater Accra and Tema.
           </p>
         </div>
       </section>

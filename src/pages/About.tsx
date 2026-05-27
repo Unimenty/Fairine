@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Header from '@/components/Header';
 import SEO from '@/components/SEO';
 import FAQ from '@/components/FAQ';
@@ -10,23 +11,23 @@ const About = () => {
   const values = [
     {
       icon: <HandHeart className="w-6 h-6" />,
-      title: 'Handcrafted with Love',
-      description: 'Each bottle of our liquid soap and floor cleaner is personal. We pour genuine care into every single product we formulate in Ghana.'
+      title: 'Locally Manufactured in Ghana',
+      description: 'We formulate and produce every batch of our liquid soaps and detergents right here in Accra, supporting local jobs and supply chains.'
     },
     {
       icon: <Sprout className="w-6 h-6" />,
-      title: 'Premium, Safe Ingredients',
-      description: 'We source only the finest, skin-friendly materials for our home care products to ensure a premium cleaning experience.'
+      title: 'Premium Active Ingredients',
+      description: 'We use high-grade, skin-friendly active agents that deliver powerful cleaning action without harsh chemical residues.'
     },
     {
       icon: <Shield className="w-6 h-6" />,
-      title: 'Family & Pet-Friendly',
-      description: 'Our cleaning solutions are safe for your home, your pets, and your loved ones. We never compromise on the safety of our products.'
+      title: 'Safe for All Households',
+      description: 'Our cleaning solutions are safe for your entire family. We prioritize non-toxic ingredients that protect your hands and surfaces.'
     },
     {
       icon: <Award className="w-6 h-6" />,
-      title: 'Artisanal Quality Control',
-      description: 'As a boutique artisan company in Accra, we maintain direct control over every batch of our home and personal care products.'
+      title: 'Rigorous Quality Control',
+      description: 'We maintain strict oversight over our production batches to ensure consistent, highly effective products every single time.'
     }
   ];
 
@@ -91,7 +92,7 @@ const About = () => {
       <Header />
 
       {/* Hero Section - Elegant & Consistent */}
-      <section className="relative pt-20 pb-16 sm:pt-32 sm:pb-24 overflow-hidden border-b border-border/10">
+      <section className="relative pt-28 pb-16 sm:pt-40 sm:pb-24 overflow-hidden border-b border-border/10">
         <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/2"></div>
         <div className="container mx-auto px-4 relative">
           <div className="max-w-3xl mx-auto text-center">
@@ -99,16 +100,16 @@ const About = () => {
               Est. 2021
             </Badge>
             <h1 className="text-4xl sm:text-6xl font-black text-foreground mb-8 leading-[1.1] tracking-tight">
-              Crafting <span className="relative">
-                <span className="relative z-10 text-primary italic">Care</span>
+              Effective <span className="relative">
+                <span className="relative z-10 text-primary italic">Hygiene</span>
                 <svg className="absolute -bottom-2 left-0 w-full h-3 text-primary/20 -z-0" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <title>Swoosh</title>
                   <path d="M0 5 Q 20 0 40 5 T 80 5 T 100 5" fill="none" stroke="currentColor" strokeWidth="8" />
                 </svg>
-              </span> for Your Home in Ghana
+              </span> for Your Home & Office
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed font-medium">
-              Fairine Enterprise wasn’t built in a boardroom. It was born in a kitchen, fueled by a passion for creating home and personal care products that make life feel a little bit more special.
+              Fairine Enterprise is established in Accra with a clear vision: to manufacture highly effective, professional-grade cleaning products that are completely safe for every Ghanaian household.
             </p>
           </div>
         </div>
@@ -119,10 +120,10 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="bg-card/80 backdrop-blur-xl border border-border/50 rounded-[2.5rem] shadow-2xl p-8 sm:p-12 grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { label: 'Care Focus', value: 'Personal' },
-              { label: 'Batch Method', value: 'Artisan' },
-              { label: 'Years of Care', value: '5' },
-              { label: 'Quality Rating', value: '100%' }
+              { label: 'FDA Compliance', value: 'Approved' },
+              { label: 'Production Hub', value: 'Accra' },
+              { label: 'Distribution', value: 'Accra/Tema' },
+              { label: 'Product Rating', value: '4.8+' }
             ].map((stat, i) => (
               <div key={i} className="text-center group border-r border-border/30 last:border-0">
                 <p className="text-2xl sm:text-3xl font-black text-foreground mb-1 group-hover:scale-110 transition-transform duration-500 uppercase">{stat.value}</p>
@@ -150,19 +151,19 @@ const About = () => {
             <div className="space-y-8">
               <div className="inline-flex items-center space-x-2 bg-primary/10 px-3 py-1 rounded-full">
                 <Sparkles className="w-4 h-4 text-primary" />
-                <span className="text-[10px] font-bold text-primary uppercase tracking-tight">Handcrafted Excellence</span>
+                <span className="text-[10px] font-bold text-primary uppercase tracking-tight">Ghanaian Quality Standards</span>
               </div>
-              <h2 className="text-3xl sm:text-5xl font-black text-foreground leading-tight">How Our Passion for Quality <br /><span className="text-primary italic font-serif">Shapes Our Products</span></h2>
+              <h2 className="text-3xl sm:text-5xl font-black text-foreground leading-tight">Our Commitment to Effective <br /><span className="text-primary italic font-serif">Cleaning Power</span></h2>
 
               <div className="space-y-6 text-muted-foreground text-base sm:text-lg leading-relaxed">
                 <p>
-                  Fairine’s roots go back to a single kitchen counter and a simple question: <span className="font-bold text-foreground italic">"Why should our daily cleaning rituals feel like a chore?"</span> Catherine, our founder, believed that the products we use to care for our homes in Ghana should be as carefully crafted as the things we use to care for our skin.
+                  Fairine Enterprise began with a simple mission: to formulate premium cleaning solutions that solve the real hygiene needs of Ghanaian households and commercial businesses. Catherine Komey, our founder, recognized that local consumers had to choose between imported premium products that were too expensive, or cheap alternatives that lacked cleaning power and pleasant scents.
                 </p>
                 <p>
-                  What began as a personal quest to find safer, better-smelling alternatives for her own family soon turned into a fascination with the science of formulation. She spent months studying how natural surfactants interact with essential oils, seeking that perfect balance between uncompromising cleaning power and poetic fragrance in every bottle of liquid soap and floor cleaner.
+                  To bridge this gap, she focused on developing professional-grade liquid soaps, detergents, and floor cleaners right here in Accra. By selecting top-tier, skin-safe active ingredients and combining them with refreshing, long-lasting fragrances, we created a lineup that is incredibly effective against dirt and stains but gentle on hands and surfaces.
                 </p>
                 <p>
-                  Today, every bottle of Fairine is a continuation of that quest. We aren't just selling detergents; we are sharing a piece of our commitment to a home that feels as good as it looks, with products made right here in Accra.
+                  Today, Fairine supplies wholesale and retail clients across Greater Accra, Tema, and beyond. We maintain strict manufacturing controls for every batch to ensure that what goes into your home or office is of the highest standard.
                 </p>
               </div>
             </div>
@@ -175,7 +176,7 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <h2 className="text-3xl sm:text-4xl font-black text-foreground mb-4">Our Core Values in Home Care</h2>
-            <p className="text-muted-foreground font-medium uppercase tracking-widest text-xs">Small-batch quality & artisan heart in every product</p>
+            <p className="text-muted-foreground font-medium uppercase tracking-widest text-xs">Premium performance & strict standards in every bottle</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
@@ -209,7 +210,7 @@ const About = () => {
                 </p>
                 <div className="flex flex-wrap justify-center md:justify-start gap-3">
                   <Badge variant="secondary" className="px-3 py-1">Founder</Badge>
-                  <Badge variant="secondary" className="px-3 py-1">Chief Artisan</Badge>
+                  <Badge variant="secondary" className="px-3 py-1">Managing Director</Badge>
                 </div>
               </div>
             </div>
@@ -225,7 +226,7 @@ const About = () => {
         <div className="container mx-auto px-4 relative z-10">
           <h2 className="text-3xl sm:text-5xl font-black mb-8 leading-tight">Ready to bring Fairine <br className="hidden sm:block" /> into your home?</h2>
           <div className="flex justify-center gap-4">
-            <a href="/shop" className="bg-primary-foreground text-primary font-black px-10 py-4 rounded-2xl shadow-xl hover:scale-105 transition-transform active:scale-95">Shop the Catalog</a>
+            <Link to="/shop" className="bg-primary-foreground text-primary font-black px-10 py-4 rounded-2xl shadow-xl hover:scale-105 transition-transform active:scale-95">Shop the Catalog</Link>
           </div>
         </div>
       </section>

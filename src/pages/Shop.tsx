@@ -353,7 +353,7 @@ const Shop = () => {
             <Header />
 
             {/* Hero Section */}
-            <section className="bg-background py-8 sm:py-12 relative overflow-hidden">
+            <section className="bg-background pt-28 pb-6 sm:pt-36 sm:pb-8 relative overflow-hidden">
                 <div className="absolute inset-0 gradient-sunset opacity-5"></div>
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative text-center">
                     <h1 className="text-2xl sm:text-4xl font-black text-foreground mb-4 leading-tight tracking-tight">
@@ -363,7 +363,7 @@ const Shop = () => {
             </section>
 
             {/* Filters Section */}
-            <section className="pb-8 bg-background sticky top-[64px] z-40 backdrop-blur-md bg-background/80 border-b border-border/50">
+            <section className="pb-4 bg-background sticky top-0 sm:top-2 z-40 backdrop-blur-md bg-background/80 border-b border-border/50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                     {/* Category Filter - Scrolling for Mobile */}
                     <div className="flex items-center gap-2 overflow-x-auto py-4 scrollbar-hide -mx-4 px-4 sm:mx-0 sm:px-0">
